@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "delex"
+version = "0.1.0"
+dynamic = ["dependencies"]
+
+requires-python = ">= 3.8"
+
+authors = [
+	{name = "Derek Paulsen", email = "derekpaulsensi@gmail.com"},
+]
+
+description = "Delex is a TF/IDF top-k blocking for entity matching system built on top of Apache Spark, PyLucene, and Sparkly."
+
+readme = "README.md"
+license = {file = "LICENSE"}
+
+keywords = ["entity matching", "entity resolution", "matching", "Spark", "Lucene", "PyLucene", "distributed", "Sparkly"]
+
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: Apache Software License",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+
+Homepage = "https://github.com/derekpaulsen/delex"
+Repository = "https://github.com/derekpaulsen/delex.git"
+Issues = "https://github.com/derekpaulsen/delex/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["delex"]
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
