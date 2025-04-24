@@ -108,7 +108,7 @@ WHERE jaccard_3gram(A.title, B.title) >= .6
 
 ## Step Seven: Execute a Blocking Program
 Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Notice, that we passed optimize=False and estimate_cost=False as arguments, these parameters control the plan that is generated, which will be explained in a separate example.
-
+```
 executor = PlanExecutor(
         index_table=index_table, 
         search_table=search_table,
@@ -119,6 +119,7 @@ executor = PlanExecutor(
 candidates, stats = executor.execute(prog, ['_id'])
 candidates = candidates.persist()
 candidates.show()
+```
 
 ## Step Eight: Compute Recall
 Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation effeicency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
