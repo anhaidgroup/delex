@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>delex &#8212; Delex 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/groundwork.css?v=594d7a89" />
+    <script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">delex</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="delex">
+<h1>delex<a class="headerlink" href="#delex" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="delex.html">delex package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html">delex.execution package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.cost_estimation">delex.execution.cost_estimation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.dataframe_stream">delex.execution.dataframe_stream module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.graph_executor">delex.execution.graph_executor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.optimizer">delex.execution.optimizer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.partitioner">delex.execution.partitioner module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution.plan_executor">delex.execution.plan_executor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#module-delex.execution">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html">delex.graph package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#module-delex.graph.algorithms">delex.graph.algorithms module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#module-delex.graph.node">delex.graph.node module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#module-delex.graph.utils">delex.graph.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#module-delex.graph">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.html">delex.lang package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#module-delex.lang.program">delex.lang.program module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#module-delex.lang.rule">delex.lang.rule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#module-delex.lang">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html">delex.storage package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.memmap_arr">delex.storage.memmap_arr module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.memmap_seqs">delex.storage.memmap_seqs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.packed_memmap_arrs">delex.storage.packed_memmap_arrs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.sorted_set">delex.storage.sorted_set module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.span_map">delex.storage.span_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.string_store">delex.storage.string_store module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage.vector_store">delex.storage.vector_store module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#module-delex.storage">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html">delex.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils.build_cache">delex.utils.build_cache module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils.funcs">delex.utils.funcs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils.hash_function">delex.utils.hash_function module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils.numba_functions">delex.utils.numba_functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils.traits">delex.utils.traits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#module-delex.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.html#module-delex.tokenizer">delex.tokenizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.AlphaNumericTokenizer"><code class="docutils literal notranslate"><span class="pre">AlphaNumericTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.AlphaNumericTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">AlphaNumericTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.NumericTokenizer"><code class="docutils literal notranslate"><span class="pre">NumericTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.NumericTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">NumericTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.QGramTokenizer"><code class="docutils literal notranslate"><span class="pre">QGramTokenizer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.ShingleTokenizer"><code class="docutils literal notranslate"><span class="pre">ShingleTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.ShingleTokenizer.base_tokenize"><code class="docutils literal notranslate"><span class="pre">ShingleTokenizer.base_tokenize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedQGramTokenizer"><code class="docutils literal notranslate"><span class="pre">StrippedQGramTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedQGramTokenizer.RE"><code class="docutils literal notranslate"><span class="pre">StrippedQGramTokenizer.RE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedWhiteSpaceTokenizer"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedWhiteSpaceTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedWhiteSpaceTokenizer.RE"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.RE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.StrippedWhiteSpaceTokenizer.WHITESPACE_NORM"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.WHITESPACE_NORM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer"><code class="docutils literal notranslate"><span class="pre">Tokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.CacheKey"><code class="docutils literal notranslate"><span class="pre">Tokenizer.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.build"><code class="docutils literal notranslate"><span class="pre">Tokenizer.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.deinit"><code class="docutils literal notranslate"><span class="pre">Tokenizer.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.init"><code class="docutils literal notranslate"><span class="pre">Tokenizer.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.nunique_tokens"><code class="docutils literal notranslate"><span class="pre">Tokenizer.nunique_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.to_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.to_spark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.tokenize"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.tokenize_set"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.tokenize_set_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_set_spark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.Tokenizer.tokenize_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_spark()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.html#delex.tokenizer.WhiteSpaceTokenizer"><code class="docutils literal notranslate"><span class="pre">WhiteSpaceTokenizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.html#delex.tokenizer.WhiteSpaceTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">WhiteSpaceTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.html#module-delex">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">delex</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Derek Paulsen.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
