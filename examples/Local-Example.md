@@ -4,7 +4,7 @@ This guide is a step-by-step guide to running Delex. FOr this guide, we will ass
 ## Step One: Download datasets
 To begin, we need to download the datasets from the GitHub. Navigate to the dblp_acm folder here: https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm. Then, click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now, using your file manager on your computer, move these all into one file called 'dblp_acm'.
 
-## Step Two: Create {utjpm fo;e
+## Step Two: Create Python file
 Within the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to walkthrough the code.
 
 Note: Make sure your virtual environment is activated. The 'further pointers' section in the installation guide has a reminder of how to do this. Then, to run this file throughout this walkthrough, use your terminal to navigate to the 'dblp_acm' directory and run python example.py.
