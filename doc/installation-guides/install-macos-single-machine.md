@@ -8,7 +8,7 @@ If your machine has an Intel chip, this installation guide will not work for you
 
 ## Step 1: Sparkly and Sparkly Dependency Installation
 
-Sparkly is an entity matching package that Delex is built on top of. Therefore, Delex requires Sparkly as a dependency, so we need to install Sparkly (and Sparkly’s dependencies) first. To download Sparkly, and its dependencies, please refer to the step-by-step guide here: [link](%20https://github.com/anhaidgroup/sparkly/blob/docs-update/doc/install-single-machine-macOS.md).
+Sparkly is an entity matching package that Delex is built on top of. Therefore, Delex requires Sparkly as a dependency, so we need to install Sparkly (and Sparkly’s dependencies) first. To download Sparkly, and its dependencies, please refer to the step-by-step guide here: [Sparkly MacOS Installation](https://github.com/anhaidgroup/sparkly/blob/docs-update/doc/install-single-machine-macOS.md).
 
 Once you have completed the guide above, you can download and install Delex. 
 
