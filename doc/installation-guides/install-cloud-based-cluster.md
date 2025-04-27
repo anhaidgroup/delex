@@ -2,7 +2,7 @@
 
 These instructions for obtaining a set of EC2 nodes on Amazon Web Service (AWS), setting up a Spark cluster on these nodes, and testing that the Spark cluster is working properly.
 
-We have tested installation with Ubuntu 22.04, Java Temurin JDK 17, Python 3.12, and Spark 3.5.1. We cannot guarantee successful installation on other versions.
+We have tested installation with Ubuntu 22.04, Java Temurin JDK 17, Python 3.10, and Spark 3.5.1. We cannot guarantee successful installation on other versions.
 
 ### Creating EC2 Nodes
 
