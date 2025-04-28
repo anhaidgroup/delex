@@ -74,6 +74,7 @@ pairs = candidates.select(
                     F.explode('ids').alias('a_id'),
                     F.col('_id').alias('b_id')
                 )
+gold = gold.drop('__index_level_0__')
 n_pairs = pairs.count()
 true_positives = gold.intersect(pairs).count()
 recall = true_positives / gold.count()
