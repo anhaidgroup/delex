@@ -25,7 +25,7 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 
 
-from sbl.lang.predicate import (
+from delex.lang.predicate import (
         BM25TopkPredicate,
         JaccardPredicate,
         EditDistancePredicate,
@@ -36,9 +36,9 @@ from sbl.lang.predicate import (
         ExactMatchPredicate
 )
 
-from sbl.lang import BlockingProgram, DropRule, KeepRule
-from sbl.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
-from sbl.execution.plan_executor import PlanExecutor
+from delex.lang import BlockingProgram, DropRule, KeepRule
+from delex.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
+from delex.execution.plan_executor import PlanExecutor
 import operator
 import psutil
 ```
