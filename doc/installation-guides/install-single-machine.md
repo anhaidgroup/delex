@@ -1,14 +1,12 @@
 ## How to Install Delex on a Single Machine
 
-You can install and run Delex on a single machine. If you have relatively small tables, or just want to experiment with Sparkly, this is often sufficient. Otherwise you may consider installing and running Delex on [a cluster on cloud]() (such as AWS). 
+You can install and run Delex on a single machine. If you have relatively small tables, or just want to experiment with Delex, this is often sufficient. Otherwise you may consider installing and running Delex on [a cluster on cloud](./install-cloud-based-cluster.md) (such as AWS). 
 
 ### Overview
 
 The installation process consists of the following: 
-1. Install Python 3, Sparkly (and its dependencies), PyLucene and (and its dependencies).
+1. Install Python 3, Sparkly (+ its dependencies), and PyLucene (+ its dependencies).
 2. Pip install Delex from either PyPI or GitHub.
-
-See here for [an explanation of why Delex needs PyLucene](./why-pylucene.md).
 
 ### Options
 
