@@ -6,7 +6,7 @@ You can install and run Delex on a single machine. If you have relatively small 
 
 The installation process consists of the following: 
 1. Install Python 3, Sparkly (+ its dependencies), and PyLucene (+ its dependencies).
-2. Pip install Delex from either PyPI or GitHub.
+2. Pip install Delex (+ its dependencies) from either PyPI or GitHub.
 
 ### Options
 
