@@ -80,7 +80,7 @@ gold_path = data_path / 'gold.parquet'
 
 ## Step Five: Read the Data
 
-Once Spark is initialized, we can then read all of our data into Spark dataframes
+Once Spark is initialized, we can then read all of our data into Spark dataframes.
 
 ```
 # read all the data as spark dataframes
