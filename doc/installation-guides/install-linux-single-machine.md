@@ -6,7 +6,7 @@ This guide has been tested on a Linux Machine running Ubuntu 22.04 with 8 GB mem
 
 ## Step 1: Sparkly and Sparkly Dependency Installation
 
-Sparkly is an entity matching package that Delex is built on top of. Therefore, Delex requires Sparkly as a dependency, so we need to install Sparkly (and Sparkly’s dependencies) first. To download Sparkly, and its dependencies, please refer to the step-by-step guide here: [link](https://github.com/anhaidgroup/sparkly/blob/docs-update/doc/install-single-machine-linux.md).
+Sparkly is an entity matching package that Delex is built on top of. Therefore, Delex requires Sparkly as a dependency, so we need to install Sparkly (and Sparkly’s dependencies) first. To download Sparkly, and its dependencies, please refer to the step-by-step guide here: [Sparkly Linux Installation](https://github.com/anhaidgroup/sparkly/blob/docs-update/doc/install-single-machine-linux.md).
 
 Once you have completed the guide above, you can install Delex. 
 
