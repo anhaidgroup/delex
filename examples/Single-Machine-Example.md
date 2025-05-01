@@ -1,6 +1,6 @@
 # Step-by-step guide to running Delex
 
-This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided installation guides.
+This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the appropriate [Single Machine Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).
 
 ## Step One: Download datasets
 
