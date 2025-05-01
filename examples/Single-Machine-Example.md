@@ -1,6 +1,6 @@
 # Step-by-step guide to running Delex
 
-This guide is a step-by-step guide to running Delex. FOr this guide, we will assume that you have already installed everything from the provided installation guides.
+This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided installation guides.
 
 ## Step One: Download datasets
 
@@ -8,9 +8,7 @@ To begin, we need to download the datasets from the GitHub. Navigate to the dblp
 
 ## Step Two: Create Python file
 
-Within the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to walkthrough the code.
-
-Note: Make sure your virtual environment is activated. The 'further pointers' section in the installation guide has a reminder of how to do this. Then, to run this file throughout this walkthrough, use your terminal to navigate to the 'dblp_acm' directory and run python example.py.
+Within the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to write the code.
 
 ## Step Three: Import dependencies
 
@@ -66,7 +64,7 @@ spark = SparkSession.builder\
 
 ### Data
 
-With the repository we have provided a small sample dataset called dblp_acm in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
 
 ```
 # path to the test data directory
