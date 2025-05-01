@@ -1,6 +1,6 @@
 # Step-by-step guide to running Delex
 
-This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided [Cloud Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md) .
+This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided [Cloud Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md) and have set up a Spark Cluster.
 
 ## Step One: Download datasets --- We should change when the datasets are hosted to make it easier using wget
 
