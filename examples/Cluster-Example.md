@@ -1,6 +1,6 @@
 # Step-by-step guide to running Delex
 
-This guide is a step-by-step guide to running Delex. FOr this guide, we will assume that you have already installed everything from the provided [Cloud installation guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md) .
+This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided [Cloud Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md) .
 
 ## Step One: Download datasets --- We should change when the datasets are hosted to make it easier using wget
 
@@ -9,8 +9,6 @@ To begin, we need to download the datasets from the GitHub. Navigate to the dblp
 ## Step Two: Create Python file
 
 On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to walkthrough the code.
-
-Note: Make sure your virtual environment is activated. The 'further pointers' section in the installation guide has a reminder of how to do this.
 
 ## Step Three: Import dependencies
 
@@ -49,7 +47,7 @@ import psutil
 
 ## Step Four: Initialize Spark
 
-Next we need to initialize Spark. For this example we are doing everything in a local setup, in particular, all files are stored on the local file system and we are running Spark in local mode.
+Next we need to initialize Spark. For this example we are doing everything in a cloud setup. All files need to be stored in the ~/dblp_acm directory on all nodes.
 
 ```
 # enable pyarrow execution, recommended for better performance
@@ -66,7 +64,7 @@ spark = SparkSession.builder\
 
 ### Data
 
-With the repository we have provided a small sample dataset called dblp_acm in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
+The data we downloaded contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
 
 ```
 # path to the test data directory
@@ -82,7 +80,7 @@ gold_path = data_path / 'gold.parquet'
 
 ## Step Five: Read the Data
 
-Once Spark is initialized, we can then read all of our data into Spark dataframes
+Once Spark is initialized, we can then read all of our data into Spark dataframes.
 
 ```
 # read all the data as spark dataframes
