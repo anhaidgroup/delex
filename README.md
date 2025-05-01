@@ -1,5 +1,5 @@
 ## Delex: Blocking for Entity Matching
-Welcome to Delex! Delex is a system specialized for entity matching built on top of Apache Spark.
+Welcome to Delex! Delex is a blocking system specialized for entity matching built on top of Apache Spark.
 
 ### Installation
 
