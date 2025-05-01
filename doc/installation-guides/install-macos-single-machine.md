@@ -16,15 +16,16 @@ Once you have completed the guide above, you can download and install Delex.
 
 To download and install Delex, you can use one of the following options: pip installing from PyPI or pip installing from GitHub. You may want to pip install from GitHub if you want to install the latest Delex version compared to the version on PyPI. For example, the GitHub version may contain bug fixes that the PyPI version does not.
 
-Before installing, make sure you are in the correct virtual environment. This step is necessary because this is the environment where we installed all of the dependencies. To make sure the environment is activated, run the following:  
+Before installing, make sure you are in the correct virtual environment. This step is necessary because this is the environment where we installed all of the dependencies. If you followed the Sparkly installation instructions, you can activate the environment by running the following:
+```
 	source \~/sparkly/bin/activate
-
+```
 ### Option 1: Pip installing from PyPI
 
 You can install Sparkly from PyPI, using the following command:
-
+```
 	pip install delex
-
+```
 This command will install Delex and the following dependencies: Joblib, Matplotlib, Networkx, Numba, Numpy, Pandas, Py\_Stringmatching, Pyarrow, Pydantic, Pydot PySpark, Scipy, Sparkly, Tqdm, and xxhash. These are all of the dependencies, except Java, JCC, and PyLucene.
 
 Java, JCC and PyLucene cannot be pip installed with the above command, because they are not available on PyPI. If you followed the Sparkly installation instructions, then you have installed Java, JCC, and PyLucene already.
@@ -32,9 +33,9 @@ Java, JCC and PyLucene cannot be pip installed with the above command, because t
 ### Option 2: Pip Installing from GitHub
 
 To install Delex directly from its GitHub repo, use the following command:
-
+```
 	pip install https://github.com/anhaidgroup/delex.git
-
+```
 Similar to pip installing from PyPI, the above command will install Delex and all of its dependencies, except Java, JCC, and PyLucene.
 
 
