@@ -46,7 +46,7 @@ Running these commands will create a folder called ‘spark-3.5.5-bin-hadoop3’
 
 This guide will assume that you renamed the Spark folder to ‘spark’, but you can use a different name if you wish.
 
-### Setting Up a Spark Cluster
+#### Setting Up a Spark Cluster
 
 Before setting up a Spark cluster you must open ports between the EC2 instances. Without this your nodes will not be able to communicate with each other. Step 14 in the section 'Creating EC2 Nodes' contains instructions for editing the inbound rules of your security group. You should add one inbound rule for each EC2 instance you have. When adding these rules, you will need to do the following:
 * Keep the type as ‘all TCP’ or ‘custom TCP’.
