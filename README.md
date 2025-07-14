@@ -8,12 +8,13 @@ Delex is still in beta testing, and we are looking for users who want to use it 
 
 ### Motivation and Comparison with Sparkly
 
-Initially we developed Sparkly, a simpler blocking solution that uses TF/IDF. We found that Sparkly outperforms many state-of-the-art blocking solutions. If you are looking for a solution to perform blocking, we highly recommend trying Sparkly first, to see if it is already sufficient for your problem. 
+Initially we developed [Sparkly](https://github.com/anhaidgroup/sparkly), a simpler blocking solution that uses TF/IDF. We found that Sparkly [outperforms](https://pages.cs.wisc.edu/~anhai/papers1/sparkly-vldb2023.pdf) many state-of-the-art blocking solutions. *If you are looking for a solution to perform blocking, we highly recommend trying Sparkly first, to see if it is already sufficient for your problem.* 
 
-Sparkly uses only one blocking strategy, namely finding top-k candidate matches using the TF/IDF similarity score. While working with Sparkly, we observed that in some cases the user wants to use multiple blocking strategies. 
+Sparkly uses only *one* blocking strategy, namely finding top-k candidate matches using the TF/IDF similarity score. While working with Sparkly, we observed that in some cases the user wants to use *multiple* blocking strategies. 
 
-For example, the user may already have a dictionary-based blocking solution that the user has used for many years, and have also spent many years developing it. So the user may want to block using both the Sparkly blocker and this dictionary-based blocker. That is, the blocking step should output all tuple pairs that are output by the Sparkly blocker or the dictionary-based blocker.  
-As another example, the user may write a blocking rule stating that if two tuples share similar names and zip codes, then they should be in the blocking output. Then the user wants to block using both the Sparkly blocker and this blocking rule. 
+* For example, the user may already have a dictionary-based blocking solution that the user has used for many years, and have also spent many years developing it. So the user may want to block using both the Sparkly blocker and this dictionary-based blocker. That is, the blocking step should output all tuple pairs that are output by the Sparkly blocker or the dictionary-based blocker.
+    
+* As another example, the user may write a blocking rule stating that if two tuples share similar names and zip codes, then they should be in the blocking output. Then the user wants to block using both the Sparkly blocker and this blocking rule. 
 
 In addition to combining multiple blocking strategies, a user may also want to write rules to exclude certain tuple pairs from the blocking output, such as pairs where the zip codes do not match exactly. 
 
