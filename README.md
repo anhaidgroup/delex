@@ -1,6 +1,6 @@
 ## Delex: Combining Multiple Strategies for Blocking for Entity Matching
 
-Delex is an open-source tool for the blocking step of entity matching. For more details on entity matching, see [this page[(https://anhaidgroup.github.io/magellan/about). Delex is distinguished in the following aspects: 
+Delex is an open-source tool for the blocking step of entity matching. For more details on entity matching, see [this page](https://anhaidgroup.github.io/magellan/about). Delex is distinguished in the following aspects: 
 * It enables using multiple strategies to perform blocking. 
 * It uses Spark to scale to large tables, for example, with tens of millions or hundreds of millions of tuples per table. 
 
