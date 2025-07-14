@@ -28,7 +28,7 @@ Delex enables all of the above. In particular,
 
 ### How Delex Works
 
-Given two tables A and B to be matched, Delex focuses on the blocking step. The user examines Tables A and B then writes a declarative blocking program that uses one or more blocking strategies. Delex translates this program into a DAG of tasks (directed acyclic graph), optimizes the DAG, sends the optimized DAG as well as partitions of Tables A and B to the nodes in a Spark cluster, executes on the nodes, then returns the output. To execute fast on the Spark nodes, Delex examines the DAG to build a set of indexes, ships these indexes to the Spark nodes, then uses the indexes to execute. 
+Given two tables A and B to be matched, Delex focuses on the blocking step. The user examines Tables A and B then writes a declarative blocking program that uses one or more blocking strategies. Delex translates this program into a DAG of tasks (directed acyclic graph), optimizes the DAG, sends the optimized DAG as well as partitions of Tables A and B to the nodes in a Spark cluster, executes on the nodes, then returns the blocking output. To execute fast on the Spark nodes, Delex examines the DAG to build a set of indexes, ships these indexes to the Spark nodes, then uses the indexes to execute. 
 
 Implementation-wise, Delex uses Spark, Lucene, and Sparkly, among other software. 
 
