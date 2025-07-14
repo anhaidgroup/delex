@@ -1,18 +1,18 @@
-# Step-by-step guide to running Delex
+## Running Delex on a Single Machine
 
-This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the appropriate [Single Machine Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).
+Here we give an example of running Delex on a single machine. We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).  
 
-## Step One: Download datasets
+### Step 1: Downloading Datasets
 
-To begin, we need to download the datasets from the GitHub. Navigate to the dblp_acm folder here: https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm. Then, click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now, using your file manager on your computer, move these all into one folder called 'dblp_acm'.
+To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into one directory on your local machine called 'dblp_acm'.
 
-## Step Two: Create Python file
+### Step 2: Creating a Python File
 
-Within the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to write the code.
+Within the 'dblp_acm' directory, create file 'example.py'. We will use this Python file to write the code.
 
-## Step Three: Import dependencies
+### Step 3: Importing Dependencies
 
-Now, we can open up the 'example.py' file. Before we begin, we first need to import all of the necessary packages that we will use.
+Now we can open up the 'example.py' file, and import all of the necessary packages that we will use.
 
 ```
 from pathlib import Path
@@ -45,9 +45,9 @@ import operator
 import psutil
 ```
 
-## Step Four: Initialize Spark
+### Step 4: Initializing Spark
 
-Next we need to initialize Spark. For this example we are doing everything in a local setup, in particular, all files are stored on the local file system and we are running Spark in local mode.
+Next we initialize Spark. For this example we are doing everything in a local setup. In particular, all files are stored on the local file system and we are running Spark in the local mode.
 
 ```
 # enable pyarrow execution, recommended for better performance
@@ -62,7 +62,7 @@ spark = SparkSession.builder\
                     .getOrCreate()
 ```
 
-### Data
+#### Data
 
 The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
 
@@ -78,9 +78,9 @@ search_table_path = data_path / 'table_b.parquet'
 gold_path = data_path / 'gold.parquet'
 ```
 
-## Step Five: Read the Data
+### Step 5: Read the Data
 
-Once Spark is initialized, we can then read all of our data into Spark dataframes.
+Once Spark has been initialized, we can read all of our data into Spark dataframes.
 
 ```
 # read all the data as spark dataframes
@@ -91,9 +91,9 @@ gold = spark.read.parquet(f'file://{str(gold_path)}')
 index_table.printSchema()
 ```
 
-## Step Six: Create a Blocking Program
+### Step 6: Creating a Blocking Program
 
-Next we need to define our blocking program. For this basic example, we will define a very simple blocking program that returns all pairs where the Jaccard scores using a 3gram tokenizer are greater than or equal to .6. To do this we define a BlockingProgram with a single KeepRule which has a single JaccardPredicate.
+Next, we define our blocking program. For this basic example, we will define a very simple blocking program that returns all pairs where the Jaccard scores using a 3gram tokenizer are greater than or equal to .6. To do this we define a BlockingProgram with a single KeepRule which has a single JaccardPredicate.
 
 ```
 prog = BlockingProgram(
@@ -112,9 +112,9 @@ FROM index_table as A, search_table as B
 WHERE jaccard_3gram(A.title, B.title) >= .6
 ```
 
-## Step Seven: Execute a Blocking Program
+### Step 7: Executing the Blocking Program
 
-Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Notice, that we passed optimize=False and estimate_cost=False as arguments, these parameters control the plan that is generated, which will be explained in a separate example.
+Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Note that we passed optimize=False and estimate_cost=False as arguments, these parameters control the plan that is generated, which will be explained in a separate example.
 
 ```
 executor = PlanExecutor(
@@ -129,9 +129,9 @@ candidates = candidates.persist()
 candidates.show()
 ```
 
-## Step Eight: Compute Recall
+### Step 8: Computing Recall
 
-Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation effeicency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
+Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation efficiency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
 
 ```
 # unroll the output
