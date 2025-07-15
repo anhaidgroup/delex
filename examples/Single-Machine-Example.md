@@ -1,6 +1,6 @@
 ## Running Delex on a Single Machine
 
-Here we give an example of running Delex on a single machine. We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).  
+Here we give an example of running Delex on a single machine. We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).
 
 ### Step 1: Downloading Datasets
 
@@ -8,7 +8,9 @@ To begin, we need to download three datasets from GitHub. Navigate to the dblp_a
 
 ### Step 2: Creating a Python File
 
-Within the 'dblp_acm' directory, create a Python file called 'example.py'. We will use this Python file to write the code. If you would like the completed Python file without following the walkthrough below, you can visit [basic_example.py](./basic_example.py). Similarly, if you would like to complete the walkthrough using a pre-built Jupyter Notebook rather than your own Python file, you can visit [basic_example.ipynb](./basic_example.ipynb).
+Within the 'dblp_acm' directory, create a Python file called 'example.py'. We will use this Python file to write the code.
+
+_Note: If you would like the completed Python file without following the walkthrough below, you can visit [basic_example.py](./basic_example.py). Similarly, if you would like to complete the walkthrough using a pre-built Jupyter Notebook rather than your own Python file, you can visit [basic_example.ipynb](./basic_example.ipynb)._
 
 ### Step 3: Importing Dependencies
 
@@ -149,4 +151,12 @@ print(f'recall : {recall}')
 
 # remove the dataframe from the cache
 candidates.unpersist()
+```
+
+### Step 9: Running the script
+
+Congratulations! You have finished writing a script for blocking with Delex, and now you can run the script. To do so, open a terminal and navigate to the directory that you wrote your 'example.py' in. Finally, run the following command, and once the script is finished, it will output n_pairs, true_positives, and recall:
+
+```
+python3 example.py
 ```
