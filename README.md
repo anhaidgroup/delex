@@ -42,7 +42,7 @@ See instructions to install Delex on [a single machine](https://github.com/anhai
 
 ### How to Use
 
-See examples on [using Delex on a single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
+See examples on using Delex on a [single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
 
 ### Further Pointers
 
