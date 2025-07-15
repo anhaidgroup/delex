@@ -1,18 +1,18 @@
-# Step-by-step guide to running Delex
+## Running Delex on a Cluster of Machines
 
-This guide is a step-by-step guide to running Delex. For this guide, we will assume that you have already installed everything from the provided [Cloud Installation Guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md) and have set up a Spark Cluster.
+Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md). 
 
-## Step One: Download datasets --- We should change when the datasets are hosted to make it easier using wget
+### Step 1: Downloading Datasets
 
-To begin, we need to download the datasets from the GitHub. Navigate to the dblp_acm folder here: https://github.com/anhaidgroup/active_matcher/tree/main/examples/data/dblp_acm. Then, click on 'gold.parquet' and click the download icon at the top. Repeat this for ''table_a.parquet',and 'table_b.parquet'. Now, using your file manager on your computer, move these all into one folder called 'dblp_acm'. (if the data is not hosted somewhere, we will need to add instructions about using scp). This should be done on all of the nodes.
+To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into one directory on the machine called 'dblp_acm'. This should be done for all the nodes in the cluster. 
 
-## Step Two: Create Python file
+### Step 2: Creating a Python File
 
 On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to walkthrough the code.
 
-## Step Three: Import dependencies
+### Step 3: Importing Dependencies
 
-Now, we can open up the 'example.py' file. Before we begin, we first need to import all of the necessary packages that we will use.
+Now we can open up the 'example.py' file, and import all of the necessary packages that we will use.
 
 ```
 from pathlib import Path
@@ -45,9 +45,9 @@ import operator
 import psutil
 ```
 
-## Step Four: Initialize Spark
+### Step 4: Initializing Spark
 
-Next we need to initialize Spark. For this example we are doing everything in a cloud setup. All files need to be stored in the ~/dblp_acm directory on all nodes.
+Next we initialize Spark. For this example we are doing everything in a cloud setup. All files need to be stored in the ~/dblp_acm directory on all nodes.
 
 ```
 # enable pyarrow execution, recommended for better performance
@@ -62,9 +62,9 @@ spark = SparkSession.builder\
                     .getOrCreate()
 ```
 
-### Data
+#### Data
 
-The data we downloaded contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
 
 ```
 # path to the test data directory
@@ -78,9 +78,9 @@ search_table_path = data_path / 'table_b.parquet'
 gold_path = data_path / 'gold.parquet'
 ```
 
-## Step Five: Read the Data
+### Step 5: Read the Data
 
-Once Spark is initialized, we can then read all of our data into Spark dataframes.
+Once Spark has been initialized, we can read all of our data into Spark dataframes.
 
 ```
 # read all the data as spark dataframes
@@ -91,9 +91,9 @@ gold = spark.read.parquet(f'file://{str(gold_path)}')
 index_table.printSchema()
 ```
 
-## Step Six: Create a Blocking Program
+### Step 6: Creating a Blocking Program
 
-Next we need to define our blocking program. For this basic example, we will define a very simple blocking program that returns all pairs where the Jaccard scores using a 3gram tokenizer are greater than or equal to .6. To do this we define a BlockingProgram with a single KeepRule which has a single JaccardPredicate.
+Next, we define our blocking program. For this basic example, we will define a very simple blocking program that returns all pairs where the Jaccard scores using a 3gram tokenizer are greater than or equal to .6. To do this we define a BlockingProgram with a single KeepRule which has a single JaccardPredicate.
 
 ```
 prog = BlockingProgram(
@@ -112,9 +112,9 @@ FROM index_table as A, search_table as B
 WHERE jaccard_3gram(A.title, B.title) >= .6
 ```
 
-## Step Seven: Execute a Blocking Program
+### Step 7: Executing the Blocking Program
 
-Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Notice, that we passed optimize=False and estimate_cost=False as arguments, these parameters control the plan that is generated, which will be explained in a separate example.
+Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Note that we passed optimize=False and estimate_cost=False as arguments. These parameters control the plan that is generated, which will be explained in a separate example.
 
 ```
 executor = PlanExecutor(
@@ -129,9 +129,9 @@ candidates = candidates.persist()
 candidates.show()
 ```
 
-## Step Eight: Compute Recall
+### Step 8: Computing Recall
 
-Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation effeicency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
+Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation efficiency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
 
 ```
 # unroll the output
@@ -151,9 +151,11 @@ print(f'recall : {recall}')
 candidates.unpersist()
 ```
 
-## Step Nine: Running on a Cluster
+### Step 9: Running on a Cluster
 
-In order to run this on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal). **Note**: This command assumes that the directory structure is the same as ours, and if you followed our installation guides, it will be the same.
+In order to run this on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal). 
+
+**Note**: This command assumes that the directory structure is the same as ours, and if you followed our installation guides, it will be the same.
 
 ```
 spark/bin/spark-submit \
