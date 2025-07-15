@@ -22,17 +22,6 @@ from delex.execution.plan_executor import PlanExecutor
 import operator
 import psutil 
 
-# path to the test data
-data_path = (Path(__file__).parent / 'data' / 'dblp_acm').absolute()
-
-# table to be indexed
-index_table_path = data_path / 'table_a.parquet'
-# table for searching
-search_table_path = data_path / 'table_b.parquet'
-# the ground truth
-gold_path = data_path / 'gold.parquet'
-# the analyzers used to convert the text into tokens for indexing
-
 # enable pyarrow execution, recommended for better performance
 conf = SparkConf()\
         .set('spark.sql.execution.arrow.pyspark.enabled',  'true')
@@ -44,12 +33,20 @@ spark = SparkSession.builder\
                     .appName('Basic Example')\
                     .getOrCreate()
 
+# path to the test data
+data_path = (Path().resolve()).absolute()
+# table to be indexed
+index_table_path = data_path / 'table_a.parquet'
+# table for searching
+search_table_path = data_path / 'table_b.parquet'
+# the ground truth
+gold_path = data_path / 'gold.parquet'
+
 # read all the data as spark dataframes
 index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
-
-
+index_table.printSchema()
 
 prog = BlockingProgram(
         keep_rules = [
