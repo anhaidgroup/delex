@@ -78,7 +78,7 @@ search_table_path = data_path / 'table_b.parquet'
 gold_path = data_path / 'gold.parquet'
 ```
 
-### Step 5: Read the Data
+### Step 5: Reading the Data
 
 Once Spark has been initialized, we can read all of our data into Spark dataframes.
 
@@ -114,7 +114,7 @@ WHERE jaccard_3gram(A.title, B.title) >= .6
 
 ### Step 7: Executing the Blocking Program
 
-Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Note that we passed optimize=False and estimate_cost=False as arguments, these parameters control the plan that is generated, which will be explained in a separate example.
+Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Note that we passed optimize=False and estimate_cost=False as arguments. These parameters control the plan that is generated, which will be explained in a separate example.
 
 ```
 executor = PlanExecutor(
