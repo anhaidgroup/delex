@@ -10,7 +10,7 @@ To begin, we need to download three datasets from GitHub. Navigate to the dblp_a
 
 Within the 'dblp_acm' directory, create a Python file called 'example.py'. We will use this Python file to write the code.
 
-_Note: If you would like the completed Python file without following the walkthrough below, you can visit [basic_example.py](./basic_example.py). Similarly, if you would like to complete the walkthrough using a pre-built Jupyter Notebook rather than your own Python file, you can visit [basic_example.ipynb](./basic_example.ipynb)._
+_Note: If you would like the completed Python file without following the walkthrough below, you can visit [basic_example.py](./basic_example.py). If you would like to complete the walkthrough using a pre-built Jupyter Notebook rather than your own Python file, you can visit [basic_example.ipynb](./basic_example.ipynb)._
 
 ### Step 3: Importing Dependencies
 
