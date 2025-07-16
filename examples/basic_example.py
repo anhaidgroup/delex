@@ -1,3 +1,7 @@
+# This Python file contains code to execute a relatively simple blocking program in Delex, on a single machine.
+# The code is explained in the file Single-Machine-Example.md (in the same directory as this Python file).
+# The file basic_example.ipynb provides the same code but in a Jupyter notebook. 
+
 import sys
 sys.path.append('.')
 from pyspark import SparkConf
