@@ -14,7 +14,7 @@ _Note: If you would like to see the completed Python file without following the 
 
 ### Step 3: Importing Dependencies
 
-Now we can open up the 'example.py' file, and import all of the necessary packages that we will use.
+Now we can open up the 'basic_example.py' file, and add the following code that imports all of the necessary packages that we will use.
 
 ```
 from pathlib import Path
@@ -133,7 +133,7 @@ candidates.show()
 
 ### Step 8: Computing Recall
 
-Finally, we can compute recall. As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation efficiency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
+Finally, we can compute the recall of the blocking step (that is, the fraction of true matches that survive blocking). As you can see, the output of the PlanExecutor is actually grouped by the id of search_table. This is done for space and computation efficiency reasons. To compute recall we first need to 'unroll' the output and then do a set intersection with the gold pairs to get the number of true positives.
 
 ```
 # unroll the output
@@ -153,10 +153,10 @@ print(f'recall : {recall}')
 candidates.unpersist()
 ```
 
-### Step 9: Running the script
+### Step 9: Running the Python Program
 
-Congratulations! You have finished writing a script for blocking with Delex, and now you can run the script. To do so, open a terminal and navigate to the directory that you wrote your 'example.py' in. Finally, run the following command, and once the script is finished, it will output n_pairs, true_positives, and recall:
+Congratulations! You have finished writing a Python script for blocking with Delex, and now you can run the script. To do so, open a terminal and navigate to the directory that you wrote your 'basic_example.py' file in. Finally, run the following command, and once the script is finished, it will output n_pairs, true_positives, and recall:
 
 ```
-python3 example.py
+python3 basic_example.py
 ```
