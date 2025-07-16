@@ -27,7 +27,7 @@ You will need to create at least two EC2 instances to serve as nodes in your clu
 
 ### Installing Delex
 
-Next you need to install Delex. You can find instructions for installing Delex and its prerequisites (Python, Java, JCC, Pylucene, Joblib, Matplotlib, Networkx, Numba, Numpy, Pandas, Py_Stringmatching, Pyarrow, Pydantic, Pydot PySpark, Scipy, Sparkly, Tqdm, and xxhash) here: [Delex Linux Installation](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-linux-single-machine.md)
+Next you need to install Delex. You can find instructions for installing Delex and its prerequisites (Python, Java, JCC, Pylucene, Joblib, Matplotlib, Networkx, Numba, Numpy, Pandas, Py_Stringmatching, Pyarrow, Pydantic, Pydot PySpark, Scipy, Sparkly, Tqdm, and xxhash) here: [Delex Linux Installation](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-linux-single-machine.md)
 
 You will have to install Delex on every node in your cluster.
 
