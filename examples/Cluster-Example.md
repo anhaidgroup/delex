@@ -2,17 +2,17 @@
 
 Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md). 
 
-### Step 1: Downloading Datasets
+### Step 1: Downloading the Datasets
 
-To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into one directory on the machine called 'dblp_acm'. This should be done for all the nodes in the cluster. 
+To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into a directory called 'dblp_acm' on each node in the cluster. *This should be done for all the nodes in the cluster.*
 
 ### Step 2: Creating a Python File
 
-On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will use this Python file to walkthrough the code.
+On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will add code to this Python file as we walk through this document. 
 
 ### Step 3: Importing Dependencies
 
-Now we can open up the 'example.py' file, and import all of the necessary packages that we will use.
+Now we can open up the 'example.py' file, and add code to import all of the necessary packages that we will use.
 
 ```
 from pathlib import Path
@@ -64,7 +64,7 @@ spark = SparkSession.builder\
 
 #### Data
 
-The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. In what follows we load in the paths to the data files. 
 
 ```
 # path to the test data directory
@@ -78,7 +78,7 @@ search_table_path = data_path / 'table_b.parquet'
 gold_path = data_path / 'gold.parquet'
 ```
 
-### Step 5: Read the Data
+### Step 5: Reading the Data
 
 Once Spark has been initialized, we can read all of our data into Spark dataframes.
 
@@ -153,9 +153,7 @@ candidates.unpersist()
 
 ### Step 9: Running on a Cluster
 
-In order to run this on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal). 
-
-**Note**: This command assumes that the directory structure is the same as ours, and if you followed our installation guides, it will be the same.
+In order to run the above Python program on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal). 
 
 ```
 spark/bin/spark-submit \
