@@ -1,71 +1,186 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>delex.graph package &mdash; Delex 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
-    <title>delex.graph package &#8212; Delex 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/groundwork.css?v=594d7a89" />
-    <script src="_static/documentation_options.js?v=2709fde1"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">delex.graph package</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Delex
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">delex.graph package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-delex.graph.algorithms">delex.graph.algorithms module</a><ul>
+<li><a class="reference internal" href="#delex.graph.algorithms.clone_graph"><code class="docutils literal notranslate"><span class="pre">clone_graph()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.algorithms.find_all_nodes"><code class="docutils literal notranslate"><span class="pre">find_all_nodes()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.algorithms.find_sink"><code class="docutils literal notranslate"><span class="pre">find_sink()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.algorithms.topological_sort"><code class="docutils literal notranslate"><span class="pre">topological_sort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.graph.node">delex.graph.node module</a><ul>
+<li><a class="reference internal" href="#delex.graph.node.IntersectNode"><code class="docutils literal notranslate"><span class="pre">IntersectNode</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.IntersectNode.validate"><code class="docutils literal notranslate"><span class="pre">IntersectNode.validate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.graph.node.MinusNode"><code class="docutils literal notranslate"><span class="pre">MinusNode</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.MinusNode.left"><code class="docutils literal notranslate"><span class="pre">MinusNode.left</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.MinusNode.right"><code class="docutils literal notranslate"><span class="pre">MinusNode.right</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.MinusNode.validate"><code class="docutils literal notranslate"><span class="pre">MinusNode.validate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.graph.node.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.Node.add_in_edge"><code class="docutils literal notranslate"><span class="pre">Node.add_in_edge()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.add_out_edge"><code class="docutils literal notranslate"><span class="pre">Node.add_out_edge()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.ancestors"><code class="docutils literal notranslate"><span class="pre">Node.ancestors()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.build"><code class="docutils literal notranslate"><span class="pre">Node.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.equivalent"><code class="docutils literal notranslate"><span class="pre">Node.equivalent()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.execute"><code class="docutils literal notranslate"><span class="pre">Node.execute()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.id_string"><code class="docutils literal notranslate"><span class="pre">Node.id_string</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.in_degree"><code class="docutils literal notranslate"><span class="pre">Node.in_degree</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.insert_after"><code class="docutils literal notranslate"><span class="pre">Node.insert_after()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.insert_before"><code class="docutils literal notranslate"><span class="pre">Node.insert_before()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.is_sink"><code class="docutils literal notranslate"><span class="pre">Node.is_sink</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.is_source"><code class="docutils literal notranslate"><span class="pre">Node.is_source</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.iter_dependencies"><code class="docutils literal notranslate"><span class="pre">Node.iter_dependencies()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.iter_in"><code class="docutils literal notranslate"><span class="pre">Node.iter_in()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.iter_out"><code class="docutils literal notranslate"><span class="pre">Node.iter_out()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.out_degree"><code class="docutils literal notranslate"><span class="pre">Node.out_degree</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.output_col"><code class="docutils literal notranslate"><span class="pre">Node.output_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.pop"><code class="docutils literal notranslate"><span class="pre">Node.pop()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.remove_in_edge"><code class="docutils literal notranslate"><span class="pre">Node.remove_in_edge()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.remove_in_edges"><code class="docutils literal notranslate"><span class="pre">Node.remove_in_edges()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.remove_out_edge"><code class="docutils literal notranslate"><span class="pre">Node.remove_out_edge()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.remove_out_edges"><code class="docutils literal notranslate"><span class="pre">Node.remove_out_edges()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.streamable"><code class="docutils literal notranslate"><span class="pre">Node.streamable</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.validate"><code class="docutils literal notranslate"><span class="pre">Node.validate()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.Node.working_set_size"><code class="docutils literal notranslate"><span class="pre">Node.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode"><code class="docutils literal notranslate"><span class="pre">PredicateNode</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.build"><code class="docutils literal notranslate"><span class="pre">PredicateNode.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.execute"><code class="docutils literal notranslate"><span class="pre">PredicateNode.execute()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.init"><code class="docutils literal notranslate"><span class="pre">PredicateNode.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.iter_dependencies"><code class="docutils literal notranslate"><span class="pre">PredicateNode.iter_dependencies()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.predicate"><code class="docutils literal notranslate"><span class="pre">PredicateNode.predicate</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.streamable"><code class="docutils literal notranslate"><span class="pre">PredicateNode.streamable</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.validate"><code class="docutils literal notranslate"><span class="pre">PredicateNode.validate()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.PredicateNode.working_set_size"><code class="docutils literal notranslate"><span class="pre">PredicateNode.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode"><code class="docutils literal notranslate"><span class="pre">SetOpNode</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode.build"><code class="docutils literal notranslate"><span class="pre">SetOpNode.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode.execute"><code class="docutils literal notranslate"><span class="pre">SetOpNode.execute()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode.init"><code class="docutils literal notranslate"><span class="pre">SetOpNode.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode.streamable"><code class="docutils literal notranslate"><span class="pre">SetOpNode.streamable</span></code></a></li>
+<li><a class="reference internal" href="#delex.graph.node.SetOpNode.working_set_size"><code class="docutils literal notranslate"><span class="pre">SetOpNode.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.graph.node.UnionNode"><code class="docutils literal notranslate"><span class="pre">UnionNode</span></code></a><ul>
+<li><a class="reference internal" href="#delex.graph.node.UnionNode.validate"><code class="docutils literal notranslate"><span class="pre">UnionNode.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.graph.utils">delex.graph.utils module</a><ul>
+<li><a class="reference internal" href="#delex.graph.utils.nodes_to_dot"><code class="docutils literal notranslate"><span class="pre">nodes_to_dot()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.graph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Delex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">delex.graph package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/delex.graph.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="delex-graph-package">
-<h1>delex.graph package<a class="headerlink" href="#delex-graph-package" title="Link to this heading">¶</a></h1>
+<h1>delex.graph package<a class="headerlink" href="#delex-graph-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-delex.graph.algorithms">
-<span id="delex-graph-algorithms-module"></span><h2>delex.graph.algorithms module<a class="headerlink" href="#module-delex.graph.algorithms" title="Link to this heading">¶</a></h2>
+<span id="delex-graph-algorithms-module"></span><h2>delex.graph.algorithms module<a class="headerlink" href="#module-delex.graph.algorithms" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.graph.algorithms.clone_graph">
-<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">clone_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.clone_graph" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">clone_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.clone_graph" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.graph.algorithms.find_all_nodes">
-<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">find_all_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.find_all_nodes" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">find_all_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.find_all_nodes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.graph.algorithms.find_sink">
-<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">find_sink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.find_sink" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">find_sink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.find_sink" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.graph.algorithms.topological_sort">
-<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">topological_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.topological_sort" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.graph.algorithms.</span></span><span class="sig-name descname"><span class="pre">topological_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.algorithms.topological_sort" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="module-delex.graph.node">
-<span id="delex-graph-node-module"></span><h2>delex.graph.node module<a class="headerlink" href="#module-delex.graph.node" title="Link to this heading">¶</a></h2>
+<span id="delex-graph-node-module"></span><h2>delex.graph.node module<a class="headerlink" href="#module-delex.graph.node" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.IntersectNode">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">IntersectNode</span></span><a class="headerlink" href="#delex.graph.node.IntersectNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">IntersectNode</span></span><a class="headerlink" href="#delex.graph.node.IntersectNode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.graph.node.SetOpNode" title="delex.graph.node.SetOpNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetOpNode</span></code></a></p>
 <p>intersect the output of all incoming edges and return a single set</p>
 <dl class="field-list simple">
@@ -151,7 +266,7 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.IntersectNode.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.IntersectNode.validate" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.IntersectNode.validate" title="Link to this definition"></a></dt>
 <dd><p>perform validation for this node, e.g. ensure that
 UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 <dl class="field-list simple">
@@ -168,7 +283,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.MinusNode">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">MinusNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.MinusNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">MinusNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.MinusNode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.graph.node.SetOpNode" title="delex.graph.node.SetOpNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetOpNode</span></code></a></p>
 <p>compute the set minus of two sets
 <cite>left</cite> - <cite>right</cite></p>
@@ -257,17 +372,17 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.MinusNode.left">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#delex.graph.node.MinusNode.left" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#delex.graph.node.MinusNode.left" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.MinusNode.right">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#delex.graph.node.MinusNode.right" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#delex.graph.node.MinusNode.right" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.MinusNode.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.MinusNode.validate" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.MinusNode.validate" title="Link to this definition"></a></dt>
 <dd><p>perform validation for this node, e.g. ensure that
 UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 <dl class="field-list simple">
@@ -284,7 +399,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.Node">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><a class="headerlink" href="#delex.graph.node.Node" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><a class="headerlink" href="#delex.graph.node.Node" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
 <p>abstract base class for all graph nodes</p>
 <dl class="field-list simple">
@@ -363,19 +478,19 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.add_in_edge">
-<span class="sig-name descname"><span class="pre">add_in_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.add_in_edge" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_in_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.add_in_edge" title="Link to this definition"></a></dt>
 <dd><p>add an edge between <cite>other</cite> -&gt; <cite>self</cite></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.add_out_edge">
-<span class="sig-name descname"><span class="pre">add_out_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.add_out_edge" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_out_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.add_out_edge" title="Link to this definition"></a></dt>
 <dd><p>add an edge between <cite>self</cite> -&gt; <cite>other</cite></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.ancestors">
-<span class="sig-name descname"><span class="pre">ancestors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span></span></span><a class="headerlink" href="#delex.graph.node.Node.ancestors" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ancestors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span></span></span><a class="headerlink" href="#delex.graph.node.Node.ancestors" title="Link to this definition"></a></dt>
 <dd><p>get all ancestors of this node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -389,7 +504,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.build">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.BuildCache" title="delex.utils.build_cache.BuildCache"><span class="pre">BuildCache</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.build" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.BuildCache" title="delex.utils.build_cache.BuildCache"><span class="pre">BuildCache</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.build" title="Link to this definition"></a></dt>
 <dd><p>build this node over <cite>index_table</cite> using <cite>id_col</cite> as the unique id, optionally with 
 <cite>cache</cite></p>
 <dl class="field-list simple">
@@ -408,7 +523,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.equivalent">
-<span class="sig-name descname"><span class="pre">equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#delex.graph.node.Node.equivalent" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#delex.graph.node.Node.equivalent" title="Link to this definition"></a></dt>
 <dd><p>check <cite>self</cite> is equivalent to <cite>other</cite>, this does a
 recursive check and can be used to compare two graphs if 
 <cite>self</cite> and <cite>other</cite> are both sinks</p>
@@ -429,26 +544,26 @@ recursive check and can be used to compare two graphs if
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.execute">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.execute" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.execute" title="Link to this definition"></a></dt>
 <dd><p>execute the operation of this node over a DataFrameStream 
 and return a new DataFrameStream</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.id_string">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id_string</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.graph.node.Node.id_string" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id_string</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.graph.node.Node.id_string" title="Link to this definition"></a></dt>
 <dd><p>a string and identifies this node for graph comparison
 without accounting for edges</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.in_degree">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_degree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#delex.graph.node.Node.in_degree" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_degree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#delex.graph.node.Node.in_degree" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.insert_after">
-<span class="sig-name descname"><span class="pre">insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.insert_after" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.insert_after" title="Link to this definition"></a></dt>
 <dd><p>insert <cite>node</cite> after this node, e.g.</p>
 <p>self -&gt; x  becomes self -&gt; node -&gt; x</p>
 <dl class="field-list simple">
@@ -463,7 +578,7 @@ without accounting for edges</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.insert_before">
-<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.insert_before" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.insert_before" title="Link to this definition"></a></dt>
 <dd><p>insert <cite>node</cite> before this node, e.g.</p>
 <p>x -&gt; self  becomes x -&gt; node -&gt; self</p>
 <dl class="field-list simple">
@@ -478,45 +593,45 @@ without accounting for edges</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.is_sink">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_sink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.is_sink" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_sink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.is_sink" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.is_source">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.is_source" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.is_source" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.iter_dependencies">
-<span class="sig-name descname"><span class="pre">iter_dependencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_dependencies" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">iter_dependencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_dependencies" title="Link to this definition"></a></dt>
 <dd><p>return an iterator over the dependencies of this node</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.iter_in">
-<span class="sig-name descname"><span class="pre">iter_in</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_in" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">iter_in</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_in" title="Link to this definition"></a></dt>
 <dd><p>return an iterator of nodes for the incoming edges</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.iter_out">
-<span class="sig-name descname"><span class="pre">iter_out</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_out" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">iter_out</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="headerlink" href="#delex.graph.node.Node.iter_out" title="Link to this definition"></a></dt>
 <dd><p>return an iterator of nodes for the outgoing edges</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.out_degree">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_degree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#delex.graph.node.Node.out_degree" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_degree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#delex.graph.node.Node.out_degree" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.output_col">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.graph.node.Node.output_col" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.graph.node.Node.output_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.pop">
-<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.pop" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.pop" title="Link to this definition"></a></dt>
 <dd><p>remove this node from the graph and reconnect edges between in and out</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -535,7 +650,7 @@ without accounting for edges</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.remove_in_edge">
-<span class="sig-name descname"><span class="pre">remove_in_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_in_edge" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_in_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_in_edge" title="Link to this definition"></a></dt>
 <dd><p>remove <cite>other</cite> -&gt; <cite>self</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -549,13 +664,13 @@ without accounting for edges</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.remove_in_edges">
-<span class="sig-name descname"><span class="pre">remove_in_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_in_edges" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_in_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_in_edges" title="Link to this definition"></a></dt>
 <dd><p>remove all incoming edges, x -&gt; <cite>self</cite></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.remove_out_edge">
-<span class="sig-name descname"><span class="pre">remove_out_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_out_edge" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_out_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_out_edge" title="Link to this definition"></a></dt>
 <dd><p>remove <cite>self</cite> -&gt; <cite>other</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -569,19 +684,19 @@ without accounting for edges</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.remove_out_edges">
-<span class="sig-name descname"><span class="pre">remove_out_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_out_edges" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_out_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.remove_out_edges" title="Link to this definition"></a></dt>
 <dd><p>remove all outgoing edges, <cite>self</cite> -&gt; x</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.Node.streamable">
-<em class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.streamable" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#delex.graph.node.Node.streamable" title="Link to this definition"></a></dt>
 <dd><p>True if the operation at this node can be streamed, else False</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.validate">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.validate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.Node.validate" title="Link to this definition"></a></dt>
 <dd><p>perform validation for this node, e.g. ensure that
 UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 <dl class="field-list simple">
@@ -596,7 +711,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.Node.working_set_size">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.Node.working_set_size" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.Node.working_set_size" title="Link to this definition"></a></dt>
 <dd><p>return the working set size of each component use for this node, 
 dict values are None if self.build has not been called yet</p>
 </dd></dl>
@@ -605,7 +720,7 @@ dict values are None if self.build has not been called yet</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">PredicateNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">PredicateNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
 <p>a node that execute a Predicate</p>
 <dl class="field-list simple">
@@ -692,7 +807,7 @@ dict values are None if self.build has not been called yet</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.build" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.build" title="Link to this definition"></a></dt>
 <dd><p>build this node over <cite>index_table</cite> using <cite>id_col</cite> as the unique id, optionally with 
 <cite>cache</cite></p>
 <dl class="field-list simple">
@@ -711,36 +826,36 @@ dict values are None if self.build has not been called yet</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.execute">
-<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.execute" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.execute" title="Link to this definition"></a></dt>
 <dd><p>execute the operation of this node over a DataFrameStream 
 and return a new DataFrameStream</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.init" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.init" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.iter_dependencies">
-<span class="sig-name descname"><span class="pre">iter_dependencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.iter_dependencies" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">iter_dependencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.iter_dependencies" title="Link to this definition"></a></dt>
 <dd><p>return an iterator over the dependencies of this node</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.predicate">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predicate</span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.predicate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predicate</span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.predicate" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.streamable">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.streamable" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.streamable" title="Link to this definition"></a></dt>
 <dd><p>True if the operation at this node can be streamed, else False</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.validate" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.PredicateNode.validate" title="Link to this definition"></a></dt>
 <dd><p>perform validation for this node, e.g. ensure that
 UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 <dl class="field-list simple">
@@ -755,7 +870,7 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.PredicateNode.working_set_size">
-<span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.working_set_size" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.PredicateNode.working_set_size" title="Link to this definition"></a></dt>
 <dd><p>return the working set size of each component use for this node, 
 dict values are None if self.build has not been called yet</p>
 </dd></dl>
@@ -764,7 +879,7 @@ dict values are None if self.build has not been called yet</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">SetOpNode</span></span><a class="headerlink" href="#delex.graph.node.SetOpNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">SetOpNode</span></span><a class="headerlink" href="#delex.graph.node.SetOpNode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
 <p>Base Class for all set operations nodes</p>
 <dl class="field-list simple">
@@ -850,7 +965,7 @@ dict values are None if self.build has not been called yet</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.build" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.build" title="Link to this definition"></a></dt>
 <dd><p>build this node over <cite>index_table</cite> using <cite>id_col</cite> as the unique id, optionally with 
 <cite>cache</cite></p>
 <dl class="field-list simple">
@@ -869,25 +984,25 @@ dict values are None if self.build has not been called yet</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode.execute">
-<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.execute" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.execute" title="Link to this definition"></a></dt>
 <dd><p>execute the operation of this node over a DataFrameStream 
 and return a new DataFrameStream</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.init" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.SetOpNode.init" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode.streamable">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><a class="headerlink" href="#delex.graph.node.SetOpNode.streamable" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamable</span></span><a class="headerlink" href="#delex.graph.node.SetOpNode.streamable" title="Link to this definition"></a></dt>
 <dd><p>True if the operation at this node can be streamed, else False</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.SetOpNode.working_set_size">
-<span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.SetOpNode.working_set_size" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">working_set_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#delex.graph.node.SetOpNode.working_set_size" title="Link to this definition"></a></dt>
 <dd><p>return the working set size of each component use for this node, 
 dict values are None if self.build has not been called yet</p>
 </dd></dl>
@@ -896,7 +1011,7 @@ dict values are None if self.build has not been called yet</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.graph.node.UnionNode">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">UnionNode</span></span><a class="headerlink" href="#delex.graph.node.UnionNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.graph.node.</span></span><span class="sig-name descname"><span class="pre">UnionNode</span></span><a class="headerlink" href="#delex.graph.node.UnionNode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.graph.node.SetOpNode" title="delex.graph.node.SetOpNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetOpNode</span></code></a></p>
 <p>union the output of all incoming edges and return a single set</p>
 <dl class="field-list simple">
@@ -982,7 +1097,7 @@ dict values are None if self.build has not been called yet</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.graph.node.UnionNode.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.UnionNode.validate" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.graph.node.UnionNode.validate" title="Link to this definition"></a></dt>
 <dd><p>perform validation for this node, e.g. ensure that
 UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 <dl class="field-list simple">
@@ -999,10 +1114,10 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 </section>
 <section id="module-delex.graph.utils">
-<span id="delex-graph-utils-module"></span><h2>delex.graph.utils module<a class="headerlink" href="#module-delex.graph.utils" title="Link to this heading">¶</a></h2>
+<span id="delex-graph-utils-module"></span><h2>delex.graph.utils module<a class="headerlink" href="#module-delex.graph.utils" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.graph.utils.nodes_to_dot">
-<span class="sig-prename descclassname"><span class="pre">delex.graph.utils.</span></span><span class="sig-name descname"><span class="pre">nodes_to_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><span class="pre">Node</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#delex.graph.utils.nodes_to_dot" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.graph.utils.</span></span><span class="sig-name descname"><span class="pre">nodes_to_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><span class="pre">Node</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.graph.node.Node" title="delex.graph.node.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#delex.graph.utils.nodes_to_dot" title="Link to this definition"></a></dt>
 <dd><p>convert a graph to a dot string representation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1022,47 +1137,36 @@ UnionNodes have multiple inputs, MinusNodes have two inputs, etc.</p>
 
 </section>
 <section id="module-delex.graph">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.graph" title="Link to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.graph" title="Link to this heading"></a></h2>
 </section>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Derek Paulsen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">delex.graph package</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, Derek Paulsen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

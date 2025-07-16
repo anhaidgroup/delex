@@ -1,42 +1,176 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>delex.storage package &mdash; Delex 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
-    <title>delex.storage package &#8212; Delex 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/groundwork.css?v=594d7a89" />
-    <script src="_static/documentation_options.js?v=2709fde1"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">delex.storage package</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Delex
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">delex.storage package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-delex.storage.memmap_arr">delex.storage.memmap_arr module</a><ul>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray"><code class="docutils literal notranslate"><span class="pre">MemmapArray</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.deinit"><code class="docutils literal notranslate"><span class="pre">MemmapArray.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.delete"><code class="docutils literal notranslate"><span class="pre">MemmapArray.delete()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.init"><code class="docutils literal notranslate"><span class="pre">MemmapArray.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.shape"><code class="docutils literal notranslate"><span class="pre">MemmapArray.shape</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapArray.size_in_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.to_spark"><code class="docutils literal notranslate"><span class="pre">MemmapArray.to_spark()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_arr.MemmapArray.values"><code class="docutils literal notranslate"><span class="pre">MemmapArray.values</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.memmap_seqs">delex.storage.memmap_seqs module</a><ul>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.build"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.deinit"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.delete"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.delete()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.fetch()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.init"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.size_in_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs.to_spark"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.to_spark()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.packed_memmap_arrs">delex.storage.packed_memmap_arrs module</a><ul>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.deinit"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.delete"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.delete()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.init"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.size_in_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.to_spark"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.to_spark()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.unpack"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.unpack()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.sorted_set">delex.storage.sorted_set module</a><ul>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.CacheKey</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.index_col"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.CacheKey.index_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.search_col"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.CacheKey.search_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.tokenizer_type"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.CacheKey.tokenizer_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.build"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.cosine"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.cosine()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.jaccard"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.jaccard()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.sorted_set.MemmapSortedSets.overlap_coeff"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.overlap_coeff()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.span_map">delex.storage.span_map module</a><ul>
+<li><a class="reference internal" href="#delex.storage.span_map.create_span_map"><code class="docutils literal notranslate"><span class="pre">create_span_map()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.span_map.span_map_get_key"><code class="docutils literal notranslate"><span class="pre">span_map_get_key()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.span_map.span_map_insert_key"><code class="docutils literal notranslate"><span class="pre">span_map_insert_key()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.span_map.span_map_insert_keys"><code class="docutils literal notranslate"><span class="pre">span_map_insert_keys()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.string_store">delex.storage.string_store module</a><ul>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings"><code class="docutils literal notranslate"><span class="pre">MemmapStrings</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.CacheKey</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings.CacheKey.index_col"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.CacheKey.index_col</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings.build"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.fetch()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.string_store.MemmapStrings.fetch_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.fetch_bytes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage.vector_store">delex.storage.vector_store module</a><ul>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.CacheKey</span></code></a><ul>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.index_col"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.CacheKey.index_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.search_col"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.CacheKey.search_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.tokenizer_type"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.CacheKey.tokenizer_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.arrays_to_encoded_sparse_vector"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.arrays_to_encoded_sparse_vector()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.build"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.decode_sparse_vector"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.decode_sparse_vector()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.dot"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.dot()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.fetch()</span></code></a></li>
+<li><a class="reference internal" href="#delex.storage.vector_store.MemmapVectorStore.vector_dtype"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.vector_dtype</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.storage.vector_store.iter_spark_rows"><code class="docutils literal notranslate"><span class="pre">iter_spark_rows()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex.storage">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Delex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">delex.storage package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/delex.storage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="delex-storage-package">
-<h1>delex.storage package<a class="headerlink" href="#delex-storage-package" title="Link to this heading">¶</a></h1>
+<h1>delex.storage package<a class="headerlink" href="#delex-storage-package" title="Link to this heading"></a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="delex.storage.hash_map.html">delex.storage.hash_map package</a><ul>
@@ -77,13 +211,13 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-delex.storage.memmap_arr">
-<span id="delex-storage-memmap-arr-module"></span><h2>delex.storage.memmap_arr module<a class="headerlink" href="#module-delex.storage.memmap_arr" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-memmap-arr-module"></span><h2>delex.storage.memmap_arr module<a class="headerlink" href="#module-delex.storage.memmap_arr" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.memmap_arr.</span></span><span class="sig-name descname"><span class="pre">MemmapArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.memmap_arr.</span></span><span class="sig-name descname"><span class="pre">MemmapArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable" title="delex.utils.traits.SparkDistributable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
@@ -119,50 +253,50 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.deinit">
-<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.deinit" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.deinit" title="Link to this definition"></a></dt>
 <dd><p>deinitialize the object, closing resources (e.g. file handles)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.delete" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.delete" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.init" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.init" title="Link to this definition"></a></dt>
 <dd><p>initialize the object to be used on in a spark worker</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.shape">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.shape" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.shape" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.size_in_bytes">
-<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.size_in_bytes" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.size_in_bytes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.to_spark">
-<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.to_spark" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.to_spark" title="Link to this definition"></a></dt>
 <dd><p>send the obj to the spark cluster to be used on spark workers</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="delex.storage.memmap_arr.MemmapArray.values">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.values" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#delex.storage.memmap_arr.MemmapArray.values" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-delex.storage.memmap_seqs">
-<span id="delex-storage-memmap-seqs-module"></span><h2>delex.storage.memmap_seqs module<a class="headerlink" href="#module-delex.storage.memmap_seqs" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-memmap-seqs-module"></span><h2>delex.storage.memmap_seqs module<a class="headerlink" href="#module-delex.storage.memmap_seqs" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.memmap_seqs.</span></span><span class="sig-name descname"><span class="pre">MemmapSeqs</span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.memmap_seqs.</span></span><span class="sig-name descname"><span class="pre">MemmapSeqs</span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable" title="delex.utils.traits.SparkDistributable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a></p>
 <p>a class to hold arbitrary sequences of elements 
 e.g. strings, arrays of ints, etc.</p>
@@ -198,7 +332,7 @@ e.g. strings, arrays of ints, etc.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.build" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.build" title="Link to this definition"></a></dt>
 <dd><p>create a MemmapSeqs instance from a spark dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -223,18 +357,18 @@ e.g. strings, arrays of ints, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.deinit">
-<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.deinit" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.deinit" title="Link to this definition"></a></dt>
 <dd><p>deinitialize the object, closing resources (e.g. file handles)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.delete" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.delete" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.fetch">
-<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.fetch" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.fetch" title="Link to this definition"></a></dt>
 <dd><p>retrieve the sequence associated with <cite>i</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -247,19 +381,19 @@ e.g. strings, arrays of ints, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.init" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.init" title="Link to this definition"></a></dt>
 <dd><p>initialize the object to be used on in a spark worker</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.size_in_bytes">
-<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.size_in_bytes" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.size_in_bytes" title="Link to this definition"></a></dt>
 <dd><p>return the size in bytes on disk</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.memmap_seqs.MemmapSeqs.to_spark">
-<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.to_spark" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.memmap_seqs.MemmapSeqs.to_spark" title="Link to this definition"></a></dt>
 <dd><p>send the obj to the spark cluster to be used on spark workers</p>
 </dd></dl>
 
@@ -267,10 +401,10 @@ e.g. strings, arrays of ints, etc.</p>
 
 </section>
 <section id="module-delex.storage.packed_memmap_arrs">
-<span id="delex-storage-packed-memmap-arrs-module"></span><h2>delex.storage.packed_memmap_arrs module<a class="headerlink" href="#module-delex.storage.packed_memmap_arrs" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-packed-memmap-arrs-module"></span><h2>delex.storage.packed_memmap_arrs module<a class="headerlink" href="#module-delex.storage.packed_memmap_arrs" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.packed_memmap_arrs.</span></span><span class="sig-name descname"><span class="pre">PackedMemmapArrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.packed_memmap_arrs.</span></span><span class="sig-name descname"><span class="pre">PackedMemmapArrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable" title="delex.utils.traits.SparkDistributable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a></p>
 <p>a container for many MemmapArrays. used to store many MemmapArrays in a 
 single file</p>
@@ -303,35 +437,35 @@ single file</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.deinit">
-<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.deinit" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.deinit" title="Link to this definition"></a></dt>
 <dd><p>deinitialize the object, closing resources (e.g. file handles)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.delete" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.delete" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.init" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.init" title="Link to this definition"></a></dt>
 <dd><p>initialize the object to be used on in a spark worker</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.size_in_bytes">
-<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.size_in_bytes" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.size_in_bytes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.to_spark">
-<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.to_spark" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.to_spark" title="Link to this definition"></a></dt>
 <dd><p>send the obj to the spark cluster to be used on spark workers</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.packed_memmap_arrs.PackedMemmapArrays.unpack">
-<span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.unpack" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#delex.storage.packed_memmap_arrs.PackedMemmapArrays.unpack" title="Link to this definition"></a></dt>
 <dd><p>read all of the memmap arrays and return as a list</p>
 </dd></dl>
 
@@ -339,10 +473,10 @@ single file</p>
 
 </section>
 <section id="module-delex.storage.sorted_set">
-<span id="delex-storage-sorted-set-module"></span><h2>delex.storage.sorted_set module<a class="headerlink" href="#module-delex.storage.sorted_set" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-sorted-set-module"></span><h2>delex.storage.sorted_set module<a class="headerlink" href="#module-delex.storage.sorted_set" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.sorted_set.</span></span><span class="sig-name descname"><span class="pre">MemmapSortedSets</span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.sorted_set.</span></span><span class="sig-name descname"><span class="pre">MemmapSortedSets</span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs" title="delex.storage.memmap_seqs.MemmapSeqs"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemmapSeqs</span></code></a></p>
 <p>a class for storing sorted sets of token ids (as arrays)</p>
 <p class="rubric">Methods</p>
@@ -389,34 +523,34 @@ single file</p>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.CacheKey">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CachedObjectKey" title="delex.utils.build_cache.CachedObjectKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedObjectKey</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.CacheKey.index_col">
-<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.index_col" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.index_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.CacheKey.search_col">
-<span class="sig-name descname"><span class="pre">search_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.search_col" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">search_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.search_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.CacheKey.tokenizer_type">
-<span class="sig-name descname"><span class="pre">tokenizer_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.tokenizer_type" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tokenizer_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.CacheKey.tokenizer_type" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.build" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.build" title="Link to this definition"></a></dt>
 <dd><p>Create a new MemmapSortedSets over tokens in <cite>df[col]</cite> and writing to disk</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.cosine">
-<span class="sig-name descname"><span class="pre">cosine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.cosine" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">cosine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.cosine" title="Link to this definition"></a></dt>
 <dd><p>compute cosine score between <cite>query</cite> and the sequences referenced by <cite>ids</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -439,7 +573,7 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.jaccard">
-<span class="sig-name descname"><span class="pre">jaccard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.jaccard" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">jaccard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.jaccard" title="Link to this definition"></a></dt>
 <dd><p>compute jaccard score between <cite>query</cite> and the sequences referenced by <cite>ids</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -462,7 +596,7 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.sorted_set.MemmapSortedSets.overlap_coeff">
-<span class="sig-name descname"><span class="pre">overlap_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.overlap_coeff" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">overlap_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.sorted_set.MemmapSortedSets.overlap_coeff" title="Link to this definition"></a></dt>
 <dd><p>compute overlap_coefficient score between <cite>query</cite> and the sequences referenced by <cite>ids</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -487,10 +621,10 @@ else scores[i] = np.nan</p>
 
 </section>
 <section id="module-delex.storage.span_map">
-<span id="delex-storage-span-map-module"></span><h2>delex.storage.span_map module<a class="headerlink" href="#module-delex.storage.span_map" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-span-map-module"></span><h2>delex.storage.span_map module<a class="headerlink" href="#module-delex.storage.span_map" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.storage.span_map.create_span_map">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">create_span_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.create_span_map" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">create_span_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.create_span_map" title="Link to this definition"></a></dt>
 <dd><p>create a new span map of for <cite>keys</cite>, <cite>offsets</cite>, and <cite>lengths</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -503,28 +637,28 @@ else scores[i] = np.nan</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.storage.span_map.span_map_get_key">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_get_key" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_get_key" title="Link to this definition"></a></dt>
 <dd><p>get the entry from the span map, return the offset and length as a tuple</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.storage.span_map.span_map_insert_key">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_insert_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_insert_key" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_insert_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_insert_key" title="Link to this definition"></a></dt>
 <dd><p>insert a single key into the span_map <cite>arr</cite></p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.storage.span_map.span_map_insert_keys">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_insert_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_insert_keys" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.storage.span_map.</span></span><span class="sig-name descname"><span class="pre">span_map_insert_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.span_map.span_map_insert_keys" title="Link to this definition"></a></dt>
 <dd><p>insert many keys into the span_map <cite>arr</cite></p>
 </dd></dl>
 
 </section>
 <section id="module-delex.storage.string_store">
-<span id="delex-storage-string-store-module"></span><h2>delex.storage.string_store module<a class="headerlink" href="#module-delex.storage.string_store" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-string-store-module"></span><h2>delex.storage.string_store module<a class="headerlink" href="#module-delex.storage.string_store" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.string_store.</span></span><span class="sig-name descname"><span class="pre">MemmapStrings</span></span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.string_store.</span></span><span class="sig-name descname"><span class="pre">MemmapStrings</span></span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs" title="delex.storage.memmap_seqs.MemmapSeqs"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemmapSeqs</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
@@ -564,18 +698,18 @@ else scores[i] = np.nan</p>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings.CacheKey">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.CacheKey" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.CacheKey" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CachedObjectKey" title="delex.utils.build_cache.CachedObjectKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedObjectKey</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings.CacheKey.index_col">
-<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.CacheKey.index_col" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.CacheKey.index_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.build" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.build" title="Link to this definition"></a></dt>
 <dd><p>create a MemmapSeqs instance from a spark dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -600,7 +734,7 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings.fetch">
-<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.fetch" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.fetch" title="Link to this definition"></a></dt>
 <dd><p>retrieve the sequence associated with <cite>i</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -613,17 +747,17 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.string_store.MemmapStrings.fetch_bytes">
-<span class="sig-name descname"><span class="pre">fetch_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.fetch_bytes" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fetch_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.string_store.MemmapStrings.fetch_bytes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-delex.storage.vector_store">
-<span id="delex-storage-vector-store-module"></span><h2>delex.storage.vector_store module<a class="headerlink" href="#module-delex.storage.vector_store" title="Link to this heading">¶</a></h2>
+<span id="delex-storage-vector-store-module"></span><h2>delex.storage.vector_store module<a class="headerlink" href="#module-delex.storage.vector_store" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.vector_store.</span></span><span class="sig-name descname"><span class="pre">MemmapVectorStore</span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.vector_store.</span></span><span class="sig-name descname"><span class="pre">MemmapVectorStore</span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#delex.storage.memmap_seqs.MemmapSeqs" title="delex.storage.memmap_seqs.MemmapSeqs"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemmapSeqs</span></code></a></p>
 <p>a class for storing sorted sets of token ids (as arrays)</p>
 <p class="rubric">Methods</p>
@@ -670,33 +804,33 @@ else scores[i] = np.nan</p>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.CacheKey">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CachedObjectKey" title="delex.utils.build_cache.CachedObjectKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedObjectKey</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.CacheKey.index_col">
-<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.index_col" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.index_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.CacheKey.search_col">
-<span class="sig-name descname"><span class="pre">search_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.search_col" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">search_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.search_col" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.CacheKey.tokenizer_type">
-<span class="sig-name descname"><span class="pre">tokenizer_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.tokenizer_type" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tokenizer_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.CacheKey.tokenizer_type" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.arrays_to_encoded_sparse_vector">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arrays_to_encoded_sparse_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.arrays_to_encoded_sparse_vector" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arrays_to_encoded_sparse_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.arrays_to_encoded_sparse_vector" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.build" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.build" title="Link to this definition"></a></dt>
 <dd><p>create a MemmapSeqs instance from a spark dataframe</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -721,12 +855,12 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.decode_sparse_vector">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_sparse_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.decode_sparse_vector" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_sparse_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.decode_sparse_vector" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.dot">
-<span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.dot" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.dot" title="Link to this definition"></a></dt>
 <dd><p>compute cosine score between <cite>query</cite> and the sequences referenced by <cite>ids</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -749,7 +883,7 @@ else scores[i] = np.nan</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.fetch">
-<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.fetch" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.fetch" title="Link to this definition"></a></dt>
 <dd><p>retrieve the sequence associated with <cite>i</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -762,59 +896,48 @@ else scores[i] = np.nan</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="delex.storage.vector_store.MemmapVectorStore.vector_dtype">
-<span class="sig-name descname"><span class="pre">vector_dtype</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">dtype([('ind',</span> <span class="pre">'&lt;i4'),</span> <span class="pre">('val',</span> <span class="pre">'&lt;f4')])</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.vector_dtype" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">vector_dtype</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">dtype([('ind',</span> <span class="pre">'&lt;i4'),</span> <span class="pre">('val',</span> <span class="pre">'&lt;f4')])</span></em><a class="headerlink" href="#delex.storage.vector_store.MemmapVectorStore.vector_dtype" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="delex.storage.vector_store.iter_spark_rows">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.vector_store.</span></span><span class="sig-name descname"><span class="pre">iter_spark_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.iter_spark_rows" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">delex.storage.vector_store.</span></span><span class="sig-name descname"><span class="pre">iter_spark_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.vector_store.iter_spark_rows" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="module-delex.storage">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.storage" title="Link to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.storage" title="Link to this heading"></a></h2>
 </section>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Derek Paulsen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Delex 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">delex.storage package</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, Derek Paulsen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
