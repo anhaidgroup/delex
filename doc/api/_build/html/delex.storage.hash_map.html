@@ -44,36 +44,10 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">delex.storage.hash_map package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-delex.storage.hash_map.hash_map_base">delex.storage.hash_map.hash_map_base module</a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap</span></code></a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.deinit"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap.deinit()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.init"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap.init()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.on_spark"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap.on_spark</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap.size_in_bytes()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.to_spark"><code class="docutils literal notranslate"><span class="pre">DistributableHashMap.to_spark()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-delex.storage.hash_map.id_int_map">delex.storage.hash_map.id_int_map module</a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.IdOffsetHashMap"><code class="docutils literal notranslate"><span class="pre">IdOffsetHashMap</span></code></a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.IdOffsetHashMap.build"><code class="docutils literal notranslate"><span class="pre">IdOffsetHashMap.build()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.hash_map_get_key"><code class="docutils literal notranslate"><span class="pre">hash_map_get_key()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.hash_map_get_keys"><code class="docutils literal notranslate"><span class="pre">hash_map_get_keys()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.hash_map_insert_key"><code class="docutils literal notranslate"><span class="pre">hash_map_insert_key()</span></code></a></li>
-<li><a class="reference internal" href="#delex.storage.hash_map.id_int_map.hash_map_insert_keys"><code class="docutils literal notranslate"><span class="pre">hash_map_insert_keys()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-delex.storage.hash_map.string_int_map">delex.storage.hash_map.string_int_map module</a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.string_int_map.StringIntHashMap"><code class="docutils literal notranslate"><span class="pre">StringIntHashMap</span></code></a><ul>
-<li><a class="reference internal" href="#delex.storage.hash_map.string_int_map.StringIntHashMap.build"><code class="docutils literal notranslate"><span class="pre">StringIntHashMap.build()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-delex.storage.hash_map">Module contents</a></li>
+<li><a class="reference internal" href="#delex-storage-hash-map-hash-map-base-module">delex.storage.hash_map.hash_map_base module</a></li>
+<li><a class="reference internal" href="#delex-storage-hash-map-id-int-map-module">delex.storage.hash_map.id_int_map module</a></li>
+<li><a class="reference internal" href="#delex-storage-hash-map-string-int-map-module">delex.storage.hash_map.string_int_map module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -107,183 +81,17 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.storage.hash_map.hash_map_base">
-<span id="delex-storage-hash-map-hash-map-base-module"></span><h2>delex.storage.hash_map.hash_map_base module<a class="headerlink" href="#module-delex.storage.hash_map.hash_map_base" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.hash_map_base.</span></span><span class="sig-name descname"><span class="pre">DistributableHashMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable" title="delex.utils.traits.SparkDistributable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>on_spark</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.deinit" title="delex.storage.hash_map.hash_map_base.DistributableHashMap.deinit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code></a>()</p></td>
-<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.init" title="delex.storage.hash_map.hash_map_base.DistributableHashMap.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a>()</p></td>
-<td><p>initialize the object to be used on in a spark worker</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.to_spark" title="delex.storage.hash_map.hash_map_base.DistributableHashMap.to_spark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code></a>()</p></td>
-<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>size_in_bytes</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap.deinit">
-<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.deinit" title="Link to this definition"></a></dt>
-<dd><p>deinitialize the object, closing resources (e.g. file handles)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.init" title="Link to this definition"></a></dt>
-<dd><p>initialize the object to be used on in a spark worker</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap.on_spark">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_spark</span></span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.on_spark" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap.size_in_bytes">
-<span class="sig-name descname"><span class="pre">size_in_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.size_in_bytes" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.hash_map_base.DistributableHashMap.to_spark">
-<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap.to_spark" title="Link to this definition"></a></dt>
-<dd><p>send the obj to the spark cluster to be used on spark workers</p>
-</dd></dl>
-
-</dd></dl>
-
+<section id="delex-storage-hash-map-hash-map-base-module">
+<h2>delex.storage.hash_map.hash_map_base module<a class="headerlink" href="#delex-storage-hash-map-hash-map-base-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.storage.hash_map.id_int_map">
-<span id="delex-storage-hash-map-id-int-map-module"></span><h2>delex.storage.hash_map.id_int_map module<a class="headerlink" href="#module-delex.storage.hash_map.id_int_map" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.IdOffsetHashMap">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.id_int_map.</span></span><span class="sig-name descname"><span class="pre">IdOffsetHashMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.IdOffsetHashMap" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap" title="delex.storage.hash_map.hash_map_base.DistributableHashMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistributableHashMap</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>on_spark</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.storage.hash_map.id_int_map.IdOffsetHashMap.build" title="delex.storage.hash_map.id_int_map.IdOffsetHashMap.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(longs, ints[, load_factor])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
-<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
-<td><p>initialize the object to be used on in a spark worker</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
-<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>size_in_bytes</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.IdOffsetHashMap.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">longs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.IdOffsetHashMap.build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.hash_map_get_key">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.id_int_map.</span></span><span class="sig-name descname"><span class="pre">hash_map_get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.hash_map_get_key" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.hash_map_get_keys">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.id_int_map.</span></span><span class="sig-name descname"><span class="pre">hash_map_get_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.hash_map_get_keys" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.hash_map_insert_key">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.id_int_map.</span></span><span class="sig-name descname"><span class="pre">hash_map_insert_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.hash_map_insert_key" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="delex.storage.hash_map.id_int_map.hash_map_insert_keys">
-<span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.id_int_map.</span></span><span class="sig-name descname"><span class="pre">hash_map_insert_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.id_int_map.hash_map_insert_keys" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
+<section id="delex-storage-hash-map-id-int-map-module">
+<h2>delex.storage.hash_map.id_int_map module<a class="headerlink" href="#delex-storage-hash-map-id-int-map-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.storage.hash_map.string_int_map">
-<span id="delex-storage-hash-map-string-int-map-module"></span><h2>delex.storage.hash_map.string_int_map module<a class="headerlink" href="#module-delex.storage.hash_map.string_int_map" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.storage.hash_map.string_int_map.StringIntHashMap">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.storage.hash_map.string_int_map.</span></span><span class="sig-name descname"><span class="pre">StringIntHashMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hash_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.string_int_map.StringIntHashMap" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#delex.storage.hash_map.hash_map_base.DistributableHashMap" title="delex.storage.hash_map.hash_map_base.DistributableHashMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistributableHashMap</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>on_spark</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
-<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
-<td><p>initialize the object to be used on in a spark worker</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
-<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>build</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>size_in_bytes</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.storage.hash_map.string_int_map.StringIntHashMap.build">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.storage.hash_map.string_int_map.StringIntHashMap.build" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="delex-storage-hash-map-string-int-map-module">
+<h2>delex.storage.hash_map.string_int_map module<a class="headerlink" href="#delex-storage-hash-map-string-int-map-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.storage.hash_map">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.storage.hash_map" title="Link to this heading"></a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 </section>
 </section>
 
