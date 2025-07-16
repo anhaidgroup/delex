@@ -38,15 +38,15 @@ We have used Delex to block tables of tens of millions of tuples. We will report
 
 ### Installation
 
-See instructions to install Delex on [a single machine](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md)  or [a cloud-based cluster](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md). 
+See instructions to install Delex on [a single machine](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-single-machine.md)  or [a cloud-based cluster](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-cloud-based-cluster.md). 
 
 ### How to Use
 
-See examples on using Delex on a [single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
+See examples on using Delex on a [single machine](https://github.com/anhaidgroup/delex/blob/main/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/main/examples/Cluster-Example.md). 
 
 You should also read this [short note](https://github.com/anhaidgroup/sparkly/blob/main/doc/note-on-input-sparkly-delex.md) on the input to Delex blockers. 
 
 ### Further Pointers
 
-See [API documentation](). 
+See [API documentation](anhaidgroup.github.io/delex). 
 For questions / comments, contact [our research group](mailto:entitymatchinginfo@gmail.com).
