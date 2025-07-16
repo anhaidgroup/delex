@@ -44,6 +44,8 @@ See instructions to install Delex on [a single machine](https://github.com/anhai
 
 See examples on using Delex on a [single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
 
+You should also read this [short note](https://github.com/anhaidgroup/sparkly/blob/main/doc/note-on-input-sparkly-delex.md) on the input to Delex blockers. 
+
 ### Further Pointers
 
 See [API documentation](). 
