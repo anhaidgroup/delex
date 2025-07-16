@@ -4,15 +4,13 @@ Here we will walk through an example of running a simple blocking program for De
 
 We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).
 
-### Step 1: Downloading Datasets
+### Step 1: Downloading the Datasets
 
 To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into a directory on your local machine called 'dblp_acm'.
 
 ### Step 2: Creating a Python File
 
-Within the 'dblp_acm' directory, create a Python file called 'basic_example.py'. We will use this Python file to write the code.
-
-_Note: If you would like to see the completed Python file without following the walkthrough below, you can visit [basic_example.py](./basic_example.py). If you would like to complete the walkthrough using a pre-built Jupyter Notebook rather than your own Python file, you can visit [basic_example.ipynb](./basic_example.ipynb)._
+Within the 'dblp_acm' directory, create a Python file called 'basic_example.py'. We will add code to this file.
 
 ### Step 3: Importing Dependencies
 
@@ -68,7 +66,7 @@ spark = SparkSession.builder\
 
 #### Data
 
-The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table.
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. We now load in the paths to the data files. 
 
 ```
 # path to the test data directory
@@ -116,6 +114,8 @@ FROM index_table as A, search_table as B
 WHERE jaccard_3gram(A.title, B.title) >= .6
 ```
 
+We show examples of more complex blocking programs [here](./complex_program_examples.ipynb).
+
 ### Step 7: Executing the Blocking Program
 
 Next, we create a PlanExecutor and execute the BlockingProgram by calling .execute(). Note that we passed optimize=False and estimate_cost=False as arguments. These parameters control the plan that is generated, which will be explained in a separate example.
@@ -157,7 +157,7 @@ candidates.unpersist()
 
 ### Step 9: Running the Python Program
 
-Congratulations! You have finished writing a Python script for blocking with Delex, and now you can run the script. To do so, open a terminal and navigate to the directory that you wrote your 'basic_example.py' file in. Finally, run the following command, and once the script is finished, it will output n_pairs, true_positives, and recall:
+Congratulations. You have finished writing a Python program for blocking with Delex, and now you can run the program. To do so, open a terminal and navigate to the directory that you wrote your 'basic_example.py' file in. Finally, run the following command, and once the program is finished, it will output n_pairs, true_positives, and recall:
 
 ```
 python3 basic_example.py
