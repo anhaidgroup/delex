@@ -1,6 +1,6 @@
 ## Running Delex on a Single Machine
 
-Here we will walk through an example of running a simple blocking program for Delex on a single machine (you can see examples of more complex blocking programs [here](./complex_program_examples.ipynb). In particular, we will show you how to create a Python program, step by step, then execute the Python program at the end of the walkthrough. You can see the complete Python program [here](./basic_example.py), and if you rather do the walkthrough using a pre-built Jupyter Notebook, you can do so [here](./basic_example.ipynb). 
+Here we will walk through an example of running a simple blocking program for Delex on a single machine (you can see examples of more complex blocking programs [here](./complex_program_examples.ipynb)). In particular, we will show you how to create a Python program, step by step, then execute the Python program at the end of the walkthrough. You can see the complete Python program [here](./basic_example.py), and if you rather do the walkthrough using a pre-built Jupyter Notebook, you can do so [here](./basic_example.ipynb). 
 
 We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-single-machine.md).
 
