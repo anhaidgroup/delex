@@ -28,7 +28,7 @@ Delex enables all of the above. In particular,
 
 ### How Delex Works
 
-Given two tables A and B to be matched, Delex focuses on the blocking step. The user examines Tables A and B then writes a declarative blocking program that uses one or more blocking strategies. Delex translates this program into a DAG of tasks (directed acyclic graph), optimizes the DAG, sends the optimized DAG as well as partitions of Tables A and B to the nodes in a Spark cluster, executes on the nodes, then returns the output. To execute fast on the Spark nodes, Delex examines the DAG to build a set of indexes, ships these indexes to the Spark nodes, then uses the indexes to execute. 
+Given two tables A and B to be matched, Delex focuses on the blocking step. The user examines Tables A and B then writes a declarative blocking program that uses one or more blocking strategies. Delex translates this program into a DAG of tasks (directed acyclic graph), optimizes the DAG, sends the optimized DAG as well as partitions of Tables A and B to the nodes in a Spark cluster, executes on the nodes, then returns the blocking output. To execute fast on the Spark nodes, Delex examines the DAG to build a set of indexes, ships these indexes to the Spark nodes, then uses the indexes to execute. 
 
 Implementation-wise, Delex uses Spark, Lucene, and Sparkly, among other software. 
 
@@ -42,10 +42,11 @@ See instructions to install Delex on [a single machine](https://github.com/anhai
 
 ### How to Use
 
-See examples on [using Delex on a single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
+See examples on using Delex on a [single machine](https://github.com/anhaidgroup/delex/blob/docs/examples/Single-Machine-Example.md) and a [cluster](https://github.com/anhaidgroup/delex/blob/docs/examples/Cluster-Example.md). 
+
+You should also read this [short note](https://github.com/anhaidgroup/sparkly/blob/main/doc/note-on-input-sparkly-delex.md) on the input to Delex blockers. 
 
 ### Further Pointers
 
 See [API documentation](). 
 For questions / comments, contact [our research group](mailto:entitymatchinginfo@gmail.com).
-
