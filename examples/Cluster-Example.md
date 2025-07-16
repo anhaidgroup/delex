@@ -1,6 +1,6 @@
 ## Running Delex on a Cluster of Machines
 
-Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/docs/doc/installation-guides/install-cloud-based-cluster.md). 
+Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-cloud-based-cluster.md). 
 
 ### Step 1: Downloading the Datasets
 
