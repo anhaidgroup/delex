@@ -1,0 +1,1151 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>delex package &mdash; Delex 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Delex
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">delex package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-delex.tokenizer">delex.tokenizer module</a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.AlphaNumericTokenizer"><code class="docutils literal notranslate"><span class="pre">AlphaNumericTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.AlphaNumericTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">AlphaNumericTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.NumericTokenizer"><code class="docutils literal notranslate"><span class="pre">NumericTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.NumericTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">NumericTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.QGramTokenizer"><code class="docutils literal notranslate"><span class="pre">QGramTokenizer</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.ShingleTokenizer"><code class="docutils literal notranslate"><span class="pre">ShingleTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.ShingleTokenizer.base_tokenize"><code class="docutils literal notranslate"><span class="pre">ShingleTokenizer.base_tokenize()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedQGramTokenizer"><code class="docutils literal notranslate"><span class="pre">StrippedQGramTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedQGramTokenizer.RE"><code class="docutils literal notranslate"><span class="pre">StrippedQGramTokenizer.RE</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.NAME</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.RE"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.RE</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.WHITESPACE_NORM"><code class="docutils literal notranslate"><span class="pre">StrippedWhiteSpaceTokenizer.WHITESPACE_NORM</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer"><code class="docutils literal notranslate"><span class="pre">Tokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.CacheKey"><code class="docutils literal notranslate"><span class="pre">Tokenizer.CacheKey</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.CacheKey.index_col"><code class="docutils literal notranslate"><span class="pre">Tokenizer.CacheKey.index_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.CacheKey.search_col"><code class="docutils literal notranslate"><span class="pre">Tokenizer.CacheKey.search_col</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.CacheKey.tokenizer_type"><code class="docutils literal notranslate"><span class="pre">Tokenizer.CacheKey.tokenizer_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.build"><code class="docutils literal notranslate"><span class="pre">Tokenizer.build()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.deinit"><code class="docutils literal notranslate"><span class="pre">Tokenizer.deinit()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.init"><code class="docutils literal notranslate"><span class="pre">Tokenizer.init()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.nunique_tokens"><code class="docutils literal notranslate"><span class="pre">Tokenizer.nunique_tokens</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.to_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.to_spark()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_set"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_set()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_set_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_set_spark()</span></code></a></li>
+<li><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_spark"><code class="docutils literal notranslate"><span class="pre">Tokenizer.tokenize_spark()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delex.tokenizer.WhiteSpaceTokenizer"><code class="docutils literal notranslate"><span class="pre">WhiteSpaceTokenizer</span></code></a><ul>
+<li><a class="reference internal" href="#delex.tokenizer.WhiteSpaceTokenizer.NAME"><code class="docutils literal notranslate"><span class="pre">WhiteSpaceTokenizer.NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-delex">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Delex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">delex package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/delex.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="delex-package">
+<h1>delex package<a class="headerlink" href="#delex-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="delex.execution.html">delex.execution package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.cost_estimation">delex.execution.cost_estimation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator"><code class="docutils literal notranslate"><span class="pre">CostEstimator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.build_time"><code class="docutils literal notranslate"><span class="pre">CostEstimator.build_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.compute_estimates"><code class="docutils literal notranslate"><span class="pre">CostEstimator.compute_estimates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.estimate_plan_cost"><code class="docutils literal notranslate"><span class="pre">CostEstimator.estimate_plan_cost()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.filter_time"><code class="docutils literal notranslate"><span class="pre">CostEstimator.filter_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.nthreads"><code class="docutils literal notranslate"><span class="pre">CostEstimator.nthreads</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.search_time"><code class="docutils literal notranslate"><span class="pre">CostEstimator.search_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.selectivity"><code class="docutils literal notranslate"><span class="pre">CostEstimator.selectivity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.table_a_count"><code class="docutils literal notranslate"><span class="pre">CostEstimator.table_a_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.table_b_count"><code class="docutils literal notranslate"><span class="pre">CostEstimator.table_b_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.validate"><code class="docutils literal notranslate"><span class="pre">CostEstimator.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.CostEstimator.working_set_size"><code class="docutils literal notranslate"><span class="pre">CostEstimator.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.ScalingModel"><code class="docutils literal notranslate"><span class="pre">ScalingModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.ScalingModel.fit"><code class="docutils literal notranslate"><span class="pre">ScalingModel.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.cost_estimation.ScalingModel.predict"><code class="docutils literal notranslate"><span class="pre">ScalingModel.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.dataframe_stream">delex.execution.dataframe_stream module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream"><code class="docutils literal notranslate"><span class="pre">DataFrameStream</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.apply"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.drop"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.from_arrow_iter"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.from_arrow_iter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.from_pandas_iter"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.from_pandas_iter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.pyarrow_schema"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.pyarrow_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.schema"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.schema</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.spark_schema"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.spark_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.to_arrow_stream"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.to_arrow_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.dataframe_stream.DataFrameStream.to_pandas_stream"><code class="docutils literal notranslate"><span class="pre">DataFrameStream.to_pandas_stream()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.graph_executor">delex.execution.graph_executor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.build_time"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.build_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.dot_graph"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.dot_graph</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.exec_time"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.exec_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.model_config"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.nodes"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.sub_graph_stats"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.sub_graph_stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.total_time"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.total_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutionStats.working_set_size"><code class="docutils literal notranslate"><span class="pre">GraphExecutionStats.working_set_size</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor"><code class="docutils literal notranslate"><span class="pre">GraphExecutor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.build_parallelism"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.build_parallelism</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.cost_est"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.cost_est</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.execute"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.index_table"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.index_table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.index_table_count"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.index_table_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.index_table_id_col"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.index_table_id_col</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.model_config"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.model_post_init"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.ram_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.ram_size_in_bytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.search_table"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.search_table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.use_chunking"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.use_chunking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.GraphExecutor.use_cost_estimation"><code class="docutils literal notranslate"><span class="pre">GraphExecutor.use_cost_estimation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.build_time"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.build_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.exec_time"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.exec_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.model_config"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.part_num"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.part_num</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.partitioner"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.partitioner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.PartitionExecutionStats.working_set_size"><code class="docutils literal notranslate"><span class="pre">PartitionExecutionStats.working_set_size</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.build_time"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.build_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.exec_time"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.exec_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.model_config"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.nodes"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.partition_stats"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.partition_stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.total_time"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.total_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.graph_executor.SubGraphExecutionStats.working_set_size"><code class="docutils literal notranslate"><span class="pre">SubGraphExecutionStats.working_set_size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.optimizer">delex.execution.optimizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.optimizer.BlockingProgramOptimizer"><code class="docutils literal notranslate"><span class="pre">BlockingProgramOptimizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.optimizer.BlockingProgramOptimizer.default_plan"><code class="docutils literal notranslate"><span class="pre">BlockingProgramOptimizer.default_plan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.optimizer.BlockingProgramOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">BlockingProgramOptimizer.optimize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.optimizer.BlockingProgramOptimizer.preprocess"><code class="docutils literal notranslate"><span class="pre">BlockingProgramOptimizer.preprocess()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.partitioner">delex.execution.partitioner module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.partitioner.DataFramePartitioner"><code class="docutils literal notranslate"><span class="pre">DataFramePartitioner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.partitioner.DataFramePartitioner.column"><code class="docutils literal notranslate"><span class="pre">DataFramePartitioner.column</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.partitioner.DataFramePartitioner.filter_array"><code class="docutils literal notranslate"><span class="pre">DataFramePartitioner.filter_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.partitioner.DataFramePartitioner.get_partition"><code class="docutils literal notranslate"><span class="pre">DataFramePartitioner.get_partition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.partitioner.DataFramePartitioner.nparts"><code class="docutils literal notranslate"><span class="pre">DataFramePartitioner.nparts</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution.plan_executor">delex.execution.plan_executor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats.cost_estimation_time"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats.cost_estimation_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats.graph_exec_stats"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats.graph_exec_stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats.model_config"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats.optimize_time"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats.optimize_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutionStats.total_time"><code class="docutils literal notranslate"><span class="pre">PlanExecutionStats.total_time</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor"><code class="docutils literal notranslate"><span class="pre">PlanExecutor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.estimate_cost"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.estimate_cost</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.execute"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.generate_plan"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.generate_plan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.model_config"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.model_post_init"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.model_post_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.execution.html#delex.execution.plan_executor.PlanExecutor.optimize"><code class="docutils literal notranslate"><span class="pre">PlanExecutor.optimize</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.execution.html#module-delex.execution">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delex.graph.html">delex.graph package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.graph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.graph.html#module-delex.graph.algorithms">delex.graph.algorithms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.algorithms.clone_graph"><code class="docutils literal notranslate"><span class="pre">clone_graph()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.algorithms.find_all_nodes"><code class="docutils literal notranslate"><span class="pre">find_all_nodes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.algorithms.find_sink"><code class="docutils literal notranslate"><span class="pre">find_sink()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.algorithms.topological_sort"><code class="docutils literal notranslate"><span class="pre">topological_sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.graph.html#module-delex.graph.node">delex.graph.node module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.IntersectNode"><code class="docutils literal notranslate"><span class="pre">IntersectNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.IntersectNode.validate"><code class="docutils literal notranslate"><span class="pre">IntersectNode.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.MinusNode"><code class="docutils literal notranslate"><span class="pre">MinusNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.MinusNode.left"><code class="docutils literal notranslate"><span class="pre">MinusNode.left</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.MinusNode.right"><code class="docutils literal notranslate"><span class="pre">MinusNode.right</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.MinusNode.validate"><code class="docutils literal notranslate"><span class="pre">MinusNode.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.add_in_edge"><code class="docutils literal notranslate"><span class="pre">Node.add_in_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.add_out_edge"><code class="docutils literal notranslate"><span class="pre">Node.add_out_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.ancestors"><code class="docutils literal notranslate"><span class="pre">Node.ancestors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.build"><code class="docutils literal notranslate"><span class="pre">Node.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.equivalent"><code class="docutils literal notranslate"><span class="pre">Node.equivalent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.execute"><code class="docutils literal notranslate"><span class="pre">Node.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.id_string"><code class="docutils literal notranslate"><span class="pre">Node.id_string</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.in_degree"><code class="docutils literal notranslate"><span class="pre">Node.in_degree</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.insert_after"><code class="docutils literal notranslate"><span class="pre">Node.insert_after()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.insert_before"><code class="docutils literal notranslate"><span class="pre">Node.insert_before()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.is_sink"><code class="docutils literal notranslate"><span class="pre">Node.is_sink</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.is_source"><code class="docutils literal notranslate"><span class="pre">Node.is_source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.iter_dependencies"><code class="docutils literal notranslate"><span class="pre">Node.iter_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.iter_in"><code class="docutils literal notranslate"><span class="pre">Node.iter_in()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.iter_out"><code class="docutils literal notranslate"><span class="pre">Node.iter_out()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.out_degree"><code class="docutils literal notranslate"><span class="pre">Node.out_degree</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.output_col"><code class="docutils literal notranslate"><span class="pre">Node.output_col</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.pop"><code class="docutils literal notranslate"><span class="pre">Node.pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.remove_in_edge"><code class="docutils literal notranslate"><span class="pre">Node.remove_in_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.remove_in_edges"><code class="docutils literal notranslate"><span class="pre">Node.remove_in_edges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.remove_out_edge"><code class="docutils literal notranslate"><span class="pre">Node.remove_out_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.remove_out_edges"><code class="docutils literal notranslate"><span class="pre">Node.remove_out_edges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.streamable"><code class="docutils literal notranslate"><span class="pre">Node.streamable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.validate"><code class="docutils literal notranslate"><span class="pre">Node.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.Node.working_set_size"><code class="docutils literal notranslate"><span class="pre">Node.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode"><code class="docutils literal notranslate"><span class="pre">PredicateNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.build"><code class="docutils literal notranslate"><span class="pre">PredicateNode.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.execute"><code class="docutils literal notranslate"><span class="pre">PredicateNode.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.init"><code class="docutils literal notranslate"><span class="pre">PredicateNode.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.iter_dependencies"><code class="docutils literal notranslate"><span class="pre">PredicateNode.iter_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.predicate"><code class="docutils literal notranslate"><span class="pre">PredicateNode.predicate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.streamable"><code class="docutils literal notranslate"><span class="pre">PredicateNode.streamable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.validate"><code class="docutils literal notranslate"><span class="pre">PredicateNode.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.PredicateNode.working_set_size"><code class="docutils literal notranslate"><span class="pre">PredicateNode.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode"><code class="docutils literal notranslate"><span class="pre">SetOpNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode.build"><code class="docutils literal notranslate"><span class="pre">SetOpNode.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode.execute"><code class="docutils literal notranslate"><span class="pre">SetOpNode.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode.init"><code class="docutils literal notranslate"><span class="pre">SetOpNode.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode.streamable"><code class="docutils literal notranslate"><span class="pre">SetOpNode.streamable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.SetOpNode.working_set_size"><code class="docutils literal notranslate"><span class="pre">SetOpNode.working_set_size()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.node.UnionNode"><code class="docutils literal notranslate"><span class="pre">UnionNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.graph.html#delex.graph.node.UnionNode.validate"><code class="docutils literal notranslate"><span class="pre">UnionNode.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.graph.html#module-delex.graph.utils">delex.graph.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.graph.html#delex.graph.utils.nodes_to_dot"><code class="docutils literal notranslate"><span class="pre">nodes_to_dot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.graph.html#module-delex.graph">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delex.index.html">delex.index package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#module-delex.index.filtered_set_sim_index">delex.index.filtered_set_sim_index module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.CacheKey"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.SLICE_TYPES"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.SLICE_TYPES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.build"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.deinit"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.from_sparse_mat"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.from_sparse_mat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.init"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.search"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.size_in_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index.FilteredSetSimIndex.to_spark"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndex.to_spark()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#module-delex.index.filtered_set_sim_index_slice">delex.index.filtered_set_sim_index_slice module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.CosineSetSimIndexSlice"><code class="docutils literal notranslate"><span class="pre">CosineSetSimIndexSlice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.CosineSetSimIndexSlice.class_type"><code class="docutils literal notranslate"><span class="pre">CosineSetSimIndexSlice.class_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.FilteredSetSimIndexSlice"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndexSlice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.FilteredSetSimIndexSlice.search"><code class="docutils literal notranslate"><span class="pre">FilteredSetSimIndexSlice.search()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.JaccardSetSimIndexSlice"><code class="docutils literal notranslate"><span class="pre">JaccardSetSimIndexSlice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.filtered_set_sim_index_slice.JaccardSetSimIndexSlice.class_type"><code class="docutils literal notranslate"><span class="pre">JaccardSetSimIndexSlice.class_type</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#module-delex.index.hash_index">delex.index.hash_index module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex"><code class="docutils literal notranslate"><span class="pre">HashIndex</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.CacheKey"><code class="docutils literal notranslate"><span class="pre">HashIndex.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.build"><code class="docutils literal notranslate"><span class="pre">HashIndex.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.deinit"><code class="docutils literal notranslate"><span class="pre">HashIndex.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.fetch"><code class="docutils literal notranslate"><span class="pre">HashIndex.fetch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.init"><code class="docutils literal notranslate"><span class="pre">HashIndex.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">HashIndex.size_in_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.hash_index.HashIndex.to_spark"><code class="docutils literal notranslate"><span class="pre">HashIndex.to_spark()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#module-delex.index.set_sim_index">delex.index.set_sim_index module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex"><code class="docutils literal notranslate"><span class="pre">SetSimIndex</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.cosine_threshold"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.cosine_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.from_sparse_mat"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.from_sparse_mat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.init"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.jaccard_threshold"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.jaccard_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.overlap_coeff_threshold"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.overlap_coeff_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndex.to_spark"><code class="docutils literal notranslate"><span class="pre">SetSimIndex.to_spark()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndexSlice"><code class="docutils literal notranslate"><span class="pre">SetSimIndexSlice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.index.html#delex.index.set_sim_index.SetSimIndexSlice.class_type"><code class="docutils literal notranslate"><span class="pre">SetSimIndexSlice.class_type</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.index.html#module-delex.index">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delex.lang.html">delex.lang package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html">delex.lang.predicate package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.bootleg_predicate">delex.lang.predicate.bootleg_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.exact_match_predicate">delex.lang.predicate.exact_match_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.name_map">delex.lang.predicate.name_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.predicate">delex.lang.predicate.predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.set_sim_predicate">delex.lang.predicate.set_sim_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.string_sim_predicate">delex.lang.predicate.string_sim_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.threshold_predicate">delex.lang.predicate.threshold_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.topk_predicate">delex.lang.predicate.topk_predicate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.html#module-delex.lang.program">delex.lang.program module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.html#delex.lang.program.BlockingProgram"><code class="docutils literal notranslate"><span class="pre">BlockingProgram</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.program.BlockingProgram.drop_rules"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.drop_rules</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.program.BlockingProgram.keep_rules"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.keep_rules</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.program.BlockingProgram.pretty_str"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.pretty_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.program.BlockingProgram.validate"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.html#module-delex.lang.rule">delex.lang.rule module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.html#delex.lang.rule.DropRule"><code class="docutils literal notranslate"><span class="pre">DropRule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.rule.DropRule.validate"><code class="docutils literal notranslate"><span class="pre">DropRule.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.html#delex.lang.rule.KeepRule"><code class="docutils literal notranslate"><span class="pre">KeepRule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.rule.KeepRule.validate"><code class="docutils literal notranslate"><span class="pre">KeepRule.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.lang.html#delex.lang.rule.Rule"><code class="docutils literal notranslate"><span class="pre">Rule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.rule.Rule.contains"><code class="docutils literal notranslate"><span class="pre">Rule.contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.rule.Rule.predicates"><code class="docutils literal notranslate"><span class="pre">Rule.predicates</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.lang.html#delex.lang.rule.Rule.pretty_str"><code class="docutils literal notranslate"><span class="pre">Rule.pretty_str()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.html#module-delex.lang">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delex.storage.html">delex.storage package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.hash_map.html">delex.storage.hash_map package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.hash_map.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.hash_map.html#module-delex.storage.hash_map.hash_map_base">delex.storage.hash_map.hash_map_base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.hash_map.html#module-delex.storage.hash_map.id_int_map">delex.storage.hash_map.id_int_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.hash_map.html#module-delex.storage.hash_map.string_int_map">delex.storage.hash_map.string_int_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.hash_map.html#module-delex.storage.hash_map">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.memmap_arr">delex.storage.memmap_arr module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray"><code class="docutils literal notranslate"><span class="pre">MemmapArray</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.deinit"><code class="docutils literal notranslate"><span class="pre">MemmapArray.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.delete"><code class="docutils literal notranslate"><span class="pre">MemmapArray.delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.init"><code class="docutils literal notranslate"><span class="pre">MemmapArray.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.shape"><code class="docutils literal notranslate"><span class="pre">MemmapArray.shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapArray.size_in_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.to_spark"><code class="docutils literal notranslate"><span class="pre">MemmapArray.to_spark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_arr.MemmapArray.values"><code class="docutils literal notranslate"><span class="pre">MemmapArray.values</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.memmap_seqs">delex.storage.memmap_seqs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.build"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.deinit"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.delete"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.fetch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.init"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.size_in_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.memmap_seqs.MemmapSeqs.to_spark"><code class="docutils literal notranslate"><span class="pre">MemmapSeqs.to_spark()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.packed_memmap_arrs">delex.storage.packed_memmap_arrs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.deinit"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.delete"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.init"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.size_in_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.to_spark"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.to_spark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.packed_memmap_arrs.PackedMemmapArrays.unpack"><code class="docutils literal notranslate"><span class="pre">PackedMemmapArrays.unpack()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.sorted_set">delex.storage.sorted_set module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets.build"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets.cosine"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.cosine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets.jaccard"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.jaccard()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.sorted_set.MemmapSortedSets.overlap_coeff"><code class="docutils literal notranslate"><span class="pre">MemmapSortedSets.overlap_coeff()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.span_map">delex.storage.span_map module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.span_map.create_span_map"><code class="docutils literal notranslate"><span class="pre">create_span_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.span_map.span_map_get_key"><code class="docutils literal notranslate"><span class="pre">span_map_get_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.span_map.span_map_insert_key"><code class="docutils literal notranslate"><span class="pre">span_map_insert_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.span_map.span_map_insert_keys"><code class="docutils literal notranslate"><span class="pre">span_map_insert_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.string_store">delex.storage.string_store module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.string_store.MemmapStrings"><code class="docutils literal notranslate"><span class="pre">MemmapStrings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.string_store.MemmapStrings.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.string_store.MemmapStrings.build"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.string_store.MemmapStrings.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.fetch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.string_store.MemmapStrings.fetch_bytes"><code class="docutils literal notranslate"><span class="pre">MemmapStrings.fetch_bytes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage.vector_store">delex.storage.vector_store module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.CacheKey"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.CacheKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.arrays_to_encoded_sparse_vector"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.arrays_to_encoded_sparse_vector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.build"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.decode_sparse_vector"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.decode_sparse_vector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.dot"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.dot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.fetch"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.fetch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.MemmapVectorStore.vector_dtype"><code class="docutils literal notranslate"><span class="pre">MemmapVectorStore.vector_dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.storage.html#delex.storage.vector_store.iter_spark_rows"><code class="docutils literal notranslate"><span class="pre">iter_spark_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.storage.html#module-delex.storage">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delex.utils.html">delex.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils.build_cache">delex.utils.build_cache module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.BuildCache"><code class="docutils literal notranslate"><span class="pre">BuildCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.BuildCache.get"><code class="docutils literal notranslate"><span class="pre">BuildCache.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CacheItem"><code class="docutils literal notranslate"><span class="pre">CacheItem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CacheItem.obj"><code class="docutils literal notranslate"><span class="pre">CacheItem.obj</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CachedObjectKey"><code class="docutils literal notranslate"><span class="pre">CachedObjectKey</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils.funcs">delex.utils.funcs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.attach_current_thread_jvm"><code class="docutils literal notranslate"><span class="pre">attach_current_thread_jvm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.human_format_bytes"><code class="docutils literal notranslate"><span class="pre">human_format_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.init_jvm"><code class="docutils literal notranslate"><span class="pre">init_jvm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.is_persisted"><code class="docutils literal notranslate"><span class="pre">is_persisted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.persisted"><code class="docutils literal notranslate"><span class="pre">persisted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.size_in_bytes"><code class="docutils literal notranslate"><span class="pre">size_in_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.funcs.type_check"><code class="docutils literal notranslate"><span class="pre">type_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils.hash_function">delex.utils.hash_function module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.hash_function.HashFunction"><code class="docutils literal notranslate"><span class="pre">HashFunction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.hash_function.HashFunction.hash"><code class="docutils literal notranslate"><span class="pre">HashFunction.hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.hash_function.HashFunction.hash_split"><code class="docutils literal notranslate"><span class="pre">HashFunction.hash_split()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils.numba_functions">delex.utils.numba_functions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.numba_functions.sorted_set_overlap"><code class="docutils literal notranslate"><span class="pre">sorted_set_overlap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.numba_functions.typed_list_to_array"><code class="docutils literal notranslate"><span class="pre">typed_list_to_array()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils.traits">delex.utils.traits module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable"><code class="docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable.deinit"><code class="docutils literal notranslate"><span class="pre">SparkDistributable.deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable.init"><code class="docutils literal notranslate"><span class="pre">SparkDistributable.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable.to_spark"><code class="docutils literal notranslate"><span class="pre">SparkDistributable.to_spark()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="delex.utils.html#module-delex.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-delex.tokenizer">
+<span id="delex-tokenizer-module"></span><h2>delex.tokenizer module<a class="headerlink" href="#module-delex.tokenizer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.AlphaNumericTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">AlphaNumericTokenizer</span></span><a class="headerlink" href="#delex.tokenizer.AlphaNumericTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.AlphaNumericTokenizer.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alnum_tokens'</span></em><a class="headerlink" href="#delex.tokenizer.AlphaNumericTokenizer.NAME" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.NumericTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">NumericTokenizer</span></span><a class="headerlink" href="#delex.tokenizer.NumericTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.NumericTokenizer.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'num_tokens'</span></em><a class="headerlink" href="#delex.tokenizer.NumericTokenizer.NAME" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.QGramTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">QGramTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_freqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.QGramTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.ShingleTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">ShingleTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.ShingleTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>base_tokenize</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.ShingleTokenizer.base_tokenize">
+<span class="sig-name descname"><span class="pre">base_tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#delex.tokenizer.ShingleTokenizer.base_tokenize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedQGramTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">StrippedQGramTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_freqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.StrippedQGramTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedQGramTokenizer.RE">
+<span class="sig-name descname"><span class="pre">RE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">re.compile('\\W+')</span></em><a class="headerlink" href="#delex.tokenizer.StrippedQGramTokenizer.RE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedWhiteSpaceTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">StrippedWhiteSpaceTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_freqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedWhiteSpaceTokenizer.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stripped_whitespace_tokens'</span></em><a class="headerlink" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.NAME" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedWhiteSpaceTokenizer.RE">
+<span class="sig-name descname"><span class="pre">RE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">re.compile('[^a-z0-9</span> <span class="pre">]+')</span></em><a class="headerlink" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.RE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.StrippedWhiteSpaceTokenizer.WHITESPACE_NORM">
+<span class="sig-name descname"><span class="pre">WHITESPACE_NORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">re.compile('\\s+')</span></em><a class="headerlink" href="#delex.tokenizer.StrippedWhiteSpaceTokenizer.WHITESPACE_NORM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">Tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_freqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.traits.SparkDistributable" title="delex.utils.traits.SparkDistributable"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparkDistributable</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.deinit" title="delex.tokenizer.Tokenizer.deinit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code></a>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.init" title="delex.tokenizer.Tokenizer.init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code></a>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.to_spark" title="delex.tokenizer.Tokenizer.to_spark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code></a>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_set" title="delex.tokenizer.Tokenizer.tokenize_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code></a>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_set_spark" title="delex.tokenizer.Tokenizer.tokenize_set_spark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code></a>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#delex.tokenizer.Tokenizer.tokenize_spark" title="delex.tokenizer.Tokenizer.tokenize_spark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code></a>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.CacheKey">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CacheKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.CacheKey" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="delex.utils.html#delex.utils.build_cache.CachedObjectKey" title="delex.utils.build_cache.CachedObjectKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedObjectKey</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.CacheKey.index_col">
+<span class="sig-name descname"><span class="pre">index_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.tokenizer.Tokenizer.CacheKey.index_col" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.CacheKey.search_col">
+<span class="sig-name descname"><span class="pre">search_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#delex.tokenizer.Tokenizer.CacheKey.search_col" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.CacheKey.tokenizer_type">
+<span class="sig-name descname"><span class="pre">tokenizer_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#delex.tokenizer.Tokenizer.CacheKey.tokenizer_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.build" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.deinit" title="Link to this definition"></a></dt>
+<dd><p>deinitialize the object, closing resources (e.g. file handles)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.init" title="Link to this definition"></a></dt>
+<dd><p>initialize the object to be used on in a spark worker</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.nunique_tokens">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nunique_tokens</span></span><a class="headerlink" href="#delex.tokenizer.Tokenizer.nunique_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.to_spark">
+<span class="sig-name descname"><span class="pre">to_spark</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.to_spark" title="Link to this definition"></a></dt>
+<dd><p>send the obj to the spark cluster to be used on spark workers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.tokenize">
+<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#delex.tokenizer.Tokenizer.tokenize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.tokenize_set">
+<span class="sig-name descname"><span class="pre">tokenize_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="headerlink" href="#delex.tokenizer.Tokenizer.tokenize_set" title="Link to this definition"></a></dt>
+<dd><p>tokenize the string and return a set or None if the tokenize returns None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.tokenize_set_spark">
+<span class="sig-name descname"><span class="pre">tokenize_set_spark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.tokenize_set_spark" title="Link to this definition"></a></dt>
+<dd><p>return a column expression that gives the same output 
+as the tokenize method. Required for efficiency when building metadata for 
+certain methods</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="delex.tokenizer.Tokenizer.tokenize_spark">
+<span class="sig-name descname"><span class="pre">tokenize_spark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.tokenizer.Tokenizer.tokenize_spark" title="Link to this definition"></a></dt>
+<dd><p>return a column expression that gives the same output 
+as the tokenize method. Required for efficiency when building metadata for 
+certain methods</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="delex.tokenizer.WhiteSpaceTokenizer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.tokenizer.</span></span><span class="sig-name descname"><span class="pre">WhiteSpaceTokenizer</span></span><a class="headerlink" href="#delex.tokenizer.WhiteSpaceTokenizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#delex.tokenizer.Tokenizer" title="delex.tokenizer.Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tokenizer</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nunique_tokens</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">deinit</span></code>()</p></td>
+<td><p>deinitialize the object, closing resources (e.g. file handles).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">init</span></code>()</p></td>
+<td><p>initialize the object to be used on in a spark worker</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_spark</span></code>()</p></td>
+<td><p>send the obj to the spark cluster to be used on spark workers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set</span></code>(s)</p></td>
+<td><p>tokenize the string and return a set or None if the tokenize returns None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_set_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_spark</span></code>(input_col)</p></td>
+<td><p>return a column expression that gives the same output  as the tokenize method.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>CacheKey</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>build</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tokenize</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="delex.tokenizer.WhiteSpaceTokenizer.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'whitespace_tokens'</span></em><a class="headerlink" href="#delex.tokenizer.WhiteSpaceTokenizer.NAME" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-delex">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Derek Paulsen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
