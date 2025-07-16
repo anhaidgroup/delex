@@ -4,7 +4,7 @@ Here we give an example of running Delex on a single machine. We assume you have
 
 ### Step 1: Downloading Datasets
 
-To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into one directory on your local machine called 'dblp_acm'.
+To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into a directory on your local machine called 'dblp_acm'.
 
 ### Step 2: Creating a Python File
 
