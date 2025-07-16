@@ -48,5 +48,5 @@ You should also read this [short note](https://github.com/anhaidgroup/sparkly/bl
 
 ### Further Pointers
 
-See [API documentation](anhaidgroup.github.io/delex). 
+See [API documentation](https://anhaidgroup.github.io/delex). 
 For questions / comments, contact [our research group](mailto:entitymatchinginfo@gmail.com).
