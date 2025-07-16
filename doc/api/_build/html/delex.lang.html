@@ -45,34 +45,9 @@
 <li><a class="reference internal" href="#">delex.lang package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-delex.lang.program">delex.lang.program module</a><ul>
-<li><a class="reference internal" href="#delex.lang.program.BlockingProgram"><code class="docutils literal notranslate"><span class="pre">BlockingProgram</span></code></a><ul>
-<li><a class="reference internal" href="#delex.lang.program.BlockingProgram.drop_rules"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.drop_rules</span></code></a></li>
-<li><a class="reference internal" href="#delex.lang.program.BlockingProgram.keep_rules"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.keep_rules</span></code></a></li>
-<li><a class="reference internal" href="#delex.lang.program.BlockingProgram.pretty_str"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.pretty_str()</span></code></a></li>
-<li><a class="reference internal" href="#delex.lang.program.BlockingProgram.validate"><code class="docutils literal notranslate"><span class="pre">BlockingProgram.validate()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-delex.lang.rule">delex.lang.rule module</a><ul>
-<li><a class="reference internal" href="#delex.lang.rule.DropRule"><code class="docutils literal notranslate"><span class="pre">DropRule</span></code></a><ul>
-<li><a class="reference internal" href="#delex.lang.rule.DropRule.validate"><code class="docutils literal notranslate"><span class="pre">DropRule.validate()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#delex.lang.rule.KeepRule"><code class="docutils literal notranslate"><span class="pre">KeepRule</span></code></a><ul>
-<li><a class="reference internal" href="#delex.lang.rule.KeepRule.validate"><code class="docutils literal notranslate"><span class="pre">KeepRule.validate()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#delex.lang.rule.Rule"><code class="docutils literal notranslate"><span class="pre">Rule</span></code></a><ul>
-<li><a class="reference internal" href="#delex.lang.rule.Rule.contains"><code class="docutils literal notranslate"><span class="pre">Rule.contains()</span></code></a></li>
-<li><a class="reference internal" href="#delex.lang.rule.Rule.predicates"><code class="docutils literal notranslate"><span class="pre">Rule.predicates</span></code></a></li>
-<li><a class="reference internal" href="#delex.lang.rule.Rule.pretty_str"><code class="docutils literal notranslate"><span class="pre">Rule.pretty_str()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-delex.lang">Module contents</a></li>
+<li><a class="reference internal" href="#delex-lang-program-module">delex.lang.program module</a></li>
+<li><a class="reference internal" href="#delex-lang-rule-module">delex.lang.rule module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -109,196 +84,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="delex.lang.predicate.html">delex.lang.predicate package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.bootleg_predicate">delex.lang.predicate.bootleg_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.build"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.compute_scores()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.contains"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.deinit"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.index_col"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.init"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.is_topk"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.op"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.op</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.search_col"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.search_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.search_index"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.search_index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.sim"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.streamable"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.streamable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegPredicate.val"><code class="docutils literal notranslate"><span class="pre">BootlegPredicate.val</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegSim"><code class="docutils literal notranslate"><span class="pre">BootlegSim</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegSim.index_col"><code class="docutils literal notranslate"><span class="pre">BootlegSim.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegSim.invert"><code class="docutils literal notranslate"><span class="pre">BootlegSim.invert</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.BootlegSim.search_col"><code class="docutils literal notranslate"><span class="pre">BootlegSim.search_col</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.CachedNameIndexKey"><code class="docutils literal notranslate"><span class="pre">CachedNameIndexKey</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.CachedNameIndexKey.index_col"><code class="docutils literal notranslate"><span class="pre">CachedNameIndexKey.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.CachedNameIndexKey.lowercase"><code class="docutils literal notranslate"><span class="pre">CachedNameIndexKey.lowercase</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.CachedNamesKey"><code class="docutils literal notranslate"><span class="pre">CachedNamesKey</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.bootleg_predicate.CachedNamesKey.index_col"><code class="docutils literal notranslate"><span class="pre">CachedNamesKey.index_col</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.exact_match_predicate">delex.lang.predicate.exact_match_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.build"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.compute_scores()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.contains"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.deinit"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.index_col"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.init"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.is_topk"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.op"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.op</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.search_col"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.search_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.search_index"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.search_index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.sim"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.streamable"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.streamable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.exact_match_predicate.ExactMatchPredicate.val"><code class="docutils literal notranslate"><span class="pre">ExactMatchPredicate.val</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.name_map">delex.lang.predicate.name_map module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.predicate">delex.lang.predicate.predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate"><code class="docutils literal notranslate"><span class="pre">Predicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.build"><code class="docutils literal notranslate"><span class="pre">Predicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.contains"><code class="docutils literal notranslate"><span class="pre">Predicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.deinit"><code class="docutils literal notranslate"><span class="pre">Predicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.filter"><code class="docutils literal notranslate"><span class="pre">Predicate.filter()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.filter_batch"><code class="docutils literal notranslate"><span class="pre">Predicate.filter_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">Predicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">Predicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.indexable"><code class="docutils literal notranslate"><span class="pre">Predicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.init"><code class="docutils literal notranslate"><span class="pre">Predicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.is_topk"><code class="docutils literal notranslate"><span class="pre">Predicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.search"><code class="docutils literal notranslate"><span class="pre">Predicate.search()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.search_batch"><code class="docutils literal notranslate"><span class="pre">Predicate.search_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.sim"><code class="docutils literal notranslate"><span class="pre">Predicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate.streamable"><code class="docutils literal notranslate"><span class="pre">Predicate.streamable</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.set_sim_predicate">delex.lang.predicate.set_sim_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.CosinePredicate"><code class="docutils literal notranslate"><span class="pre">CosinePredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.CosinePredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">CosinePredicate.compute_scores()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.JaccardPredicate"><code class="docutils literal notranslate"><span class="pre">JaccardPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.JaccardPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">JaccardPredicate.compute_scores()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.OverlapCoeffPredicate"><code class="docutils literal notranslate"><span class="pre">OverlapCoeffPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.OverlapCoeffPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">OverlapCoeffPredicate.compute_scores()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.OverlapCoeffPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">OverlapCoeffPredicate.indexable</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.build"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.contains"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.deinit"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.init"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.invert"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.invert()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.is_topk"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.search_index"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.search_index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.sim"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.set_sim_predicate.SetSimPredicate.streamable"><code class="docutils literal notranslate"><span class="pre">SetSimPredicate.streamable</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.string_sim_predicate">delex.lang.predicate.string_sim_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.EditDistancePredicate"><code class="docutils literal notranslate"><span class="pre">EditDistancePredicate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.JaroPredicate"><code class="docutils literal notranslate"><span class="pre">JaroPredicate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.JaroWinklerPredicate"><code class="docutils literal notranslate"><span class="pre">JaroWinklerPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.JaroWinklerPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">JaroWinklerPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.JaroWinklerPredicate.contains"><code class="docutils literal notranslate"><span class="pre">JaroWinklerPredicate.contains()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.SmithWatermanPredicate"><code class="docutils literal notranslate"><span class="pre">SmithWatermanPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.SmithWatermanPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">SmithWatermanPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.SmithWatermanPredicate.contains"><code class="docutils literal notranslate"><span class="pre">SmithWatermanPredicate.contains()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.build"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.compute_scores()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.deinit"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.init"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.invert"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.invert()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.is_topk"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.search"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.search()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.search_index"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.search_index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.sim"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.string_sim_predicate.StringSimPredicate.streamable"><code class="docutils literal notranslate"><span class="pre">StringSimPredicate.streamable</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.threshold_predicate">delex.lang.predicate.threshold_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.compute_scores"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.compute_scores()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.contains"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.filter_batch"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.filter_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.index_col"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.invertable"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.invertable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.op"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.op</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.search_batch"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.search_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.search_col"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.search_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.search_index"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.search_index()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.threshold_predicate.ThresholdPredicate.val"><code class="docutils literal notranslate"><span class="pre">ThresholdPredicate.val</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate.topk_predicate">delex.lang.predicate.topk_predicate module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.Sim"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.Sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.build"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.contains"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.contains()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.deinit"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.deinit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.filter_batch"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.filter_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.index_col"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.index_component_sizes"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.index_component_sizes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.index_size_in_bytes"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.index_size_in_bytes()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.indexable"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.indexable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.init"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.invertable"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.invertable</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.is_topk"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.is_topk</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.k"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.k</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.search_batch"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.search_batch()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.search_col"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.search_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.sim"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.sim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.BM25TopkPredicate.streamable"><code class="docutils literal notranslate"><span class="pre">BM25TopkPredicate.streamable</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.CachedBM25IndexKey"><code class="docutils literal notranslate"><span class="pre">CachedBM25IndexKey</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.CachedBM25IndexKey.index_col"><code class="docutils literal notranslate"><span class="pre">CachedBM25IndexKey.index_col</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.topk_predicate.CachedBM25IndexKey.tokenizer"><code class="docutils literal notranslate"><span class="pre">CachedBM25IndexKey.tokenizer</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-delex.lang.predicate">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-bootleg-predicate-module">delex.lang.predicate.bootleg_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-exact-match-predicate-module">delex.lang.predicate.exact_match_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-name-map-module">delex.lang.predicate.name_map module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-predicate-module">delex.lang.predicate.predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-set-sim-predicate-module">delex.lang.predicate.set_sim_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-string-sim-predicate-module">delex.lang.predicate.string_sim_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-threshold-predicate-module">delex.lang.predicate.threshold_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#delex-lang-predicate-topk-predicate-module">delex.lang.predicate.topk_predicate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delex.lang.predicate.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -307,149 +101,14 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.lang.program">
-<span id="delex-lang-program-module"></span><h2>delex.lang.program module<a class="headerlink" href="#module-delex.lang.program" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.lang.program.BlockingProgram">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.lang.program.</span></span><span class="sig-name descname"><span class="pre">BlockingProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.lang.rule.KeepRule" title="delex.lang.rule.KeepRule"><span class="pre">KeepRule</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.lang.rule.DropRule" title="delex.lang.rule.DropRule"><span class="pre">DropRule</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.program.BlockingProgram" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>a blocking program that can be turned into an execution plan</p>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.lang.program.BlockingProgram.pretty_str" title="delex.lang.program.BlockingProgram.pretty_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pretty_str</span></code></a>()</p></td>
-<td><p>create a pretty string of the entire blocking program</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>validate</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="delex.lang.program.BlockingProgram.drop_rules">
-<span class="sig-name descname"><span class="pre">drop_rules</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.lang.rule.DropRule" title="delex.lang.rule.DropRule"><span class="pre">DropRule</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#delex.lang.program.BlockingProgram.drop_rules" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="delex.lang.program.BlockingProgram.keep_rules">
-<span class="sig-name descname"><span class="pre">keep_rules</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#delex.lang.rule.KeepRule" title="delex.lang.rule.KeepRule"><span class="pre">KeepRule</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#delex.lang.program.BlockingProgram.keep_rules" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.program.BlockingProgram.pretty_str">
-<span class="sig-name descname"><span class="pre">pretty_str</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#delex.lang.program.BlockingProgram.pretty_str" title="Link to this definition"></a></dt>
-<dd><p>create a pretty string of the entire blocking program</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.program.BlockingProgram.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.program.BlockingProgram.validate" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="delex-lang-program-module">
+<h2>delex.lang.program module<a class="headerlink" href="#delex-lang-program-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.lang.rule">
-<span id="delex-lang-rule-module"></span><h2>delex.lang.rule module<a class="headerlink" href="#module-delex.lang.rule" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.lang.rule.DropRule">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.lang.rule.</span></span><span class="sig-name descname"><span class="pre">DropRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate" title="delex.lang.predicate.predicate.Predicate"><span class="pre">Predicate</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.DropRule" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#delex.lang.rule.Rule" title="delex.lang.rule.Rule"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rule</span></code></a></p>
-<p>a drop rule for a blocking program</p>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code>(other)</p></td>
-<td><p>return True if <cite>self</cite> logically contains <cite>other</cite> else False.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pretty_str</span></code>()</p></td>
-<td><p>format the rule into a pretty string</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.lang.rule.DropRule.validate" title="delex.lang.rule.DropRule.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a>()</p></td>
-<td><p>check that all the predicates in this rule are streamable if not raise RuntimeError</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.rule.DropRule.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.DropRule.validate" title="Link to this definition"></a></dt>
-<dd><p>check that all the predicates in this rule are streamable
-if not raise RuntimeError</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.lang.rule.KeepRule">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.lang.rule.</span></span><span class="sig-name descname"><span class="pre">KeepRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate" title="delex.lang.predicate.predicate.Predicate"><span class="pre">Predicate</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.KeepRule" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#delex.lang.rule.Rule" title="delex.lang.rule.Rule"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rule</span></code></a></p>
-<p>a keep rule for a blocking program</p>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code>(other)</p></td>
-<td><p>return True if <cite>self</cite> logically contains <cite>other</cite> else False.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pretty_str</span></code>()</p></td>
-<td><p>format the rule into a pretty string</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.lang.rule.KeepRule.validate" title="delex.lang.rule.KeepRule.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a>()</p></td>
-<td><p>check that this rule has at least one indexable predicate if not raise RuntimeError</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.rule.KeepRule.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.KeepRule.validate" title="Link to this definition"></a></dt>
-<dd><p>check that this rule has at least one indexable predicate
-if not raise RuntimeError</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="delex.lang.rule.Rule">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">delex.lang.rule.</span></span><span class="sig-name descname"><span class="pre">Rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate" title="delex.lang.predicate.predicate.Predicate"><span class="pre">Predicate</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.Rule" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>base class for a DropRule or KeepRule</p>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#delex.lang.rule.Rule.contains" title="delex.lang.rule.Rule.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(other)</p></td>
-<td><p>return True if <cite>self</cite> logically contains <cite>other</cite> else False.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#delex.lang.rule.Rule.pretty_str" title="delex.lang.rule.Rule.pretty_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pretty_str</span></code></a>()</p></td>
-<td><p>format the rule into a pretty string</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.rule.Rule.contains">
-<span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#delex.lang.rule.Rule.contains" title="Link to this definition"></a></dt>
-<dd><p>return True if <cite>self</cite> logically contains <cite>other</cite> else False.
-That is, for any given set of record pairs C, self(C) is a superset of other(C)</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="delex.lang.rule.Rule.predicates">
-<span class="sig-name descname"><span class="pre">predicates</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="delex.lang.predicate.html#delex.lang.predicate.predicate.Predicate" title="delex.lang.predicate.predicate.Predicate"><span class="pre">Predicate</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#delex.lang.rule.Rule.predicates" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="delex.lang.rule.Rule.pretty_str">
-<span class="sig-name descname"><span class="pre">pretty_str</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#delex.lang.rule.Rule.pretty_str" title="Link to this definition"></a></dt>
-<dd><p>format the rule into a pretty string</p>
-</dd></dl>
-
-</dd></dl>
-
+<section id="delex-lang-rule-module">
+<h2>delex.lang.rule module<a class="headerlink" href="#delex-lang-rule-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-delex.lang">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-delex.lang" title="Link to this heading"></a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 </section>
 </section>
 
