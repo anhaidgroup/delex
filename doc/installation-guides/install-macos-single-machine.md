@@ -16,7 +16,7 @@ To install Delex, you can pip install from PyPI or pip install from GitHub. The 
 
 Before installing, make sure you are in the correct virtual environment. This step is necessary because this is the environment where you have installed all of the dependencies. If you followed the Sparkly installation instructions, you can activate the environment by running the following:
 ```
-	source \~/sparkly/bin/activate
+	source ~/sparkly/bin/activate
 ```
 #### Option 1: Pip Installing from PyPI
 
