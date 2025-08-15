@@ -8,13 +8,6 @@ Sparkly is a blocking-for-entity-matching package that Delex is built on top of.
 
 ### Step 2: Installing Delex
 
-To install Delex, you can pip install from PyPI or pip install from GitHub. The default is to pip install from PyPI. However, you may want to pip install from GitHub if you want to install the latest Delex version compared to the version on PyPI. For example, the GitHub version may contain bug fixes that the PyPI version does not.
-
-Before installing, make sure you are in the correct virtual environment. This step is necessary because this is the environment where you have installed all of the dependencies. If you followed the Sparkly installation instructions, you can activate the environment by running the following:
-```
-	source ~/sparkly/bin/activate
-```
-
 Before installing Delex, we should also return to the root directory by running the following command in the terminal:
 
 ```
