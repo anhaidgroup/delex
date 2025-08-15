@@ -39,7 +39,7 @@ Java, JCC and PyLucene cannot be pip installed with the above command, because t
 
 To install Delex directly from its GitHub repo, use the following command:
 ```
-	pip install https://github.com/anhaidgroup/delex.git
+	pip install git+https://github.com/anhaidgroup/delex.git@main
 ```
 Similar to pip installing from PyPI, the above command will install Delex and all of its dependencies, except Java, JCC, and PyLucene (which must have been installed as a part of the Sparkly installation process). 
 
