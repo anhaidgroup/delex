@@ -18,7 +18,18 @@ Before installing, make sure you are in the correct virtual environment. This st
 ```
 	source ~/sparkly/bin/activate
 ```
+
+Before installing Delex, we should also return to the root directory by running the following command in the terminal:
+
+```
+    cd
+```
+
+In the future you can install Delex using one of the following two options. **As of now, since Delex is still in testing, we do not yet enable Option 1 (Pip installing from PyPI). Thus you should use Option 2 (Pip installing from GitHub).**
+
 #### Option 1: Pip Installing from PyPI
+
+**Note that this option is not yet enabled. Please use Option 2.**
 
 You can install Sparkly from PyPI using the following command:
 ```
