@@ -8,24 +8,39 @@ Sparkly is a blocking-for-entity-matching package that Delex is built on top of.
 
 ### Step 2: Installing Delex
 
-Now you can install Delex. To do so, you can pip install from PyPI or from GitHub. The default is to pip install from PyPI. You may want to pip install from GitHub if you want to install the latest Delex version compared to the version on PyPI. For example, the GitHub version may contain bug fixes that the PyPI version does not.
+To install Delex, you can pip install from PyPI or pip install from GitHub. The default is to pip install from PyPI. However, you may want to pip install from GitHub if you want to install the latest Delex version compared to the version on PyPI. For example, the GitHub version may contain bug fixes that the PyPI version does not.
+
+Before installing, make sure you are in the correct virtual environment. This step is necessary because this is the environment where you have installed all of the dependencies. If you followed the Sparkly installation instructions, you can activate the environment by running the following:
+```
+	source ~/sparkly/bin/activate
+```
+
+Before installing Delex, we should also return to the root directory by running the following command in the terminal:
+
+```
+    cd
+```
+
+In the future you can install Delex using one of the following two options. **As of now, since Delex is still in testing, we do not yet enable Option 1 (Pip installing from PyPI). Thus you should use Option 2 (Pip installing from GitHub).**
 
 #### Option 1: Pip Installing from PyPI
 
-You can install Delex from PyPI using the following command:
+**Note that this option is not yet enabled. Please use Option 2.**
 
+You can install Sparkly from PyPI using the following command:
+```
 	pip install delex
-
+```
 This command will install Delex and the following dependencies: Joblib, Matplotlib, Networkx, Numba, Numpy, Pandas, Py\_Stringmatching, Pyarrow, Pydantic, Pydot PySpark, Scipy, Sparkly, Tqdm, and xxhash. These are all of Delex's dependencies, except Java, JCC, and PyLucene.
 
-Java, JCC and PyLucene cannot be pip installed with the above command, because they are not available on PyPI. If you followed the above Sparkly installation instructions, then you have already installed Java, JCC, and PyLucene as a part of the Sparkly installation. 
+Java, JCC and PyLucene cannot be pip installed with the above command, because they are not available on PyPI. If you followed the Sparkly installation instructions, then you have already installed Java, JCC, and PyLucene as a part of Sparkly installation process.
 
 #### Option 2: Pip Installing from GitHub
 
 To install Delex directly from its GitHub repo, use the following command:
-
+```
 	pip install https://github.com/anhaidgroup/delex.git
-
-Similar to pip installing from PyPI, the above command will install Delex and all of its dependencies, except Java, JCC, and PyLucene (which have been installed as a part of the Sparkly installation process). 
+```
+Similar to pip installing from PyPI, the above command will install Delex and all of its dependencies, except Java, JCC, and PyLucene (which must have been installed as a part of the Sparkly installation process). 
 
 
