@@ -3,7 +3,7 @@ matplotlib==3.7.3
 networkx==3.1
 numba==0.60.0
 numpy==1.26.0
-pandas==2.2.3
+pandas>=1.5.2
 psutil==5.9.0
 py_stringmatching==0.4.6
 pyarrow==14.0.0
