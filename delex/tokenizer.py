@@ -174,7 +174,7 @@ class ShingleTokenizer(Tokenizer):
             return []
 
         offsets = [0] + np.cumsum(list(map(len, single_toks))).tolist()
-        slices = zip(offsets[:len(single_toks) - self._n], offsets[self._n:])
+        slices = zip(offsets[:len(single_toks) - self._n + 1], offsets[self._n:])
         combined = ''.join(single_toks)
         return [combined[s:e] for s,e in slices]
 
