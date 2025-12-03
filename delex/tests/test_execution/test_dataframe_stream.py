@@ -82,5 +82,91 @@ class TestDataFrameStream:
         assert stream is not None
         assert stream._stream is not None
         assert stream._schema is not None
+        print(list(stream._stream))
+        print(stream._schema)
         assert isinstance(stream._schema, pa.Schema)
         assert len(stream._schema) == 2
+    
+    def test_dataframe_stream_to_pandas_stream(self):
+        """Test to_pandas_stream method."""
+        import pandas as pd
+        import pyspark.sql.types as T
+        import numpy as np
+
+        schema = T.StructType([
+            T.StructField('a', T.IntegerType()),
+            T.StructField('b', T.IntegerType())
+        ])
+        schema_dict = DataFrameStream._pyspark_schema_to_dict(schema)
+        stream = DataFrameStream(
+            stream=[
+                {'a': np.array([1]), 'b': np.array([2])},
+                {'a': np.array([3]), 'b': np.array([4])}
+            ],
+            schema=schema_dict
+        )
+        for df in stream.to_pandas_stream():
+            assert df is not None
+            assert isinstance(df, pd.DataFrame)
+
+    def test_dataframe_stream_to_arrow_stream(self):
+        """Test to_arrow_stream method."""
+        import pyarrow as pa
+        import pyspark.sql.types as T
+        import numpy as np
+
+        schema = T.StructType([
+            T.StructField('a', T.IntegerType()),
+            T.StructField('b', T.IntegerType())
+        ])
+        schema_dict = DataFrameStream._pyspark_schema_to_dict(schema)
+        stream = DataFrameStream(
+            stream=[
+                {'a': np.array([1]), 'b': np.array([2])},
+                {'a': np.array([3]), 'b': np.array([4])}
+            ],
+            schema=schema_dict
+        )
+        for batch in stream.to_arrow_stream():
+            assert batch is not None
+            assert isinstance(batch, pa.RecordBatch)
+
+    def test_dataframe_stream_drop(self):
+        """Test drop method."""
+        import pyspark.sql.types as T
+        schema = T.StructType([
+            T.StructField('a', T.IntegerType()),
+            T.StructField('b', T.IntegerType())
+        ])
+        schema_dict = DataFrameStream._pyspark_schema_to_dict(schema)
+        stream = DataFrameStream(stream=[{'a': 1, 'b': 2}, {'a': 3, 'b': 4}], schema=schema_dict)
+        stream = stream.drop(['a'])
+        for data in stream._stream:
+            assert 'a' not in data
+            assert 'b' in data
+
+    def test_dataframe_stream_apply(self):
+        """Test apply method."""
+        import pyspark.sql.types as T
+        schema = T.StructType([
+            T.StructField('a', T.IntegerType()),
+            T.StructField('b', T.IntegerType())
+        ])
+        schema_dict = DataFrameStream._pyspark_schema_to_dict(schema)
+        # Use arrays to match how .apply unpacks to positional arguments
+        import numpy as np
+        stream = DataFrameStream(
+            stream=[
+                {'a': np.array([1, 2, 3]), 'b': np.array([4, 5, 6])},
+                {'a': np.array([7, 8, 9]), 'b': np.array([10, 11, 12])}
+            ],
+            schema=schema_dict
+        )
+        # Lambda must take two arguments ('a', 'b') not one dict
+        stream = stream.apply(lambda a, b: a + b, ['a', 'b'], 'c', T.IntegerType())
+        for data in stream._stream:
+            assert 'c' in data
+            np.testing.assert_array_equal(
+                data['c'],
+                data['a'] + data['b']
+            )
