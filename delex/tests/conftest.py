@@ -89,11 +89,6 @@ def spark_session():
 
         spark = SparkSession.builder \
             .appName("delex-tests") \
-            .master("local[2]") \
-            .config("spark.sql.shuffle.partitions", "2") \
-            .config("spark.driver.memory", "1g") \
-            .config("spark.executor.memory", "1g") \
-            .config("spark.sql.execution.arrow.pyspark.enabled", "true") \
             .getOrCreate()
 
         yield spark
@@ -103,18 +98,65 @@ def spark_session():
         pytest.skip("PySpark not available")
 
 
+
+import random
+
 @pytest.fixture
-def sample_spark_dataframe(spark_session):
-    """Create a sample Spark DataFrame for testing."""
-    from pyspark.sql import Row
-
-    data = [
-        Row(id=1, name="Alice", value=10.5),
-        Row(id=2, name="Bob", value=20.3),
-        Row(id=3, name="Charlie", value=30.1),
+def table_a(spark_session):
+    """Create table_a (index table) for testing."""
+    # List of random words to use for the 'title' column
+    words = [
+        "apple", "banana", "cherry", "dog", "elephant", "fire", "grape",
+        "house", "ink", "jungle", "kite", "lemon", "mountain", "notebook",
+        "orange", "parrot", "queen", "river", "sun", "tree", "umbrella",
+        "violet", "wolf", "xylophone", "yellow", "zebra"
     ]
+    a = spark_session.createDataFrame(
+        [(int(i), random.choice(words)) for i in range(1000)],
+        ['_id', 'title']
+    )
+    return a
 
-    return spark_session.createDataFrame(data)
+
+@pytest.fixture
+def table_b(spark_session):
+    """Create table_b (search table) for testing."""
+    words = [
+        "alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf",
+        "hotel", "india", "juliet", "kilo", "lima", "mango", "november",
+        "oscar", "papa", "quebec", "romeo", "sierra", "tango", "uniform",
+        "victor", "whiskey", "xray", "yankee", "zulu"
+    ]
+    b = spark_session.createDataFrame(
+        [(int(i), random.choice(words)) for i in range(1000)],
+        ['_id', 'title']
+    )
+    return b
+
+
+@pytest.fixture
+def simple_blocking_program():
+    """Create a simple blocking program for testing."""
+    from delex.lang import BlockingProgram, KeepRule
+    from delex.lang.predicate import ExactMatchPredicate
+
+    pred = ExactMatchPredicate(
+        index_col='title', search_col='title', invert=False)
+    keep_rule = KeepRule(predicates=[pred])
+    return BlockingProgram(keep_rules=[keep_rule], drop_rules=[])
+
+
+@pytest.fixture
+def simple_plan_executor(spark_session, table_a, table_b):
+    """Create a simple PlanExecutor for testing."""
+    from delex.execution.plan_executor import PlanExecutor
+
+    return PlanExecutor(
+        index_table=table_a,
+        search_table=table_b,
+        optimize=False,
+        estimate_cost=False
+    )
 
 
 @pytest.fixture(autouse=True)
