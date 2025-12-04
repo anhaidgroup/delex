@@ -112,8 +112,8 @@ def table_a(spark_session):
         "violet", "wolf", "xylophone", "yellow", "zebra"
     ]
     a = spark_session.createDataFrame(
-        [(int(i), random.choice(words)) for i in range(1000)],
-        ['_id', 'title']
+        [(int(i), random.choice(words), random.choice(words)) for i in range(1000)],
+        ['_id', 'title', 'description']
     )
     return a
 
@@ -128,8 +128,8 @@ def table_b(spark_session):
         "victor", "whiskey", "xray", "yankee", "zulu"
     ]
     b = spark_session.createDataFrame(
-        [(int(i), random.choice(words)) for i in range(1000)],
-        ['_id', 'title']
+        [(int(i), random.choice(words), random.choice(words)) for i in range(1000)],
+        ['_id', 'title', 'description']
     )
     return b
 
