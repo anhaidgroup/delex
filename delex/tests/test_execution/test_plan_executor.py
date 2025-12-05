@@ -70,27 +70,16 @@ class TestPlanExecutor:
     @pytest.mark.requires_spark
     def test_plan_executor_execute(
             self, simple_plan_executor, simple_blocking_program):
-        """Test execute method (exercises lines 34-42)."""
+        """Test execute method"""
         df, stats = simple_plan_executor.execute(simple_blocking_program)
         assert df is not None
         assert stats is not None
         assert stats.optimize_time >= 0.0
         assert stats.cost_estimation_time >= 0.0
         assert stats.graph_exec_stats is not None
-        # Test total_time computed field (line 25)
         assert stats.total_time >= 0.0
         assert stats.total_time == (
             stats.graph_exec_stats.total_time +
             stats.optimize_time +
             stats.cost_estimation_time
         )
-
-
-@pytest.mark.integration
-class TestPlanExecutorIntegration:
-    """Integration tests for PlanExecutor."""
-
-    @pytest.mark.slow
-    def test_plan_executor_end_to_end(self):
-        """Test complete plan execution workflow."""
-        pass
