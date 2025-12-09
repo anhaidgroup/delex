@@ -4,8 +4,11 @@ Tests for graph.node module.
 This module tests the Node base class and its implementations.
 """
 import pytest
-from delex.graph.node import Node, PredicateNode
+from delex.graph.node import (
+    Node, PredicateNode, UnionNode, IntersectNode, MinusNode, SetOpNode
+)
 from delex.lang.predicate import ExactMatchPredicate
+
 
 @pytest.mark.unit
 class TestNode:
@@ -228,3 +231,189 @@ class TestPredicateNode:
         key = HashIndex.CacheKey(index_col='title', lowercase=False)
         assert key in sizes
         assert sizes[key] is not None and sizes[key] > 0
+
+    def test_equivalent(self):
+        """Test equivalent method."""
+        pred = ExactMatchPredicate(index_col='title', search_col='title', invert=False)    
+        node = PredicateNode(pred)
+        other_node = PredicateNode(pred)
+        assert node.equivalent(other_node)
+
+
+@pytest.mark.unit
+class TestSetOpNode:
+    """Tests for SetOpNode class."""
+
+    class DummyNode(SetOpNode):
+        def _execute_batch(self, *cols):
+            return "called"
+
+        def validate(self):
+            return None
+
+    def test_node_init(self):
+        """Test Node initialization."""
+        node = self.DummyNode()
+        assert node is not None
+
+    def test_working_set_size(self):
+        """Test working_set_size method."""
+        node = self.DummyNode()
+        assert node.working_set_size() == {}
+
+    def test_execute(self):
+        """Test execute method."""
+        node = self.DummyNode()
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node.add_in_edge(left)
+        node.add_in_edge(right)
+
+        class DummyStream:
+            def apply(self, func, input_cols, output_col, output_type):
+                return "called"
+
+        dummy_stream = DummyStream()
+        assert node.execute(dummy_stream) == "called"
+
+    def test_streamable(self):
+        """Test streamable property."""
+        node = self.DummyNode()
+        assert node.streamable
+
+
+@pytest.mark.unit
+class TestUnionNode:
+    """Tests for UnionNode class."""
+
+    class DummyNode(TestNode.DummyNode):
+        pass
+
+    def test_node_init(self):
+        """Test Node initialization."""
+        node = UnionNode()
+        assert node is not None
+
+    def test_execute(self):
+        """Test execute method."""
+        node = UnionNode()
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node.add_in_edge(left)
+        node.add_in_edge(right)
+
+        class DummyStream:
+            def apply(self, func, input_cols, output_col, output_type):
+                return "called"
+
+        dummy_stream = DummyStream()
+        assert node.execute(dummy_stream) == "called"
+
+    def test_streamable(self):
+        """Test streamable property."""
+        node = UnionNode()
+        assert node.streamable
+
+    def test_validate_fails_with_insufficient_inputs(self):
+        """Test validate method raises error with insufficient inputs."""
+        with pytest.raises(RuntimeError):
+            node = UnionNode()
+            node.validate()
+
+    def test_validate_passes_with_sufficient_inputs(self):
+        """Test validate method passes with sufficient inputs."""
+        node = UnionNode()
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node.add_in_edge(left)
+        node.add_in_edge(right)
+        node.validate()
+
+
+@pytest.mark.unit
+class TestIntersectNode:
+    """Tests for IntersectNode class."""
+
+    class DummyNode(TestNode.DummyNode):
+        pass
+
+    def test_node_init(self):
+        """Test Node initialization."""
+        node = IntersectNode()
+        assert node is not None
+
+    def test_execute(self):
+        """Test execute method."""
+        node = IntersectNode()
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node.add_in_edge(left)
+        node.add_in_edge(right)
+
+        class DummyStream:
+            def apply(self, func, input_cols, output_col, output_type):
+                return "called"
+
+        dummy_stream = DummyStream()
+        assert node.execute(dummy_stream) == "called"
+
+    def test_validate_fails_with_insufficient_inputs(self):
+        """Test validate method raises error with insufficient inputs."""
+        with pytest.raises(RuntimeError):
+            node = IntersectNode()
+            node.validate()
+
+    def test_validate_passes_with_sufficient_inputs(self):
+        """Test validate method passes with sufficient inputs."""
+        node = IntersectNode()
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node.add_in_edge(left)
+        node.add_in_edge(right)
+        node.validate()
+
+
+@pytest.mark.unit
+class TestMinusNode:
+    """Tests for MinusNode class."""
+
+    class DummyNode(TestNode.DummyNode):
+        pass
+
+    def test_node_init(self):
+        """Test Node initialization."""
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node = MinusNode(left, right)
+        assert node is not None
+        assert node.in_degree == 2
+
+    def test_left(self):
+        """Test left property."""
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node = MinusNode(left, right)
+        assert node.left == left
+
+    def test_right(self):
+        """Test right property."""
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node = MinusNode(left, right)
+        assert node.right == right
+
+    def test_validate_passes_with_two_inputs(self):
+        """Test validate method passes with two inputs."""
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node = MinusNode(left, right)
+        node.validate()
+
+    def test_validate_fails_with_wrong_input_count(self):
+        """Test validate method raises error with wrong input count."""
+        left = self.DummyNode()
+        right = self.DummyNode()
+        node = MinusNode(left, right)
+        node.remove_in_edge(left)
+        with pytest.raises(RuntimeError):
+            node.validate()
