@@ -3,7 +3,7 @@ Tests for index.set_sim_index module.
 
 This module tests set similarity indexing functionality.
 
-**njit functions are not included in the pytest coverage. Also, we ignore the SetSimIndexSlice class. Our actual coverage is therefore: 100/101, missing line 101. 
+**njit/jitclass functions are not included in the pytest coverage. Our actual coverage is therefore: 100/101, missing line 101. 
 """
 import pytest
 import numpy as np
