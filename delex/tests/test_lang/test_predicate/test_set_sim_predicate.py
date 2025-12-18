@@ -4,9 +4,11 @@ Tests for lang.predicate.set_sim_predicate module.
 This module tests set similarity predicate functionality.
 """
 import pytest
-import numpy as np
-from delex.lang.predicate import JaccardPredicate, SetSimPredicate, OverlapCoeffPredicate, CosinePredicate
+from delex.lang.predicate import (
+    JaccardPredicate, SetSimPredicate, OverlapCoeffPredicate,
+    CosinePredicate)
 from delex.tokenizer import QGramTokenizer
+import numpy as np
 import operator
 from delex.utils import BuildCache
 
