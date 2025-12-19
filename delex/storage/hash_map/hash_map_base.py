@@ -18,7 +18,7 @@ class DistributableHashMap(SparkDistributable):
 
     @property
     def on_spark(self):
-        return self._memmap_arr.on_spark
+        return self._memmap_arr._on_spark
 
     def init(self):
         self._memmap_arr.init()
