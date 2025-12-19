@@ -104,7 +104,7 @@ class TestIdOffsetHashMap:
         ints = np.array([0, 1], dtype=np.int32)
         
         hash_map = IdOffsetHashMap.build(longs, ints)
-        assert hash_map.on_spark is False
+        assert hash_map._memmap_arr._on_spark is False
         hash_map.to_spark()
-        assert hash_map.on_spark is True
+        assert hash_map._memmap_arr._on_spark is True
         hash_map._memmap_arr.delete()
