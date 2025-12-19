@@ -18,7 +18,7 @@ class DistributableHashMap(SparkDistributable):
 
     @property
     def on_spark(self):
-        return self._memmap_arr._on_spark
+        return self._memmap_arr.on_spark
 
     def init(self):
         self._memmap_arr.init()
@@ -28,6 +28,9 @@ class DistributableHashMap(SparkDistributable):
 
     def to_spark(self):
         self._memmap_arr.to_spark()
+
+    def delete(self):
+        self._memmap_arr.delete()
 
     @staticmethod
     def _allocate_map(nkeys, load_factor, dtype):
