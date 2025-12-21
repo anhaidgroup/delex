@@ -132,6 +132,7 @@ class BootlegPredicate(ThresholdPredicate):
         if for_search:
             key = CachedNameIndexKey(
                     index_col=self._index_col, 
+                    lowercase=False
             )
         else:
             key = CachedNamesKey(

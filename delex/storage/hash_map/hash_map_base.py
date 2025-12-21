@@ -29,6 +29,9 @@ class DistributableHashMap(SparkDistributable):
     def to_spark(self):
         self._memmap_arr.to_spark()
 
+    def delete(self):
+        self._memmap_arr.delete()
+
     @staticmethod
     def _allocate_map(nkeys, load_factor, dtype):
         map_size = int(nkeys / load_factor)
