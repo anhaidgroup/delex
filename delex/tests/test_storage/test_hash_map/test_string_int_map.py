@@ -52,7 +52,7 @@ class TestStringIntHashMap:
         assert len(results) == 3
         assert results[0] == 10
         assert results[1] == 20
-        assert results[2] == -1  # Non-existent key
+        assert results[2] == -1
         
         hash_map.deinit()
         hash_map._memmap_arr.delete()
