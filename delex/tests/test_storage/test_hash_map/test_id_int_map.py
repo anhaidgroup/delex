@@ -32,7 +32,7 @@ class TestIdOffsetHashMap:
         assert hash_map[1] == 10
         assert hash_map[2] == 20
         assert hash_map[3] == 30
-        assert hash_map[999] == -1  # Non-existent key
+        assert hash_map[999] == -1
         
         hash_map.deinit()
         hash_map._memmap_arr.delete()
@@ -51,7 +51,7 @@ class TestIdOffsetHashMap:
         assert len(results) == 3
         assert results[0] == 10
         assert results[1] == 20
-        assert results[2] == -1  # Non-existent key
+        assert results[2] == -1
         
         hash_map.deinit()
         hash_map._memmap_arr.delete()
@@ -64,7 +64,6 @@ class TestIdOffsetHashMap:
         hash_map = IdOffsetHashMap.build(longs, ints)
         hash_map.init()
         
-        # Test different numeric types
         assert hash_map[np.uint64(1)] == 10
         assert hash_map[np.int64(2)] == 20
         assert hash_map[np.uint32(1)] == 10

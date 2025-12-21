@@ -5,10 +5,13 @@ import pytest
 import sys
 import tempfile
 import shutil
+import os
+import uuid
 from pathlib import Path
 from typing import Generator
 import numpy as np
 import pandas as pd
+import random
 
 # Add the parent directory to the path so we can import delex modules
 project_root = Path(__file__).parent.parent
@@ -78,11 +81,14 @@ def sample_string_list():
     return ['apple', 'banana', 'cherry', 'date', 'elderberry']
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def spark_session():
     """
     Create a Spark session for testing.
-    Uses local mode with minimal resources for fast tests.
+    Uses function scope to ensure each test gets a fresh Spark context
+    with a clean file distribution cache, preventing file conflicts.
+    This is slower than session scope but necessary to avoid Spark file
+    distribution conflicts.
     """
     try:
         from pyspark.sql import SparkSession
@@ -98,9 +104,6 @@ def spark_session():
         pytest.skip("PySpark not available")
 
 
-
-import random
-
 @pytest.fixture
 def table_a(spark_session):
     """Create table_a (index table) for testing."""
@@ -111,10 +114,9 @@ def table_a(spark_session):
         "orange", "parrot", "queen", "river", "sun", "tree", "umbrella",
         "violet", "wolf", "xylophone", "yellow", "zebra"
     ]
-    a = spark_session.createDataFrame(
-        [(int(i), random.choice(words), random.choice(words)) for i in range(1000)],
-        ['_id', 'title', 'description']
-    )
+    data = [(int(i), random.choice(words), random.choice(words))
+            for i in range(1000)]
+    a = spark_session.createDataFrame(data, ['_id', 'title', 'description'])
     return a
 
 
@@ -127,10 +129,9 @@ def table_b(spark_session):
         "oscar", "papa", "quebec", "romeo", "sierra", "tango", "uniform",
         "victor", "whiskey", "xray", "yankee", "zulu"
     ]
-    b = spark_session.createDataFrame(
-        [(int(i), random.choice(words), random.choice(words)) for i in range(1000)],
-        ['_id', 'title', 'description']
-    )
+    data = [(int(i), random.choice(words), random.choice(words))
+            for i in range(1000)]
+    b = spark_session.createDataFrame(data, ['_id', 'title', 'description'])
     return b
 
 
@@ -160,10 +161,46 @@ def simple_plan_executor(spark_session, table_a, table_b):
 
 
 @pytest.fixture(autouse=True)
-def reset_state():
+def unique_temp_files(monkeypatch):
     """
-    Fixture that runs before each test to reset any global state.
-    Override this in specific test modules if needed.
+    Monkeypatch mkstemp to ensure unique filenames across tests.
+    Spark's file distribution uses filenames as keys, so if two tests create
+    files with the same name (possible with mkstemp), Spark will conflict.
+    By adding a UUID to each filename, we ensure uniqueness.
     """
+    original_mkstemp = tempfile.mkstemp
+
+    def unique_mkstemp(*args, **kwargs):
+        """Wrapper around mkstemp that ensures unique filenames."""
+        fd, path = original_mkstemp(*args, **kwargs)
+        # Add UUID to filename to ensure uniqueness
+        path_obj = Path(path)
+        unique_id = uuid.uuid4().hex[:8]
+        unique_path = (path_obj.parent /
+                       f"{path_obj.stem}_{unique_id}{path_obj.suffix}")
+        # Rename to unique name (fd stays valid as it's tied to the inode)
+        os.rename(path, unique_path)
+        return fd, str(unique_path)
+
+    monkeypatch.setattr(tempfile, 'mkstemp', unique_mkstemp)
     yield
-    # Add any cleanup logic here if needed
+    monkeypatch.setattr(tempfile, 'mkstemp', original_mkstemp)
+
+
+@pytest.fixture(autouse=True)
+def reset_state(spark_session):
+    """
+    Fixture that runs before and after each test to reset any global state.
+    Cleans up temporary files and ensures Spark's file cache doesn't conflict.
+    """
+    # Before test: ensure clean state
+    yield
+    # After test: cleanup
+    # Force Spark to complete any pending operations
+    try:
+        # Small operation to ensure Spark processes any pending
+        # file distributions
+        spark_context = spark_session.sparkContext
+        _ = spark_context.parallelize([1]).collect()
+    except Exception:
+        pass
