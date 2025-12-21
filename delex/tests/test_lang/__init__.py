@@ -1,0 +1,4 @@
+"""
+Tests for lang module.
+"""
+

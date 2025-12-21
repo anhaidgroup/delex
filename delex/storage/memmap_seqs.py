@@ -38,7 +38,7 @@ class MemmapSeqs(SparkDistributable):
     
     def delete(self):
         self._seq_arr.delete()
-        self._offset_arr.delet()
+        self._offset_arr.delete()
         self._id_to_offset_map.delete()
 
     def to_spark(self):
