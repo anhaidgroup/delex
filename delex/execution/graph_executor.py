@@ -186,15 +186,19 @@ class GraphExecutor(BaseModel):
         return search_table, stats
 
     @type_check_call
-    def execute(self, sink: Node, projection: Optional[list[str]]=None):
+    def execute(self, sink: Node, search_table_id_col: str, projection: Optional[list[str]]=None):
         """
         execute the graph `sink` over self.index_table and self.search_table
         optionally, projecting columns `projection` along with the output of executing `sink`
+        always projects the search table id column, renamed as 'id2'
 
         Parameters
         ----------
         sink : Node
             the sink of the execution graph
+
+        search_table_id_col : str
+            the column name for the id of the search table
 
         projection : Optional[list[str]] = None
             columns to be projected along with the output of `sink`
@@ -216,15 +220,19 @@ class GraphExecutor(BaseModel):
 
         search_table = self.search_table
 
-        if projection is not None:
-            missing = [c for c in projection if c not in search_table.columns]
-            if len(missing):
-                raise ValueError(f'missing columns from projection {missing}')
-            # project out unused columns
-            deps = set(projection) | {d for n in sorted_nodes for d in n.iter_dependencies()}
-            select = [c for c in search_table.columns if c in deps]
-            logger.info(f'projecting {select}')
-            search_table = search_table.select(*select)
+        if projection is None:
+            projection = [search_table_id_col]
+        elif search_table_id_col not in projection:
+            projection = projection + [search_table_id_col]
+            
+        missing = [c for c in projection if c not in search_table.columns]
+        if len(missing):
+            raise ValueError(f'missing columns from projection {missing}')
+        # project out unused columns
+        deps = set(projection) | {d for n in sorted_nodes for d in n.iter_dependencies()}
+        select = [c for c in search_table.columns if c in deps]
+        logger.info(f'projecting {select}')
+        search_table = search_table.select(*select)
         
         if self.use_chunking and working_set_size >= self.ram_size_in_bytes:
             search_table, stats = self._execute_with_chunking(sorted_nodes, self.index_table, search_table)
@@ -244,12 +252,12 @@ class GraphExecutor(BaseModel):
         else:
             select_exprs = list(projection)
 
-        output_expr = search_table[sorted_nodes[-1].output_col].getField('ids').alias('ids')
+        output_expr = search_table[sorted_nodes[-1].output_col].getField('id1_list').alias('id1_list')
         select_exprs.append(output_expr)
         search_table = search_table.select(*select_exprs)
-
+        search_table = search_table.withColumnRenamed(search_table_id_col, 'id2')
         return search_table, graph_exec_stats
-    
+
     @staticmethod
     def _exp_search(n_recs, ram_size, f):
         """
@@ -613,7 +621,7 @@ class GraphExecutor(BaseModel):
                 temp = F.col(temp_name)
                 expr = F.struct(*[
                                     partitioner.filter_array(
-                                        temp.getField('ids'),
+                                        temp.getField('id1_list'),
                                         temp.getField(f),
                                         partition_num
                                     ).alias(f) for f in fields
@@ -645,7 +653,7 @@ class GraphExecutor(BaseModel):
         merge the topk results in spark
         """
         cols = [df[c] for c in struct_cols]
-        id_lists = F.concat(*[c.getField('ids') for c in cols])
+        id_lists = F.concat(*[c.getField('id1_list') for c in cols])
         scores = F.concat(*[c.getField('scores') for c in cols])
         expr = GraphExecutor._topk_spark(scores, id_lists, k)
         return expr
@@ -658,19 +666,19 @@ class GraphExecutor(BaseModel):
             raise ValueError(f'k must be >= 1, {k=}')
 
 
-        @F.pandas_udf('scores array<float>, ids array<long>')
+        @F.pandas_udf('scores array<float>, id1_list array<long>')
         def _topk_impl(itr: Iterator[Tuple[pd.Series, pd.Series]]) -> Iterator[pd.DataFrame]:
             res = []
             for pair in itr:
                 res.clear()
-                for scores, ids in zip(pair[0], pair[1]):
-                    if len(ids) > k:
+                for scores, id1_list in zip(pair[0], pair[1]):
+                    if len(id1_list) > k:
                         indexes = scores.argsort()[::-1][:k]
-                        ids = ids[indexes]
+                        id1_list = id1_list[indexes]
                         scores = scores[indexes]
-                    res.append( (scores, ids) )
+                    res.append( (scores, id1_list) )
 
-                yield pd.DataFrame(res, columns=['scores', 'ids'])
+                yield pd.DataFrame(res, columns=['scores', 'id1_list'])
 
         return _topk_impl(scores_col, ids_col)
 
@@ -681,7 +689,7 @@ class GraphExecutor(BaseModel):
         concatentate structs with array fields
         """
         cols = [df[c] for c in struct_cols]
-        id_lists = F.concat(*[c.getField('ids') for c in cols]).alias('ids')
+        id_lists = F.concat(*[c.getField('id1_list') for c in cols]).alias('id1_list')
         fields = [id_lists]
         if all(('scores' in df.schema[c].dataType.fieldNames()) for c in struct_cols):
             scores = F.concat(*[c.getField('scores') for c in cols]).alias('scores')

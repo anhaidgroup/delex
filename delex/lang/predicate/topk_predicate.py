@@ -178,7 +178,7 @@ class BM25TopkPredicate(Predicate):
                 self.k
             ).rename(columns={'search_time' : 'time'})
 
-        return res[['scores', 'ids', 'time']]
+        return res[['scores', 'id1_list', 'time']]
 
     def filter_batch(self, queries: pd.Series, id1_lists: pd.Series) -> Iterator[pd.DataFrame]:
         raise RuntimeError('topk cannot be used as a filter')
