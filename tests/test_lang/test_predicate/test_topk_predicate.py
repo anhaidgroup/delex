@@ -110,10 +110,10 @@ class TestBM25TopkPredicate:
         assert isinstance(res, pd.DataFrame)
         assert len(res) == 2
         assert 'scores' in res.columns
-        assert 'ids' in res.columns
+        assert 'id1_list' in res.columns
         assert 'time' in res.columns
         assert len(res.iloc[0]['scores']) > 0
-        assert len(res.iloc[0]['ids']) > 0
+        assert len(res.iloc[0]['id1_list']) > 0
         pred.deinit()
 
     def test_bm25_topk_predicate_filter_batch(self):

@@ -114,7 +114,7 @@ class Predicate(ABC):
     def search_batch(self, queries: pd.Series) -> pd.DataFrame:
         """
         perform search with `queries` return a dataframe 
-        with schema (ids array<long>, scores array<float>, time float)
+        with schema (id1_list array<long>, scores array<float>, time float)
         """
 
     def search(self, itr : Iterator[pd.Series]) -> Iterator[pd.DataFrame]:
@@ -132,7 +132,7 @@ class Predicate(ABC):
         filter each id_list in id1_lists using this predicate. This is, 
         for each query, id_list pair in zip(`queries`, `id1_lists`), return only the ids 
         which satisfy predicate(query, id) for id in id_list. Return a dataframe 
-        with schema (ids array<long>, scores array<float>, time float)
+        with schema (id1_list array<long>, scores array<float>, time float)
         """
 
     def filter(self, itr : Iterator[Tuple[pd.Series, pd.Series]]) -> Iterator[pd.DataFrame]:

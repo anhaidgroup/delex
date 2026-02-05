@@ -82,7 +82,7 @@ class ThresholdPredicate(Predicate, ABC):
                 t = time.perf_counter() - start_t
                 res.append((scores, ids, t))
 
-        return pd.DataFrame(res, columns=['scores', 'ids', 'time'])
+        return pd.DataFrame(res, columns=['scores', 'id1_list', 'time'])
 
     def filter_batch(self, queries: pd.Series, id1_lists: pd.Series) -> Iterator[pd.DataFrame]:
         res = []
@@ -96,6 +96,6 @@ class ThresholdPredicate(Predicate, ABC):
                 mask = self._op(scores, self._val)
                 res.append( (scores[mask], id_list[mask], t) ) 
 
-        return pd.DataFrame(res, columns=['scores', 'ids', 'time'])
+        return pd.DataFrame(res, columns=['scores', 'id1_list', 'time'])
 
 
