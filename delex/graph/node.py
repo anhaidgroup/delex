@@ -329,7 +329,7 @@ class PredicateNode(Node):
     """
     _OUTPUT_TYPE = T.StructType([
             T.StructField('scores', T.ArrayType(T.FloatType())),
-            T.StructField('ids', T.ArrayType(T.LongType())),
+            T.StructField('id1_list', T.ArrayType(T.LongType())),
             T.StructField('time', T.FloatType()),
     ])
 
@@ -364,7 +364,7 @@ class PredicateNode(Node):
             input_cols = [self.predicate.search_col]
             func = self.predicate.search_batch
         else:
-            in_col = (next(self.iter_in()).output_col, 'ids')
+            in_col = (next(self.iter_in()).output_col, 'id1_list')
             input_cols = [self.predicate.search_col, in_col]
             func = self.predicate.filter_batch
 
@@ -391,7 +391,7 @@ class SetOpNode(Node):
     """
 
     _OUTPUT_TYPE = T.StructType([
-            T.StructField('ids', T.ArrayType(T.LongType())),
+            T.StructField('id1_list', T.ArrayType(T.LongType())),
     ])
 
     def __init__(self):
@@ -411,7 +411,7 @@ class SetOpNode(Node):
         return {}
 
     def execute(self, stream):
-        input_cols = [(n.output_col, 'ids') for n in self.iter_in()]
+        input_cols = [(n.output_col, 'id1_list') for n in self.iter_in()]
         return stream.apply(self._execute_batch, input_cols, self.output_col, self._OUTPUT_TYPE)
 
 
@@ -431,7 +431,7 @@ class UnionNode(SetOpNode):
     
     def _execute_batch(self, *cols):
         itr = (np.unique(np.concatenate(t)) for t in zip(*cols))
-        return pd.DataFrame({'ids' : np.fromiter(itr, dtype=object, count=len(cols[0]))})
+        return pd.DataFrame({'id1_list' : np.fromiter(itr, dtype=object, count=len(cols[0]))})
 
     def validate(self):
         if self.in_degree < 2:
@@ -449,7 +449,7 @@ class IntersectNode(SetOpNode):
         res = cols[0]
         for c in cols[1:]:
             res = [np.intersect1d(x,y) for x, y in zip(res, c)]
-        return pd.DataFrame({'ids' : np.array(res, dtype=object)})
+        return pd.DataFrame({'id1_list' : np.array(res, dtype=object)})
 
     def validate(self):
         if self.in_degree < 2:
@@ -470,7 +470,7 @@ class MinusNode(SetOpNode):
 
     def _execute_batch(self, *cols):
         res = (np.setdiff1d(x,y) for x, y in zip(*cols))
-        return pd.DataFrame({'ids' : np.fromiter(res, dtype=object, count=len(cols[0]))})
+        return pd.DataFrame({'id1_list' : np.fromiter(res, dtype=object, count=len(cols[0]))})
     
     @property
     def left(self):

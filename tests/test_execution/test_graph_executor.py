@@ -49,7 +49,7 @@ class TestGraphExecutor:
         pred = ExactMatchPredicate(
             index_col='title', search_col='title', invert=False)
         node = PredicateNode(pred)
-        s_table, g_stats = executor.execute(sink=node)
+        s_table, g_stats = executor.execute(sink=node, search_table_id_col='_id')
         assert s_table is not None
         assert g_stats is not None
         assert len(g_stats.nodes) >= 1
@@ -100,7 +100,7 @@ class TestGraphExecutor:
             "DummyModel", (),
             {"predict": lambda self, size: max(size * 13.276, 1000)})()
 
-        s_table, g_stats = executor.execute(sink=em_node)
+        s_table, g_stats = executor.execute(sink=em_node, search_table_id_col='_id')
         assert s_table is not None
         assert g_stats is not None
         assert len(g_stats.nodes) >= 1
@@ -130,7 +130,7 @@ class TestGraphExecutor:
         pred = ExactMatchPredicate(
             index_col='title', search_col='title', invert=False)
         node = PredicateNode(pred)
-        s_table, g_stats = executor.execute(sink=node, projection=['_id', 'title'])
-        assert s_table.columns == ['_id', 'title', 'ids']
+        s_table, g_stats = executor.execute(sink=node, search_table_id_col='_id', projection=['_id', 'title'])
+        assert s_table.columns == ['id2', 'title', 'id1_list']
         assert s_table.count() == table_b.count()
 

@@ -71,7 +71,7 @@ class TestPlanExecutor:
     def test_plan_executor_execute(
             self, simple_plan_executor, simple_blocking_program):
         """Test execute method"""
-        df, stats = simple_plan_executor.execute(simple_blocking_program)
+        df, stats = simple_plan_executor.execute(simple_blocking_program, search_table_id_col='_id')
         assert df is not None
         assert stats is not None
         assert stats.optimize_time >= 0.0
