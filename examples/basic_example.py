@@ -63,12 +63,12 @@ prog = BlockingProgram(
 executor = PlanExecutor(
         index_table=index_table, 
         search_table=search_table,
-        index_table_id_col='id',
+        index_table_id_col='_id',
         optimize=False,
         estimate_cost=False,
 )
 
-candidates, stats = executor.execute(prog, search_table_id_col='id', projection=['id'])
+candidates, stats = executor.execute(prog, search_table_id_col='_id', projection=[])
 candidates = candidates.persist()
 
 candidates.show()
