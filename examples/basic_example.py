@@ -50,8 +50,7 @@ gold_path = data_path / 'gold.parquet'
 index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
-index_table = index_table.withColumnRenamed('_id', 'id')
-search_table = search_table.withColumnRenamed('_id', 'id')
+
 
 prog = BlockingProgram(
         keep_rules = [
