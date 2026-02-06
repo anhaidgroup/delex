@@ -38,7 +38,7 @@ spark = SparkSession.builder\
                     .getOrCreate()
 
 # path to the test data
-data_path = (Path().resolve()).absolute()
+data_path = (Path().resolve() / 'data' / 'dblp_acm').absolute()
 # table to be indexed
 index_table_path = data_path / 'table_a.parquet'
 # table for searching
@@ -50,7 +50,8 @@ gold_path = data_path / 'gold.parquet'
 index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
-index_table.printSchema()
+index_table = index_table.withColumnRenamed('_id', 'id')
+search_table = search_table.withColumnRenamed('_id', 'id')
 
 prog = BlockingProgram(
         keep_rules = [
@@ -63,17 +64,18 @@ prog = BlockingProgram(
 executor = PlanExecutor(
         index_table=index_table, 
         search_table=search_table,
+        index_table_id_col='id',
         optimize=False,
         estimate_cost=False,
 )
 
-candidates, stats = executor.execute(prog, ['_id'])
+candidates, stats = executor.execute(prog, search_table_id_col='id', projection=['id'])
 candidates = candidates.persist()
 
 candidates.show()
 pairs = candidates.select(
-                    F.explode('ids').alias('a_id'),
-                    F.col('_id').alias('b_id')
+                    F.explode('id1_list').alias('a_id'),
+                    F.col('id2').alias('b_id')
                 )
 gold = gold.drop('__index_level_0__')
 n_pairs = pairs.count()

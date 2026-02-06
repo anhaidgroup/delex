@@ -30,10 +30,10 @@ class PlanExecutor(GraphExecutor):
     optimize : bool
     estimate_cost : bool
 
-    def execute(self, prog, projection=None):
+    def execute(self, prog, search_table_id_col, projection=None):
         plan, cost_estimation_time, optimize_time = self.generate_plan(prog)
 
-        df, stats = super().execute(plan, projection)
+        df, stats = super().execute(plan, search_table_id_col, projection)
         stats = PlanExecutionStats(
                 optimize_time=optimize_time,
                 cost_estimation_time=cost_estimation_time,

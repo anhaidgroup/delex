@@ -76,10 +76,10 @@ class TestThresholdPredicate:
         assert isinstance(res, pd.DataFrame)
         assert len(res) == 3
         assert 'scores' in res.columns
-        assert 'ids' in res.columns
+        assert 'id1_list' in res.columns
         assert 'time' in res.columns
         assert len(res.iloc[1]['scores']) == 0
-        assert len(res.iloc[1]['ids']) == 0
+        assert len(res.iloc[1]['id1_list']) == 0
         assert res.iloc[1]['time'] == 0.0
         assert len(res.iloc[0]['scores']) >= 0
         assert len(res.iloc[2]['scores']) >= 0
@@ -109,10 +109,10 @@ class TestThresholdPredicate:
         assert isinstance(res, pd.DataFrame)
         assert len(res) == 3
         assert 'scores' in res.columns
-        assert 'ids' in res.columns
+        assert 'id1_list' in res.columns
         assert 'time' in res.columns
         assert len(res.iloc[0]['scores']) > 0
-        assert len(res.iloc[0]['ids']) > 0
+        assert len(res.iloc[0]['id1_list']) > 0
         assert len(res.iloc[1]['scores']) == 0
         assert res.iloc[1]['time'] == 0.0
         assert len(res.iloc[2]['scores']) >= 0

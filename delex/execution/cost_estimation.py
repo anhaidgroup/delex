@@ -296,7 +296,7 @@ class CostEstimator:
             exprs = []
             for pred, col_name in index_preds.items():
                 exprs.append( data[col_name].getField('time').alias(col_name + '_time') )
-                exprs.append( F.size(data[col_name].getField('ids')).alias(col_name + '_size') )
+                exprs.append( F.size(data[col_name].getField('id1_list')).alias(col_name + '_size') )
 
             res = data.select(*exprs)\
                         .toPandas()
@@ -540,7 +540,7 @@ class CostEstimator:
 
 _OUTPUT_TYPE = T.StructType([
         T.StructField('scores', T.ArrayType(T.FloatType())),
-        T.StructField('ids', T.ArrayType(T.LongType())),
+        T.StructField('id1_list', T.ArrayType(T.LongType())),
         T.StructField('time', T.FloatType()),
 ])
 
@@ -625,7 +625,7 @@ def _compute_scores_lambda(predicate: lang.Predicate):
                 t = time.perf_counter() - start_t
                 res.append( (scores, id_list, t) ) 
 
-        return pd.DataFrame(res, columns=['scores', 'ids', 'time'])
+        return pd.DataFrame(res, columns=['scores', 'id1_list', 'time'])
 
     return f   
 

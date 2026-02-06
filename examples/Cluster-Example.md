@@ -124,7 +124,7 @@ executor = PlanExecutor(
         estimate_cost=False,
 )
 
-candidates, stats = executor.execute(prog, ['_id'])
+candidates, stats = executor.execute(prog, search_table_id_col='_id', projection=['_id'])
 candidates = candidates.persist()
 candidates.show()
 ```
@@ -136,8 +136,8 @@ Finally, we can compute recall. As you can see, the output of the PlanExecutor i
 ```
 # unroll the output
 pairs = candidates.select(
-                    F.explode('ids').alias('a_id'),
-                    F.col('_id').alias('b_id')
+                    F.explode('id1_list').alias('a_id'),
+                    F.col('id2').alias('b_id')
                 )
 # total number
 n_pairs = pairs.count()
