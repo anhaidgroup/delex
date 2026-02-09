@@ -2,6 +2,10 @@ import pandas as pd
 import pyspark.sql as sql
 import pyspark.sql.functions as F
 
+from delex.utils.funcs import get_logger
+
+logger = get_logger(__name__)
+
 
 def check_tables(table_a : sql.DataFrame, id_col_table_a : str, table_b : sql.DataFrame, id_col_table_b : str):
     """
@@ -30,6 +34,8 @@ def check_tables(table_a : sql.DataFrame, id_col_table_a : str, table_b : sql.Da
 
         _check_id_spark(table_a, id_col_table_a, "table_a")
         _check_id_spark(table_b, id_col_table_b, "table_b")
+        
+        logger.warning("check_tables: table_a and table_b formats are correct")
 
         return
 
@@ -41,12 +47,12 @@ def _check_id_spark(df: sql.DataFrame, id_col: str, name: str) -> None:
     Check that the id column is in the dataframe and is a valid id column.
     """
     if id_col not in df.columns:
-        raise ValueError(f"{name}: missing id column '{id_col}'")
+        raise ValueError(f"{name}: missing id column '{id_col}'.  Available columns: {df.columns}")
     if len(df.take(1)) == 0:
         raise ValueError(f"{name}: empty dataframe")
     if dict(df.dtypes)[id_col] not in ("int", "bigint", "smallint", "tinyint"):
         raise ValueError(f"{name}: id column '{id_col}' must be an integer type")
     if df.filter(F.col(id_col).isNull()).limit(1).count() > 0:
-        raise ValueError(f"{name}: nulls are presentin the id column '{id_col}'")
+        raise ValueError(f"{name}: nulls are present in the id column '{id_col}'")
     if df.select(id_col).distinct().count() != df.count():
         raise ValueError(f"{name}: id column '{id_col}' must be unique")
