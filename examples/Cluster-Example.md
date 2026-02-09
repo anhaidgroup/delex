@@ -1,14 +1,14 @@
 ## Running Delex on a Cluster of Machines
 
-Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-cloud-based-cluster.md). 
+Here we give an example of running Delex on a cluster of machines. We assume you have already installed Delex on a cluster of machines, using [this guide](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-cloud-based-cluster.md).
 
 ### Step 1: Downloading the Datasets
 
-To begin, we need to download three datasets from GitHub. Navigate to the dblp_acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into a directory called 'dblp_acm' on each node in the cluster. *This should be done for all the nodes in the cluster.*
+To begin, we need to download three datasets from GitHub. Navigate to the dblp*acm folder [here](https://github.com/anhaidgroup/delex/tree/main/examples/data/dblp_acm). Click on 'gold.parquet' and click the download icon at the top. Repeat this for 'table_a.parquet' and 'table_b.parquet'. Now move all these into a directory called 'dblp_acm' on each node in the cluster. \_This should be done for all the nodes in the cluster.*
 
 ### Step 2: Creating a Python File
 
-On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will add code to this Python file as we walk through this document. 
+On the master node, in the 'dblp_acm' directory, create a file called 'example.py'. We will add code to this Python file as we walk through this document.
 
 ### Step 3: Importing Dependencies
 
@@ -41,6 +41,7 @@ from delex.lang.predicate import (
 from delex.lang import BlockingProgram, DropRule, KeepRule
 from delex.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
 from delex.execution.plan_executor import PlanExecutor
+from delex.utils.checks import check_tables
 import operator
 import psutil
 ```
@@ -64,7 +65,7 @@ spark = SparkSession.builder\
 
 #### Data
 
-The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. In what follows we load in the paths to the data files. 
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. In what follows we load in the paths to the data files and check that the data fits the expected Delex format.
 
 ```
 # path to the test data directory
@@ -76,6 +77,9 @@ index_table_path = data_path / 'table_a.parquet'
 search_table_path = data_path / 'table_b.parquet'
 # the ground truth, i.e. the correct matching pairs
 gold_path = data_path / 'gold.parquet'
+
+# check that the tables fit the expected format
+check_tables(index_table, '_id', search_table, '_id',)
 ```
 
 ### Step 5: Reading the Data
@@ -153,7 +157,7 @@ candidates.unpersist()
 
 ### Step 9: Running on a Cluster
 
-In order to run the above Python program on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal). 
+In order to run the above Python program on a cluster, we can use the following command from the root directory (you can always get to the root directory by typing `cd` into the terminal).
 
 ```
 spark/bin/spark-submit \

@@ -23,6 +23,7 @@ from delex.lang.predicate import (
 from delex.lang import BlockingProgram, DropRule, KeepRule
 from delex.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
 from delex.execution.plan_executor import PlanExecutor
+from delex.utils.checks import check_tables
 import operator
 import psutil 
 
@@ -46,10 +47,14 @@ search_table_path = data_path / 'table_b.parquet'
 # the ground truth
 gold_path = data_path / 'gold.parquet'
 
+
 # read all the data as spark dataframes
 index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
+
+# check that the tables fit the expected Delex format
+check_tables(index_table, '_id', search_table, '_id',)
 
 
 prog = BlockingProgram(
