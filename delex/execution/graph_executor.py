@@ -175,13 +175,19 @@ class GraphExecutor(BaseModel):
         non_topk_nodes = [n for n in sorted_nodes if n.streamable]
         stats = []
 
-        for n in topk_nodes:
+        logger.warning(f'[EXEC_CHUNKING] splitting nodes: {len(topk_nodes)} topk (non-streamable), {len(non_topk_nodes)} streamable')
+        for idx, n in enumerate(topk_nodes):
+            logger.warning(f'[EXEC_CHUNKING] executing topk node {idx+1}/{len(topk_nodes)}: {n}')
             nodes = [n]
             search_table, sub_stats = self._exec_sub_graph(nodes, self.index_table, search_table)
             stats.append(sub_stats)
+            logger.warning(f'[EXEC_CHUNKING] topk node {idx+1}/{len(topk_nodes)} completed')
 
+        if len(non_topk_nodes) > 0:
+            logger.warning(f'[EXEC_CHUNKING] executing {len(non_topk_nodes)} streamable nodes: {[str(n) for n in non_topk_nodes]}')
         search_table, sub_stats = self._exec_sub_graph(non_topk_nodes, self.index_table, search_table)
         stats.append(sub_stats)
+        logger.warning(f'[EXEC_CHUNKING] all nodes completed')
 
         return search_table, stats
 
@@ -213,10 +219,12 @@ class GraphExecutor(BaseModel):
         # compute this early to fail fast 
         dot_graph = nodes_to_dot(sink)
         sorted_nodes = topological_sort(sink)
+        logger.warning(f'[EXECUTE] starting execution with {len(sorted_nodes)} nodes: {[str(n) for n in sorted_nodes]}')
+        logger.warning(f'[EXECUTE] use_chunking={self.use_chunking}, use_cost_estimation={self.use_cost_estimation}')
         working_set_size = None
         if self.use_cost_estimation:
             working_set_size = self._working_set_size(sorted_nodes)
-            logger.debug(f'estimated total working set size = {human_format_bytes(working_set_size)}')
+            logger.warning(f'[EXECUTE] estimated total working set size = {human_format_bytes(working_set_size)}')
 
         search_table = self.search_table
 
@@ -234,12 +242,16 @@ class GraphExecutor(BaseModel):
         logger.info(f'projecting {select}')
         search_table = search_table.select(*select)
         
+        exec_start_t = time.perf_counter()
         if self.use_chunking and working_set_size >= self.ram_size_in_bytes:
+            logger.warning(f'[EXECUTE] taking CHUNKING path (working_set_size={human_format_bytes(working_set_size)} >= ram_size={human_format_bytes(self.ram_size_in_bytes)})')
             search_table, stats = self._execute_with_chunking(sorted_nodes, self.index_table, search_table)
         else:
+            logger.warning(f'[EXECUTE] taking NO-CHUNKING path')
             search_table, sub_stats = self._exec_sub_graph(sorted_nodes, self.index_table, search_table)
             stats = [sub_stats]
 
+        logger.warning(f'[EXECUTE] execution completed in {time.perf_counter() - exec_start_t:.2f}s')
         graph_exec_stats = GraphExecutionStats(
                 nodes=sorted_nodes,
                 sub_graph_stats=stats,
@@ -315,9 +327,16 @@ class GraphExecutor(BaseModel):
         """
         start_t = time.perf_counter()
 
+        logger.warning(f'[NO_CHUNK] calling _exec_sub_graph_part (builds indexes, sets up mapInArrow)...')
         search_table, build_time, wss = self._exec_sub_graph_part(sorted_nodes, index_table, search_table, None, None, None)
+        logger.warning(f'[NO_CHUNK] _exec_sub_graph_part returned, build_time={build_time:.2f}s, working_set_size={human_format_bytes(wss)}')
+        logger.warning(f'[NO_CHUNK] calling persist()...')
         search_table.persist()
+        logger.warning(f'[NO_CHUNK] calling count() -- this triggers all Spark computation (mapInArrow over entire search table)...')
+        count_start_t = time.perf_counter()
         search_table.count()
+        count_elapsed = time.perf_counter() - count_start_t
+        logger.warning(f'[NO_CHUNK] count() completed in {count_elapsed:.2f}s')
 
         exec_time = time.perf_counter() - start_t - build_time
         stats = SubGraphExecutionStats(
@@ -381,10 +400,14 @@ class GraphExecutor(BaseModel):
         for temp_col, c in external_columns.items():
             search_table = search_table.withColumnRenamed(c, temp_col)
 
+        logger.warning(f'[CHUNKED] starting chunked execution: {nchunks} chunks, {len(external_columns)} external columns')
+        total_chunk_start_t = time.perf_counter()
         for i in range(nchunks):
-            logger.info(f'running chunk {i+1} of {nchunks}')
+            logger.warning(f'[CHUNKED] === chunk {i+1}/{nchunks} starting ===')
             start_t = time.perf_counter()
+            logger.warning(f'[CHUNKED] chunk {i+1}/{nchunks}: calling _exec_sub_graph_part...')
             stable, build_time, wss = self._exec_sub_graph_part(sorted_nodes, index_table, search_table, partitioner, i, external_columns)
+            logger.warning(f'[CHUNKED] chunk {i+1}/{nchunks}: _exec_sub_graph_part returned, build_time={build_time:.2f}s, working_set_size={human_format_bytes(wss)}')
             # while this may check conditions multiple times, 
             # it is simplier and shouldn't affect runtime in any real way
             for s in sinks:
@@ -401,12 +424,17 @@ class GraphExecutor(BaseModel):
                     stable = stable.withColumn(acc_cols[s], GraphExecutor._concat_structs(stable, [acc_cols[s], s.output_col]))\
                                     .drop(s.output_col)
 
+            logger.warning(f'[CHUNKED] chunk {i+1}/{nchunks}: calling persist() + count()...')
             stable = stable.persist()
+            count_start_t = time.perf_counter()
             stable.count()
+            count_elapsed = time.perf_counter() - count_start_t
+            logger.warning(f'[CHUNKED] chunk {i+1}/{nchunks}: count() completed in {count_elapsed:.2f}s')
             search_table.unpersist()
             search_table = stable
 
             exec_time = time.perf_counter() - start_t - build_time
+            logger.warning(f'[CHUNKED] chunk {i+1}/{nchunks}: total chunk time={time.perf_counter() - start_t:.2f}s (build={build_time:.2f}s, exec={exec_time:.2f}s)')
 
             stats.append(
                     PartitionExecutionStats(
@@ -417,6 +445,8 @@ class GraphExecutor(BaseModel):
                         working_set_size=wss,
                     )
                 )
+
+        logger.warning(f'[CHUNKED] all {nchunks} chunks completed in {time.perf_counter() - total_chunk_start_t:.2f}s')
 
         for temp_col, c in external_columns.items():
             search_table = search_table.withColumnRenamed(temp_col, c)
@@ -466,11 +496,12 @@ class GraphExecutor(BaseModel):
             raise ValueError('NO SINKS')
 
         nchunks = self._get_num_chunks(sorted_nodes)
-        logger.info(f'executing {sorted_nodes=}')
-        logger.info(f'{nchunks=}')
+        logger.warning(f'[SUB_GRAPH] executing nodes={[str(n) for n in sorted_nodes]}, sinks={[str(s) for s in sinks]}, nchunks={nchunks}')
         if nchunks == 1:
+            logger.warning(f'[SUB_GRAPH] entering _execute_sub_graph_without_chunking')
             search_table, stats = self._execute_sub_graph_without_chunking(sorted_nodes, index_table, search_table)
         else:
+            logger.warning(f'[SUB_GRAPH] entering _execute_sub_graph_with_chunking with {nchunks} chunks')
             search_table, stats = self._execute_sub_graph_with_chunking(sorted_nodes, index_table, search_table, nchunks, sinks)
 
         return search_table, stats
@@ -511,11 +542,24 @@ class GraphExecutor(BaseModel):
         """
         execute a subgraph using a DataFrameStream, return the result as a generator of arrow batches
         """
+        import logging as _logging
+        _worker_logger = _logging.getLogger('delex.worker')
+        _worker_logger.warning(f'[WORKER] initializing {len(nodes)} nodes...')
         for node in nodes:
+            _worker_logger.warning(f'[WORKER] init node: {node}')
             node.init()
+        _worker_logger.warning(f'[WORKER] all nodes initialized, processing batches...')
 
         stream = GraphExecutor._build_df_stream(itr, nodes, schema)
-        yield from stream.to_arrow_stream()
+        batch_idx = 0
+        batch_start_t = time.perf_counter()
+        for batch in stream.to_arrow_stream():
+            batch_idx += 1
+            elapsed = time.perf_counter() - batch_start_t
+            _worker_logger.warning(f'[WORKER] batch {batch_idx} completed ({batch.num_rows} rows, {elapsed:.2f}s)')
+            batch_start_t = time.perf_counter()
+            yield batch
+        _worker_logger.warning(f'[WORKER] all {batch_idx} batches completed')
 
     @staticmethod
     def _flat_to_nested_exprs(schema: T.StructType, prefix: str='') -> list:
@@ -548,8 +592,11 @@ class GraphExecutor(BaseModel):
         """
         build a node for execution using index table and id_col
         """
-        logger.info(f'build {node=} {node.is_source=}')
-        return node.build(index_table, id_col, cache)
+        logger.warning(f'[BUILD] building node: {node} (is_source={node.is_source})...')
+        build_start = time.perf_counter()
+        result = node.build(index_table, id_col, cache)
+        logger.warning(f'[BUILD] node built: {node} in {time.perf_counter() - build_start:.2f}s')
+        return result
 
     def _build_nodes(self,
             partitioner: DataFramePartitioner | None,
@@ -560,17 +607,25 @@ class GraphExecutor(BaseModel):
         """
         build a list of nodes in parallel
         """
+        logger.warning(f'[BUILD] building {len(nodes)} nodes with parallelism={self.build_parallelism}, partitioner={"None" if partitioner is None else f"part {part_num}"}')
+        for node in nodes:
+            logger.warning(f'[BUILD]   node: {node} (is_source={node.is_source})')
         start_t = time.perf_counter()
         cache = self._get_or_create_cache(partitioner, part_num)
         pool = Parallel(n_jobs=self.build_parallelism, backend='threading')
 
         if partitioner is not None:
+            logger.warning(f'[BUILD] persisting index_table partition {part_num}...')
             with persisted(partitioner.get_partition(index_table, part_num)) as index_table:
+                logger.warning(f'[BUILD] partition persisted, building nodes...')
                 _ = pool(delayed(self._build_node)(node, index_table, self.index_table_id_col, cache) for node in nodes)
         else:
+            logger.warning(f'[BUILD] building nodes over FULL index_table (no partitioning)...')
             _ = pool(delayed(self._build_node)(node, index_table, self.index_table_id_col, cache) for node in nodes)
 
-        return time.perf_counter() - start_t
+        elapsed = time.perf_counter() - start_t
+        logger.warning(f'[BUILD] all nodes built in {elapsed:.2f}s')
+        return elapsed
 
     def _exec_sub_graph_part(self, 
                              sorted_nodes: List[Node],
@@ -605,12 +660,14 @@ class GraphExecutor(BaseModel):
             _exec_sub_graph_part. These columns are needed as input to nodes in `sorted_nodes` during execution.
 
         """
+        logger.warning(f'[PART] building nodes (partitioner={"None" if partitioner is None else f"partition {partition_num}"})...')
         build_time = self._build_nodes(partitioner, partition_num, index_table, sorted_nodes)
+        logger.warning(f'[PART] nodes built in {build_time:.2f}s')
         components = {}
         for n in sorted_nodes:
             components |= n.working_set_size()
         wss = sum(components.values())
-        logger.info(f'working set size = {human_format_bytes(wss)}')
+        logger.warning(f'[PART] working set size = {human_format_bytes(wss)}')
 
         if external_columns is not None and len(external_columns):
             columns = list(search_table.columns)
@@ -634,6 +691,7 @@ class GraphExecutor(BaseModel):
         in_schema = T.StructType([deepcopy(f) for f in search_table.schema])
         stream = GraphExecutor._build_df_stream([], sorted_nodes, in_schema)
         flat_schema = stream.spark_schema(flat=True)
+        logger.warning(f'[PART] setting up mapInArrow (actual computation deferred to persist/count)...')
         search_table = search_table.mapInArrow(
                 lambda x : GraphExecutor._exec_sub_graph_part_stream(x, sorted_nodes, in_schema),
                 schema=flat_schema
@@ -644,6 +702,7 @@ class GraphExecutor(BaseModel):
             stream = stream.drop(list(external_columns.values()))
 
         search_table = search_table.select(*GraphExecutor._flat_to_nested_exprs(stream.spark_schema()))
+        logger.warning(f'[PART] DataFrame transformations set up, returning (not yet materialized)')
         return search_table, build_time, wss
 
 
