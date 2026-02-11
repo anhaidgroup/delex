@@ -53,13 +53,18 @@ index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
 
-# check that the tables fit the expected Delex format
-check_tables(index_table, '_id', search_table, '_id',)
+# Validate that table_a and table_b have valid id columns with non-null and unique values
+# This check should be run before any other Sparkly operations.
+try:
+    check_tables(index_table, '_id', search_table, '_id')
+except Exception as e:
+    print(f"Error: {e}")
+    exit(1)
 
 
 prog = BlockingProgram(
         keep_rules = [
-                KeepRule([ JaccardPredicate('title', 'title', QGramTokenizer(3), operator.ge, .6)])
+                KeepRule([BM25TopkPredicate('title', 'title', 'standard', 10), CosinePredicate('authors', 'authors', QGramTokenizer(3), op=operator.ge, val=.7) ])
             ],
         drop_rules = [],
     )
