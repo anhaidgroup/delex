@@ -23,6 +23,7 @@ from delex.lang.predicate import (
 from delex.lang import BlockingProgram, DropRule, KeepRule
 from delex.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
 from delex.execution.plan_executor import PlanExecutor
+from delex.utils.checks import check_tables
 import operator
 import psutil 
 
@@ -46,15 +47,24 @@ search_table_path = data_path / 'table_b.parquet'
 # the ground truth
 gold_path = data_path / 'gold.parquet'
 
+
 # read all the data as spark dataframes
 index_table = spark.read.parquet(f'file://{str(index_table_path)}')
 search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
 
+# Validate that table_a and table_b have valid id columns with non-null and unique values
+# This check should be run before any other Sparkly operations.
+try:
+    check_tables(index_table, '_id', search_table, '_id')
+except Exception as e:
+    print(f"Error: {e}")
+    exit(1)
+
 
 prog = BlockingProgram(
         keep_rules = [
-                KeepRule([ JaccardPredicate('title', 'title', QGramTokenizer(3), operator.ge, .6)])
+                KeepRule([BM25TopkPredicate('title', 'title', 'standard', 10), CosinePredicate('authors', 'authors', QGramTokenizer(3), op=operator.ge, val=.7) ])
             ],
         drop_rules = [],
     )

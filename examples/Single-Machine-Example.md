@@ -1,6 +1,6 @@
 ## Running Delex on a Single Machine
 
-Here we will walk through an example of running a simple blocking program for Delex on a single machine (you can see examples of more complex blocking programs [here](./complex_program_examples.ipynb)). In particular, we will show you how to create a Python program, step by step, then execute the Python program at the end of the walkthrough. You can see the complete Python program [here](./basic_example.py), and if you rather do the walkthrough using a pre-built Jupyter Notebook, you can do so [here](./basic_example.ipynb). 
+Here we will walk through an example of running a simple blocking program for Delex on a single machine (you can see examples of more complex blocking programs [here](./complex_program_examples.ipynb)). In particular, we will show you how to create a Python program, step by step, then execute the Python program at the end of the walkthrough. You can see the complete Python program [here](./basic_example.py), and if you rather do the walkthrough using a pre-built Jupyter Notebook, you can do so [here](./basic_example.ipynb).
 
 We assume you have already installed Delex on a single machine, using [this guide](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-single-machine.md).
 
@@ -43,6 +43,7 @@ from delex.lang.predicate import (
 from delex.lang import BlockingProgram, DropRule, KeepRule
 from delex.tokenizer import StrippedWhiteSpaceTokenizer, QGramTokenizer
 from delex.execution.plan_executor import PlanExecutor
+from delex.utils.checks import check_tables
 import operator
 import psutil
 ```
@@ -66,7 +67,7 @@ spark = SparkSession.builder\
 
 #### Data
 
-The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. We now load in the paths to the data files. 
+The data we downloaded earlier contains files in parquet format. This is a small dataset of paper citations with about 1000 rows per table. We now load in the paths to the data files.
 
 ```
 # path to the test data directory
@@ -78,6 +79,14 @@ index_table_path = data_path / 'table_a.parquet'
 search_table_path = data_path / 'table_b.parquet'
 # the ground truth, i.e. the correct matching pairs
 gold_path = data_path / 'gold.parquet'
+
+# Validate that table_a and table_b have valid id columns with non-null and unique values
+# This check should be run before any other Sparkly operations.
+try:
+    check_tables(table_a, '_id', table_b, '_id')
+except Exception as e:
+    print(f"Error: {e}")
+    exit(1)
 ```
 
 ### Step 5: Reading the Data
