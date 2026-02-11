@@ -1,6 +1,6 @@
 ## How to Install Delex on a Cluster of Machines
 
-Here we provide instructions for installing Delex on a cluster of machines on the cloud, specifically on Amazon Web Services (AWS). You can adapt this guide to install Delex on a cluster of local machines. We have tested these installation instructions only with Ubuntu 22.04, Java Temurin JDK 17, Python 3.10, and Spark 3.5.1. 
+Here we provide instructions for installing Delex on a cluster of machines on the cloud, specifically on Amazon Web Services (AWS). You can adapt this guide to install Delex on a cluster of local machines. We have tested these installation instructions only with Ubuntu 22.04, Java Temurin JDK 17, Python 3.10, and Spark 3.5.5. 
 
 ### Creating EC2 Nodes
 
@@ -37,7 +37,7 @@ Next you need to install Spark. Spark must be installed on every node in order t
 
 You can use these commands to download and unpack Spark:
 
-    wget "https://dlcdn.apache.org/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3.tgz"
+    wget "https://archive.apache.org/dist/spark/spark-3.5.5/spark-3.5.5-bin-hadoop3.tgz"
     tar -xvf spark-3.5.5-bin-hadoop3.tgz
 
 Running these commands will create a folder called ‘spark-3.5.5-bin-hadoop3’. This contains everything you need to create a Spark node. You should rename this as the default name is rather unwieldy:
