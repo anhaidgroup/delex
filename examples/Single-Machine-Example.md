@@ -80,8 +80,13 @@ search_table_path = data_path / 'table_b.parquet'
 # the ground truth, i.e. the correct matching pairs
 gold_path = data_path / 'gold.parquet'
 
-# check that the tables fit the expected format
-check_tables(index_table, '_id', search_table, '_id',)
+# Validate that table_a and table_b have valid id columns with non-null and unique values
+# This check should be run before any other Sparkly operations.
+try:
+    check_tables(table_a, '_id', table_b, '_id')
+except Exception as e:
+    print(f"Error: {e}")
+    exit(1)
 ```
 
 ### Step 5: Reading the Data
