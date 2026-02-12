@@ -77,4 +77,4 @@ After this, running `wsl` from PowerShell will launch the Ubuntu distribution by
 
 ### Step 2: Installing Delex and its Dependencies
 
-Now that WSL is installed, open an Ubuntu (WSL) terminal by running `wsl` from PowerShell. Now, follow the [Linux single machine installation instructions](https://github.com/anhaidgroup/delex/blob/main/doc/install-linux-single-machine.md). All of the commands in the Linux guide should be run inside the Ubuntu (WSL) terminal.
+Now that WSL is installed, open an Ubuntu (WSL) terminal by running `wsl` from PowerShell. Now, follow the [Linux single machine installation instructions](https://github.com/anhaidgroup/delex/blob/main/doc/installation-guides/install-linux-single-machine.md). All of the commands in the Linux guide should be run inside the Ubuntu (WSL) terminal.
