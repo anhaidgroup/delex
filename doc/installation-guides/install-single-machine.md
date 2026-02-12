@@ -5,3 +5,4 @@ You can install and run Delex on a single machine. If you have relatively small 
 We currently offer the following ways to install Delex on a single machine: 
 * [Installing on Linux](./install-linux-single-machine.md)
 * [Installing on MacOS](./install-macos-single-machine.md)
+* [Installing on WindowsOS](./install-windowsOS-single-machine.md)
