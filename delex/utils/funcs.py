@@ -4,13 +4,13 @@ from pyspark import StorageLevel
 import math
 from pydantic import validate_call, ConfigDict
 import logging
+from pyspark import SparkContext
 
 try:
     import lucene
 except ImportError:
     #warnings.warn("Unable to import pylucene, this may cause the program to fail", UserWarning)
     pass
-
 
 type_check_call = validate_call(config=ConfigDict(arbitrary_types_allowed=True))
 
@@ -86,3 +86,14 @@ def persisted(df, storage_level=StorageLevel.MEMORY_AND_DISK):
 def is_persisted(df):
     sl = df.storageLevel
     return sl.useMemory or sl.useDisk
+
+
+def get_num_partitions(df, chunk_size=2000):
+    # get the number of partitions based on the size of the dataframe
+    # chunk_size is the number of rows per partition
+    logger = get_logger(__name__)
+    num_cores = SparkContext.getOrCreate().defaultParallelism
+    chunks = df.count() / chunk_size
+    partitions = max(num_cores * 2, math.ceil(chunks))
+    logger.info(f"Repartitioning {df.count()} rows into {partitions} partitions")
+    return partitions
