@@ -32,8 +32,8 @@ class PlanExecutor(GraphExecutor):
 
     def execute(self, prog, search_table_id_col, projection=None, chunk_size=2000):
         # before execution, we need to repartition the dataframes
-        index_partitions = get_num_partitions(self.index_table, chunk_size=2000)
-        search_partitions = get_num_partitions(self.search_table, chunk_size=2000)
+        index_partitions = get_num_partitions(self.index_table, chunk_size=chunk_size)
+        search_partitions = get_num_partitions(self.search_table, chunk_size=chunk_size)
         self.index_table = self.index_table.repartition(index_partitions, self.index_table_id_col )
         self.search_table = self.search_table.repartition(search_partitions, search_table_id_col)
 
