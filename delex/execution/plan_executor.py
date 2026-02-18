@@ -2,7 +2,7 @@ import pyspark
 from delex.execution.optimizer import BlockingProgramOptimizer
 from delex.execution.cost_estimation import CostEstimator
 from delex.execution.graph_executor import GraphExecutor, GraphExecutionStats
-from delex.utils.funcs import get_logger
+from delex.utils.funcs import get_logger, get_num_partitions
 import time 
 
 from pydantic import (
@@ -30,9 +30,14 @@ class PlanExecutor(GraphExecutor):
     optimize : bool
     estimate_cost : bool
 
-    def execute(self, prog, search_table_id_col, projection=None):
-        plan, cost_estimation_time, optimize_time = self.generate_plan(prog)
+    def execute(self, prog, search_table_id_col, projection=None, chunk_size=2000):
+        # before execution, we need to repartition the dataframes
+        index_partitions = get_num_partitions(self.index_table, chunk_size=chunk_size)
+        search_partitions = get_num_partitions(self.search_table, chunk_size=chunk_size)
+        self.index_table = self.index_table.repartition(index_partitions, self.index_table_id_col )
+        self.search_table = self.search_table.repartition(search_partitions, search_table_id_col)
 
+        plan, cost_estimation_time, optimize_time = self.generate_plan(prog)
         df, stats = super().execute(plan, search_table_id_col, projection)
         stats = PlanExecutionStats(
                 optimize_time=optimize_time,
