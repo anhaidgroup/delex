@@ -74,6 +74,3 @@ class DataFramePartitioner:
             return F.filter(ids, lambda x : F.abs(F.xxhash64(x) % F.lit(self.nparts)) == F.lit(pnum))
         else:
             return F.filter(arr, lambda x, i : F.abs(F.xxhash64(ids.getItem(i)) % F.lit(self.nparts)) == F.lit(pnum))
-
-
-
