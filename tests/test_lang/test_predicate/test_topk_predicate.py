@@ -116,6 +116,19 @@ class TestBM25TopkPredicate:
         assert len(res.iloc[0]['id1_list']) > 0
         pred.deinit()
 
+    def test_bm25_topk_predicate_build_projects_index_table(self, spark_session):
+        """build only passes the id and index columns to sparkly and returns the given ids."""
+        pred = BM25TopkPredicate('title', 'title', 'standard', 10)
+        index_table = spark_session.createDataFrame(
+            [(1, 'John Doe', 'x', 10), (2, 'Jane Doe', 'y', 11), (3, 'Jim Doe', 'z', 12)],
+            ['id', 'title', 'other', '_rid'])
+        pred.build(for_search=True, index_table=index_table, index_id_col='_rid')
+        pred.init()
+        res = pred.search_batch(pd.Series(['Jane Doe']))
+        assert set(res.iloc[0]['id1_list']) <= {10, 11, 12}
+        assert res.iloc[0]['id1_list'][0] == 11
+        pred.deinit()
+
     def test_bm25_topk_predicate_filter_batch(self):
         """Test filter_batch raises error."""
         pred = BM25TopkPredicate('title', 'title', 'standard', 10)

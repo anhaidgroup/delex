@@ -5,10 +5,11 @@ import pyspark.sql.types as T
 from typing import Iterator, Tuple, Any, List, Optional
 import pyarrow as pa
 import pandas as pd
+import numpy as np
 from delex.execution.partitioner import DataFramePartitioner
 from delex.execution.cost_estimation import CostEstimator
 from delex.execution.dataframe_stream import DataFrameStream
-from delex.utils.funcs import persisted, get_logger, human_format_bytes
+from delex.utils.funcs import persisted, get_logger, human_format_bytes, with_rid
 from delex.graph import PredicateNode, Node
 from delex.graph.utils import nodes_to_dot
 from delex.graph.algorithms import topological_sort
@@ -31,6 +32,7 @@ from pydantic import (
 
 logger = get_logger(__name__)
 
+RID_COL = '_rid'
 
 
 class PartitionExecutionStats(BaseModel):
@@ -178,10 +180,10 @@ class GraphExecutor(BaseModel):
 
         for n in topk_nodes:
             nodes = [n]
-            search_table, sub_stats = self._exec_sub_graph(nodes, self.index_table, search_table)
+            search_table, sub_stats = self._exec_sub_graph(nodes, index_table, search_table)
             stats.append(sub_stats)
 
-        search_table, sub_stats = self._exec_sub_graph(non_topk_nodes, self.index_table, search_table)
+        search_table, sub_stats = self._exec_sub_graph(non_topk_nodes, index_table, search_table)
         stats.append(sub_stats)
 
         return search_table, stats
@@ -192,6 +194,9 @@ class GraphExecutor(BaseModel):
         execute the graph `sink` over self.index_table and self.search_table
         optionally, projecting columns `projection` along with the output of executing `sink`
         always projects the search table id column, renamed as 'id2'
+
+        self.index_table is assigned an internal id column `_rid` for the duration of the
+        execution, the output `id1_list` holds the ids from self.index_table_id_col
 
         Parameters
         ----------
@@ -214,6 +219,9 @@ class GraphExecutor(BaseModel):
             if `sink` is not a sink in the graph
 
         ValueError
+            if self.index_table_id_col is `_rid` or self.index_table has a `_rid` column
+
+        ValueError
             if `validate_ids` is True and either table does not have a valid id column
         """
         if not sink.is_sink:
@@ -228,6 +236,7 @@ class GraphExecutor(BaseModel):
 
         search_table = self.search_table
 
+        self._check_reserved_columns(self.index_table, self.index_table_id_col)
         if validate_ids:
             _check_id_schema_spark(self.index_table, self.index_table_id_col, 'index_table')
             _check_id_schema_spark(search_table, search_table_id_col, 'search_table')
@@ -249,12 +258,17 @@ class GraphExecutor(BaseModel):
         select = [c for c in search_table.columns if c in deps]
         logger.info(f'projecting {select}')
         search_table = search_table.select(*select)
-        
-        if self.use_chunking and working_set_size >= self.ram_size_in_bytes:
-            search_table, stats = self._execute_with_chunking(sorted_nodes, self.index_table, search_table)
-        else:
-            search_table, sub_stats = self._exec_sub_graph(sorted_nodes, self.index_table, search_table)
-            stats = [sub_stats]
+
+        index_table = with_rid(self.index_table, RID_COL)
+        try:
+            if self.use_chunking and working_set_size >= self.ram_size_in_bytes:
+                search_table, stats = self._execute_with_chunking(sorted_nodes, index_table, search_table)
+            else:
+                search_table, sub_stats = self._exec_sub_graph(sorted_nodes, index_table, search_table)
+                stats = [sub_stats]
+            rid_to_id = self._rid_to_id(index_table, self.index_table_id_col)
+        finally:
+            index_table.unpersist()
 
         graph_exec_stats = GraphExecutionStats(
                 nodes=sorted_nodes,
@@ -268,11 +282,43 @@ class GraphExecutor(BaseModel):
         else:
             select_exprs = list(projection)
 
-        output_expr = search_table[sorted_nodes[-1].output_col].getField('id1_list').alias('id1_list')
+        output_expr = self._to_user_ids(search_table[sorted_nodes[-1].output_col].getField('id1_list'), rid_to_id).alias('id1_list')
         select_exprs.append(output_expr)
         search_table = search_table.select(*select_exprs)
         search_table = search_table.withColumnRenamed(search_table_id_col, 'id2')
         return search_table, graph_exec_stats
+
+    @staticmethod
+    def _check_reserved_columns(index_table: pyspark.sql.DataFrame, id_col: str):
+        """
+        raise if `id_col` or a column of `index_table` uses the internal id column name
+        """
+        if id_col == RID_COL:
+            raise ValueError(f"index_table_id_col cannot be '{RID_COL}', it is reserved for internal use")
+        if RID_COL in index_table.columns:
+            raise ValueError(f"index_table: column '{RID_COL}' is reserved for internal use")
+
+    @staticmethod
+    def _rid_to_id(index_table: pyspark.sql.DataFrame, id_col: str):
+        """
+        collect and broadcast the mapping from the internal ids of `index_table` to the ids in `id_col`
+        """
+        pdf = index_table.select(RID_COL, id_col).toPandas()
+        ids = np.empty(len(pdf), dtype=np.int64)
+        ids[pdf[RID_COL].to_numpy(dtype=np.int64)] = pdf[id_col].to_numpy(dtype=np.int64)
+        return index_table.sparkSession.sparkContext.broadcast(ids)
+
+    @staticmethod
+    def _to_user_ids(id1_list: pyspark.sql.Column, rid_to_id) -> pyspark.sql.Column:
+        """
+        map an array<long> column of internal ids to the ids of the index table
+        """
+        @F.pandas_udf(T.ArrayType(T.LongType()))
+        def _map_ids(id1_lists: pd.Series) -> pd.Series:
+            ids = rid_to_id.value
+            return id1_lists.map(lambda rids: rids if rids is None else ids[np.asarray(rids, dtype=np.int64)])
+
+        return _map_ids(id1_list)
 
     @staticmethod
     def _exp_search(n_recs, ram_size, f):
@@ -385,7 +431,7 @@ class GraphExecutor(BaseModel):
             
         List[SubGraphExecutionStats]
         """
-        partitioner = DataFramePartitioner(self.index_table_id_col, nchunks)
+        partitioner = DataFramePartitioner(RID_COL, nchunks)
         out_cols = {n.output_col for n in sorted_nodes}
         in_cols = {x.output_col for n in sorted_nodes for x in n.iter_in()}
         # a list of columns that have been created by a different execution call
@@ -582,9 +628,9 @@ class GraphExecutor(BaseModel):
 
         if partitioner is not None:
             with persisted(partitioner.get_partition(index_table, part_num)) as index_table:
-                _ = pool(delayed(self._build_node)(node, index_table, self.index_table_id_col, cache) for node in nodes)
+                _ = pool(delayed(self._build_node)(node, index_table, RID_COL, cache) for node in nodes)
         else:
-            _ = pool(delayed(self._build_node)(node, index_table, self.index_table_id_col, cache) for node in nodes)
+            _ = pool(delayed(self._build_node)(node, index_table, RID_COL, cache) for node in nodes)
 
         return time.perf_counter() - start_t
 

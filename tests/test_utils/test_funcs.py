@@ -4,7 +4,7 @@ Tests for delex.utils.funcs module.
 import pytest
 from pyspark import SparkContext
 
-from delex.utils.funcs import get_num_partitions
+from delex.utils.funcs import get_num_partitions, with_rid, is_persisted
 
 
 @pytest.mark.unit
@@ -147,3 +147,65 @@ class TestGetNumPartitions:
 
         assert isinstance(partitions, int)
         assert partitions >= expected_min
+
+
+@pytest.mark.unit
+class TestWithRid:
+    """Tests for with_rid."""
+
+    @pytest.mark.requires_spark
+    def test_dense_unique_ids(self, spark_session):
+        """Every row gets a unique id in [0, n) and the original columns are untouched."""
+        df = spark_session.createDataFrame(
+            [(i * 7 - 1000, f"v{i}") for i in range(1000)], ["_id", "x"]
+        ).repartition(7)
+
+        out = with_rid(df, "_rid")
+        try:
+            assert out.columns == ["_id", "x", "_rid"]
+            rids = sorted(r["_rid"] for r in out.select("_rid").collect())
+            assert rids == list(range(1000))
+            assert is_persisted(out)
+            assert out.select("_id", "x").orderBy("_id").collect() == df.orderBy("_id").collect()
+        finally:
+            out.unpersist()
+
+    @pytest.mark.requires_spark
+    def test_ids_are_stable_across_actions(self, spark_session):
+        """The assigned ids do not change between actions on the result."""
+        df = spark_session.createDataFrame(
+            [(i, f"v{i}") for i in range(500)], ["_id", "x"]
+        ).repartition(5, "_id")
+
+        out = with_rid(df, "_rid")
+        try:
+            first = out.select("_id", "_rid").orderBy("_id").collect()
+            second = out.select("_id", "_rid").orderBy("_id").collect()
+            assert first == second
+        finally:
+            out.unpersist()
+
+    @pytest.mark.requires_spark
+    def test_empty_dataframe(self, spark_session):
+        """An empty dataframe gets the column and no rows."""
+        df = spark_session.createDataFrame([], "_id BIGINT, x STRING")
+
+        out = with_rid(df, "_rid")
+        try:
+            assert out.columns == ["_id", "x", "_rid"]
+            assert out.count() == 0
+        finally:
+            out.unpersist()
+
+    @pytest.mark.requires_spark
+    def test_persisted_input_stays_persisted(self, spark_session):
+        """A dataframe persisted by the caller is not unpersisted."""
+        df = spark_session.createDataFrame([(i, "a") for i in range(10)], ["_id", "x"]).persist()
+
+        out = with_rid(df, "_rid")
+        try:
+            assert is_persisted(df)
+            assert out.count() == 10
+        finally:
+            out.unpersist()
+            df.unpersist()

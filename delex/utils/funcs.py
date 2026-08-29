@@ -4,7 +4,11 @@ from pyspark import StorageLevel
 import math
 from pydantic import validate_call, ConfigDict
 import logging
-from pyspark import SparkContext
+import numpy as np
+import pyarrow as pa
+import pyspark.sql.functions as F
+import pyspark.sql.types as T
+from pyspark import SparkContext, TaskContext
 
 try:
     import lucene
@@ -86,6 +90,53 @@ def persisted(df, storage_level=StorageLevel.MEMORY_AND_DISK):
 def is_persisted(df):
     sl = df.storageLevel
     return sl.useMemory or sl.useDisk
+
+
+def with_rid(df, rid_col, storage_level=StorageLevel.MEMORY_AND_DISK):
+    """
+    return a persisted copy of `df` with `rid_col` appended, a dense unique
+    id in the range [0, df.count())
+
+    Parameters
+    ----------
+    df : pyspark.sql.DataFrame
+        the dataframe to be assigned ids
+    rid_col : str
+        the name of the id column to be appended
+    storage_level : StorageLevel
+        the storage level used to persist the result
+
+    Returns
+    -------
+    pyspark.sql.DataFrame
+        `df` with `rid_col` appended, persisted with `storage_level`
+    """
+    cache_input = not is_persisted(df)
+    if cache_input:
+        df = df.persist(storage_level)
+    try:
+        counts = df.groupBy(F.spark_partition_id().alias('pid')).count().collect()
+        offsets = {}
+        start = 0
+        for row in sorted(counts, key=lambda r: r['pid']):
+            offsets[row['pid']] = start
+            start += row['count']
+
+        schema = T.StructType(df.schema.fields + [T.StructField(rid_col, T.LongType(), False)])
+
+        def append_rid(itr):
+            start = offsets.get(TaskContext.get().partitionId(), 0)
+            for batch in itr:
+                rids = pa.array(np.arange(start, start + batch.num_rows, dtype=np.int64))
+                start += batch.num_rows
+                yield pa.RecordBatch.from_arrays(batch.columns + [rids], names=batch.schema.names + [rid_col])
+
+        out = df.mapInArrow(append_rid, schema).persist(storage_level)
+        out.count()
+    finally:
+        if cache_input:
+            df.unpersist()
+    return out
 
 
 def get_num_partitions(df, chunk_size=2000, n_rows=None):

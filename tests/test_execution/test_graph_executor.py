@@ -188,3 +188,62 @@ class TestGraphExecutor:
         s_table, g_stats = executor.execute(
             sink=node, search_table_id_col='_id', validate_ids=False)
         assert s_table.count() == duplicated.count()
+
+    @pytest.mark.requires_spark
+    def test_graph_executor_execute_rejects_reserved_rid_column(self, table_a, table_b):
+        """execute raises when the index table already has a _rid column."""
+        import pyspark.sql.functions as F
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        executor = GraphExecutor(
+            index_table=table_a.withColumn('_rid', F.col('_id')), search_table=table_b)
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        with pytest.raises(ValueError, match="index_table: column '_rid' is reserved"):
+            executor.execute(sink=node, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_graph_executor_execute_rejects_rid_as_id_col(self, table_a, table_b):
+        """execute raises when index_table_id_col is the reserved _rid name."""
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        executor = GraphExecutor(
+            index_table=table_a.withColumnRenamed('_id', '_rid'),
+            search_table=table_b,
+            index_table_id_col='_rid')
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        with pytest.raises(ValueError, match="index_table_id_col cannot be '_rid'"):
+            executor.execute(sink=node, search_table_id_col='_id')
+
+    @pytest.mark.slow
+    def test_graph_executor_execute_outputs_index_table_ids(self, spark_session):
+        """id1_list holds the ids of the index table, whatever their values."""
+        import pyspark.sql.functions as F
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+
+        words = ['apple', 'banana', 'cherry', 'dog', 'elephant']
+        index_table = spark_session.createDataFrame(
+            [(i, words[i % 5], words[(i // 5) % 5]) for i in range(200)],
+            ['_id', 'title', 'description'])
+        search_table = spark_session.createDataFrame(
+            [(i, words[i % 5], words[(i // 7) % 5]) for i in range(100)],
+            ['_id', 'title', 'description'])
+
+        def pairs(index_table):
+            executor = GraphExecutor(index_table=index_table, search_table=search_table)
+            pred = ExactMatchPredicate(
+                index_col='title', search_col='title', invert=False)
+            node = PredicateNode(pred)
+            out, _ = executor.execute(sink=node, search_table_id_col='_id')
+            assert out.columns == ['id2', 'id1_list']
+            rows = out.select(F.explode('id1_list').alias('a'), 'id2').toPandas()
+            return set(rows.itertuples(index=False, name=None))
+
+        baseline = pairs(index_table)
+        shifted = pairs(index_table.withColumn('_id', F.col('_id') * 1000 - 50_000))
+        assert len(baseline) == 200 * 100 // 5
+        assert {(a * 1000 - 50_000, b) for a, b in baseline} == shifted

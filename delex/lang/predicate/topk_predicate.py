@@ -1,6 +1,7 @@
 from delex.utils.funcs import type_check, init_jvm, attach_current_thread_jvm
 from typing import Iterator
 import pandas as pd
+import pyspark.sql.functions as F
 from .predicate import Predicate
 from delex.utils import CachedObjectKey
 from sparkly.index import LuceneIndex
@@ -13,6 +14,7 @@ from pathlib import Path
 import threading
 
 _sparkly_index_lock = threading.Lock()
+_SPARKLY_ID_COL = '_id'
 
 @dataclass(frozen=True)
 class CachedBM25IndexKey(CachedObjectKey):
@@ -139,10 +141,11 @@ class BM25TopkPredicate(Predicate):
             # needed for multithreaded build
             init_jvm([f'-Xmx{self._build_java_heap_size}'])
             attach_current_thread_jvm()
-            index_config = IndexConfig(id_col=index_id_col)
+            index_config = IndexConfig(id_col=_SPARKLY_ID_COL)
             index_config.add_field(self.index_col, [self._tokenizer])
             index_dir = mkdtemp(prefix='bm25_index.')
             index = LuceneIndex(index_dir, index_config)
+            index_table = index_table.select(F.col(index_id_col).alias(_SPARKLY_ID_COL), F.col(self.index_col))
             index.upsert_docs(index_table, force_distributed=True)
 
         return index

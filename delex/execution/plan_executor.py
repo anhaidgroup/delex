@@ -56,8 +56,12 @@ class PlanExecutor(GraphExecutor):
         Raises
         ------
         ValueError
+            if self.index_table_id_col is `_rid` or self.index_table has a `_rid` column
+
+        ValueError
             if `validate_ids` is True and either table does not have a valid id column
         """
+        self._check_reserved_columns(self.index_table, self.index_table_id_col)
         index_rows = None
         search_rows = None
         if validate_ids:
