@@ -88,12 +88,14 @@ def is_persisted(df):
     return sl.useMemory or sl.useDisk
 
 
-def get_num_partitions(df, chunk_size=2000):
+def get_num_partitions(df, chunk_size=2000, n_rows=None):
     # get the number of partitions based on the size of the dataframe
     # chunk_size is the number of rows per partition
     logger = get_logger(__name__)
     num_cores = SparkContext.getOrCreate().defaultParallelism
-    chunks = df.count() / chunk_size
+    if n_rows is None:
+        n_rows = df.count()
+    chunks = n_rows / chunk_size
     partitions = max(num_cores * 2, math.ceil(chunks))
-    logger.info(f"Repartitioning {df.count()} rows into {partitions} partitions")
+    logger.info(f"Repartitioning {n_rows} rows into {partitions} partitions")
     return partitions

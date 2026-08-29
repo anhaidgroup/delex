@@ -54,7 +54,7 @@ search_table = spark.read.parquet(f'file://{str(search_table_path)}')
 gold = spark.read.parquet(f'file://{str(gold_path)}')
 
 # Validate that table_a and table_b have valid id columns with non-null and unique values
-# This check should be run before any other Sparkly operations.
+# This check should be run before any other Delex operations.
 try:
     check_tables(index_table, '_id', search_table, '_id')
 except Exception as e:

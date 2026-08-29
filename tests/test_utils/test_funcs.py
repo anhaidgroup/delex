@@ -74,6 +74,19 @@ class TestGetNumPartitions:
             assert p >= expected_min
 
     @pytest.mark.requires_spark
+    def test_supplied_row_count_is_used(self, spark_session):
+        """When n_rows is supplied it drives the partition count."""
+        df = spark_session.createDataFrame([(1, "a"), (2, "b")], ["_id", "x"])
+
+        spark_context = SparkContext.getOrCreate()
+        cores = spark_context.defaultParallelism
+        n_rows = cores * 2 * 1000
+
+        partitions = get_num_partitions(df, chunk_size=1, n_rows=n_rows)
+
+        assert partitions == n_rows
+
+    @pytest.mark.requires_spark
     def test_repartitioned_dataframe_still_uses_heuristic(self, spark_session):
         """Pre-existing Spark partitioning doesn't break the heuristic."""
         df = spark_session.createDataFrame(

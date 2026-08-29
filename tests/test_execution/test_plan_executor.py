@@ -83,3 +83,87 @@ class TestPlanExecutor:
             stats.optimize_time +
             stats.cost_estimation_time
         )
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_rejects_duplicate_index_ids(
+            self, table_a, table_b, simple_blocking_program):
+        """execute raises when the index table id column has duplicates."""
+        from delex.execution.plan_executor import PlanExecutor
+        executor = PlanExecutor(
+            index_table=table_a.union(table_a),
+            search_table=table_b,
+            optimize=False,
+            estimate_cost=False
+        )
+        with pytest.raises(ValueError, match="index_table: id column '_id' must be unique"):
+            executor.execute(simple_blocking_program, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_rejects_duplicate_search_ids(
+            self, table_a, table_b, simple_blocking_program):
+        """execute raises when the search table id column has duplicates."""
+        from delex.execution.plan_executor import PlanExecutor
+        executor = PlanExecutor(
+            index_table=table_a,
+            search_table=table_b.union(table_b),
+            optimize=False,
+            estimate_cost=False
+        )
+        with pytest.raises(ValueError, match="search_table: id column '_id' must be unique"):
+            executor.execute(simple_blocking_program, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_rejects_null_search_ids(
+            self, table_a, table_b, simple_blocking_program):
+        """execute raises when the search table id column contains nulls."""
+        import pyspark.sql.functions as F
+        from delex.execution.plan_executor import PlanExecutor
+        with_null = table_b.withColumn(
+            '_id', F.when(F.col('_id') == 0, None).otherwise(F.col('_id')))
+        executor = PlanExecutor(
+            index_table=table_a,
+            search_table=with_null,
+            optimize=False,
+            estimate_cost=False
+        )
+        with pytest.raises(ValueError, match="search_table: nulls are present"):
+            executor.execute(simple_blocking_program, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_rejects_missing_search_id_column(
+            self, simple_plan_executor, simple_blocking_program):
+        """execute raises when search_table_id_col is not in the search table."""
+        with pytest.raises(ValueError, match="search_table: missing id column 'no_such_col'"):
+            simple_plan_executor.execute(
+                simple_blocking_program, search_table_id_col='no_such_col')
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_rejects_non_integer_index_ids(
+            self, table_a, table_b, simple_blocking_program):
+        """execute raises when the index table id column is not an integer type."""
+        import pyspark.sql.functions as F
+        from delex.execution.plan_executor import PlanExecutor
+        executor = PlanExecutor(
+            index_table=table_a.withColumn('_id', F.col('_id').cast('string')),
+            search_table=table_b,
+            optimize=False,
+            estimate_cost=False
+        )
+        with pytest.raises(ValueError, match="index_table: id column '_id' must be an integer type"):
+            executor.execute(simple_blocking_program, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_plan_executor_execute_validate_ids_disabled(
+            self, table_a, table_b, simple_blocking_program):
+        """execute skips id validation when validate_ids is False."""
+        from delex.execution.plan_executor import PlanExecutor
+        duplicated = table_b.union(table_b)
+        executor = PlanExecutor(
+            index_table=table_a,
+            search_table=duplicated,
+            optimize=False,
+            estimate_cost=False
+        )
+        df, stats = executor.execute(
+            simple_blocking_program, search_table_id_col='_id', validate_ids=False)
+        assert df.count() == duplicated.count()

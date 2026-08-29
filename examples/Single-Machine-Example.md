@@ -81,7 +81,7 @@ search_table_path = data_path / 'table_b.parquet'
 gold_path = data_path / 'gold.parquet'
 
 # Validate that table_a and table_b have valid id columns with non-null and unique values
-# This check should be run before any other Sparkly operations.
+# This check should be run before any other Delex operations.
 try:
     check_tables(table_a, '_id', table_b, '_id')
 except Exception as e:

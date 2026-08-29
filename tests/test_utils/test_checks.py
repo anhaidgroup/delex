@@ -4,7 +4,13 @@ Tests for delex.utils.checks module.
 import pandas as pd
 import pytest
 
-from delex.utils.checks import check_tables, _check_id_spark
+from delex.utils.checks import (
+    check_tables,
+    check_id_col,
+    _check_id_spark,
+    _check_id_schema_spark,
+    _check_id_values_spark,
+)
 
 
 @pytest.mark.unit
@@ -99,3 +105,82 @@ class TestCheckIdSpark:
     def test_valid_passes(self, spark_session):
         df = spark_session.createDataFrame([(1, "a"), (2, "b")], ["id", "x"])
         _check_id_spark(df, "id", "mytable")  # no raise
+
+
+@pytest.mark.unit
+class TestCheckIdSchemaSpark:
+    """Tests for _check_id_schema_spark."""
+
+    def test_missing_id_column(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a")], ["x", "y"])
+        with pytest.raises(ValueError, match="mytable: missing id column 'id'"):
+            _check_id_schema_spark(df, "id", "mytable")
+
+    def test_id_not_integer_type(self, spark_session):
+        df = spark_session.createDataFrame([(1.0, "a")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: id column 'id' must be an integer type"):
+            _check_id_schema_spark(df, "id", "mytable")
+
+    def test_empty_dataframe_passes(self, spark_session):
+        df = spark_session.createDataFrame([], "id BIGINT, x STRING")
+        _check_id_schema_spark(df, "id", "mytable")
+
+    def test_valid_passes(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (2, "b")], ["id", "x"])
+        _check_id_schema_spark(df, "id", "mytable")
+
+
+@pytest.mark.unit
+class TestCheckIdValuesSpark:
+    """Tests for _check_id_values_spark."""
+
+    def test_returns_row_count(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (2, "b"), (3, "c")], ["id", "x"])
+        assert _check_id_values_spark(df, "id", "mytable") == 3
+
+    def test_empty_dataframe_returns_zero(self, spark_session):
+        df = spark_session.createDataFrame([], "id BIGINT, x STRING")
+        assert _check_id_values_spark(df, "id", "mytable") == 0
+
+    def test_nulls_in_id(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (None, "b")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: nulls are present"):
+            _check_id_values_spark(df, "id", "mytable")
+
+    def test_id_not_unique(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (1, "b")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: id column 'id' must be unique"):
+            _check_id_values_spark(df, "id", "mytable")
+
+
+@pytest.mark.unit
+class TestCheckIdCol:
+    """Tests for check_id_col."""
+
+    def test_returns_row_count(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (2, "b")], ["id", "x"])
+        assert check_id_col(df, "id", "mytable") == 2
+
+    def test_empty_dataframe_returns_zero(self, spark_session):
+        df = spark_session.createDataFrame([], "id BIGINT, x STRING")
+        assert check_id_col(df, "id", "mytable") == 0
+
+    def test_missing_id_column(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a")], ["x", "y"])
+        with pytest.raises(ValueError, match="mytable: missing id column 'id'"):
+            check_id_col(df, "id", "mytable")
+
+    def test_id_not_integer_type(self, spark_session):
+        df = spark_session.createDataFrame([(1.0, "a")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: id column 'id' must be an integer type"):
+            check_id_col(df, "id", "mytable")
+
+    def test_nulls_in_id(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (None, "b")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: nulls are present"):
+            check_id_col(df, "id", "mytable")
+
+    def test_id_not_unique(self, spark_session):
+        df = spark_session.createDataFrame([(1, "a"), (1, "b")], ["id", "x"])
+        with pytest.raises(ValueError, match="mytable: id column 'id' must be unique"):
+            check_id_col(df, "id", "mytable")

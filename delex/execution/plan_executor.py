@@ -3,6 +3,7 @@ from delex.execution.optimizer import BlockingProgramOptimizer
 from delex.execution.cost_estimation import CostEstimator
 from delex.execution.graph_executor import GraphExecutor, GraphExecutionStats
 from delex.utils.funcs import get_logger, get_num_partitions
+from delex.utils.checks import check_id_col
 import time 
 
 from pydantic import (
@@ -30,15 +31,47 @@ class PlanExecutor(GraphExecutor):
     optimize : bool
     estimate_cost : bool
 
-    def execute(self, prog, search_table_id_col, projection=None, chunk_size=2000):
+    def execute(self, prog, search_table_id_col, projection=None, chunk_size=2000, validate_ids=True):
+        """
+        execute the blocking program `prog` over self.index_table and self.search_table
+
+        Parameters
+        ----------
+        prog : BlockingProgram
+            the blocking program to be executed
+
+        search_table_id_col : str
+            the column name for the id of the search table
+
+        projection : Optional[list[str]] = None
+            columns to be projected along with the output of `prog`
+
+        chunk_size : int = 2000
+            the number of rows per partition used when repartitioning the tables
+
+        validate_ids : bool = True
+            check that the id columns of self.index_table and self.search_table
+            are integer typed and contain no nulls and no duplicate values
+
+        Raises
+        ------
+        ValueError
+            if `validate_ids` is True and either table does not have a valid id column
+        """
+        index_rows = None
+        search_rows = None
+        if validate_ids:
+            index_rows = check_id_col(self.index_table, self.index_table_id_col, 'index_table')
+            search_rows = check_id_col(self.search_table, search_table_id_col, 'search_table')
+
         # before execution, we need to repartition the dataframes
-        index_partitions = get_num_partitions(self.index_table, chunk_size=chunk_size)
-        search_partitions = get_num_partitions(self.search_table, chunk_size=chunk_size)
+        index_partitions = get_num_partitions(self.index_table, chunk_size=chunk_size, n_rows=index_rows)
+        search_partitions = get_num_partitions(self.search_table, chunk_size=chunk_size, n_rows=search_rows)
         self.index_table = self.index_table.repartition(index_partitions, self.index_table_id_col )
         self.search_table = self.search_table.repartition(search_partitions, search_table_id_col)
 
         plan, cost_estimation_time, optimize_time = self.generate_plan(prog)
-        df, stats = super().execute(plan, search_table_id_col, projection)
+        df, stats = super().execute(plan, search_table_id_col, projection, validate_ids=False)
         stats = PlanExecutionStats(
                 optimize_time=optimize_time,
                 cost_estimation_time=cost_estimation_time,

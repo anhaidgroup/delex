@@ -134,3 +134,57 @@ class TestGraphExecutor:
         assert s_table.columns == ['id2', 'title', 'id1_list']
         assert s_table.count() == table_b.count()
 
+
+    @pytest.mark.requires_spark
+    def test_graph_executor_execute_rejects_duplicate_search_ids(self, table_a, table_b):
+        """execute raises when the search table id column has duplicates."""
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        executor = GraphExecutor(
+            index_table=table_a, search_table=table_b.union(table_b))
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        with pytest.raises(ValueError, match="search_table: id column '_id' must be unique"):
+            executor.execute(sink=node, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_graph_executor_execute_rejects_null_index_ids(self, table_a, table_b):
+        """execute raises when the index table id column contains nulls."""
+        import pyspark.sql.functions as F
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        with_null = table_a.withColumn(
+            '_id', F.when(F.col('_id') == 0, None).otherwise(F.col('_id')))
+        executor = GraphExecutor(index_table=with_null, search_table=table_b)
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        with pytest.raises(ValueError, match="index_table: nulls are present"):
+            executor.execute(sink=node, search_table_id_col='_id')
+
+    @pytest.mark.requires_spark
+    def test_graph_executor_execute_rejects_missing_search_id_column(self, table_a, table_b):
+        """execute raises when search_table_id_col is not in the search table."""
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        executor = GraphExecutor(index_table=table_a, search_table=table_b)
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        with pytest.raises(ValueError, match="search_table: missing id column 'no_such_col'"):
+            executor.execute(sink=node, search_table_id_col='no_such_col')
+
+    @pytest.mark.slow
+    def test_graph_executor_execute_validate_ids_disabled(self, table_a, table_b):
+        """execute skips id validation when validate_ids is False."""
+        from delex.graph import PredicateNode
+        from delex.lang.predicate import ExactMatchPredicate
+        duplicated = table_b.union(table_b)
+        executor = GraphExecutor(index_table=table_a, search_table=duplicated)
+        pred = ExactMatchPredicate(
+            index_col='title', search_col='title', invert=False)
+        node = PredicateNode(pred)
+        s_table, g_stats = executor.execute(
+            sink=node, search_table_id_col='_id', validate_ids=False)
+        assert s_table.count() == duplicated.count()

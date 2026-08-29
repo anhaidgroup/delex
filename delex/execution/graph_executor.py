@@ -13,6 +13,7 @@ from delex.graph import PredicateNode, Node
 from delex.graph.utils import nodes_to_dot
 from delex.graph.algorithms import topological_sort
 from delex.utils.funcs import type_check_call
+from delex.utils.checks import _check_id_schema_spark, _check_id_values_spark
 from joblib import Parallel, delayed
 from functools import cached_property
 import time 
@@ -186,7 +187,7 @@ class GraphExecutor(BaseModel):
         return search_table, stats
 
     @type_check_call
-    def execute(self, sink: Node, search_table_id_col: str, projection: Optional[list[str]]=None):
+    def execute(self, sink: Node, search_table_id_col: str, projection: Optional[list[str]]=None, validate_ids: bool=True):
         """
         execute the graph `sink` over self.index_table and self.search_table
         optionally, projecting columns `projection` along with the output of executing `sink`
@@ -203,10 +204,17 @@ class GraphExecutor(BaseModel):
         projection : Optional[list[str]] = None
             columns to be projected along with the output of `sink`
 
+        validate_ids : bool = True
+            check that the id columns of self.index_table and self.search_table
+            are integer typed and contain no nulls and no duplicate values
+
         Raises
         ------
         ValueError
             if `sink` is not a sink in the graph
+
+        ValueError
+            if `validate_ids` is True and either table does not have a valid id column
         """
         if not sink.is_sink:
             raise ValueError('must pass sink')
@@ -220,6 +228,10 @@ class GraphExecutor(BaseModel):
 
         search_table = self.search_table
 
+        if validate_ids:
+            _check_id_schema_spark(self.index_table, self.index_table_id_col, 'index_table')
+            _check_id_schema_spark(search_table, search_table_id_col, 'search_table')
+
         if projection is None:
             projection = [search_table_id_col]
         elif search_table_id_col not in projection:
@@ -228,6 +240,10 @@ class GraphExecutor(BaseModel):
         missing = [c for c in projection if c not in search_table.columns]
         if len(missing):
             raise ValueError(f'missing columns from projection {missing}')
+
+        if validate_ids:
+            _check_id_values_spark(self.index_table, self.index_table_id_col, 'index_table')
+            _check_id_values_spark(search_table, search_table_id_col, 'search_table')
         # project out unused columns
         deps = set(projection) | {d for n in sorted_nodes for d in n.iter_dependencies()}
         select = [c for c in search_table.columns if c in deps]
